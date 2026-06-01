@@ -17,7 +17,7 @@ import { FAQ_ITEMS } from "@/lib/data/faq";
 
 export function FaqSection() {
   const reducedMotion = usePrefersReducedMotion();
-  const [openId, setOpenId] = useState<string | null>(FAQ_ITEMS[0]?.id ?? null);
+  const [openId, setOpenId] = useState<string | null>(null);
 
   const sectionRef = useRef<HTMLElement>(null);
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
@@ -42,17 +42,7 @@ export function FaqSection() {
     FAQ_ITEMS.forEach((item) => {
       const parts = getParts(item.id);
       if (!parts) return;
-
-      if (item.id === FAQ_ITEMS[0]?.id) {
-        gsap.set(parts.answer, {
-          height: "auto",
-          autoAlpha: 1,
-          overflow: "hidden",
-        });
-        parts.icon.textContent = "−";
-      } else {
-        setFaqItemClosed(parts);
-      }
+      setFaqItemClosed(parts);
     });
 
     const heading = section.querySelector<HTMLElement>("[data-scroll-heading]");
