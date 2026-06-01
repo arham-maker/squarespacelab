@@ -10,10 +10,10 @@ export type ProjectsMarqueeTargets = {
 const AUTO_SPEED = 9;
 
 /** Scroll velocity → track motion scale (keep low for gentle response). */
-const SCROLL_VELOCITY_FACTOR = 1.0028;
+const SCROLL_VELOCITY_FACTOR = 0.0128;
 
 /** How quickly scroll influence eases in/out each frame (lower = smoother). */
-const SCROLL_LERP = 1.045;
+const SCROLL_LERP = 0.145;
 
 export function waitForTrackImages(track: HTMLElement): Promise<void> {
   const images = Array.from(track.querySelectorAll("img"));

@@ -94,7 +94,7 @@ export function OptionsSection() {
             <div
               ref={stickyRef}
               data-options-sticky
-              className="flex w-full flex-col justify-center lg:sticky lg:top-10 lg:py-8"
+              className="flex w-full flex-col justify-start lg:sticky lg:top-10 lg:py-8"
             >
               {OPTIONS_FEATURES.map((feature, index) => (
                 <div
