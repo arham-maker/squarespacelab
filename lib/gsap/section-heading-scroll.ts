@@ -3,6 +3,8 @@ import type { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export const SECTION_HEADING_FADED = "rgba(255, 255, 255, 0.21)";
 export const SECTION_HEADING_SOLID = "rgb(255, 255, 255)";
+export const SECTION_HEADING_FADED_DARK = "rgba(0, 0, 0, 0.3)";
+export const SECTION_HEADING_SOLID_DARK = "#000000";
 
 const CHAR_SELECTOR = "[data-scroll-heading-char]";
 
@@ -13,6 +15,8 @@ export type SectionHeadingScrollOptions = {
   scrub?: number | boolean;
   /** Stagger between letters within the scrubbed timeline (0–1 scale) */
   staggerEach?: number;
+  fadedColor?: string;
+  solidColor?: string;
 };
 
 const DEFAULT_START = "top 88%";
@@ -121,22 +125,24 @@ export function initSectionHeadingScroll(
     end = DEFAULT_END,
     scrub = DEFAULT_SCRUB,
     staggerEach = DEFAULT_STAGGER,
+    fadedColor = SECTION_HEADING_FADED,
+    solidColor = SECTION_HEADING_SOLID,
   } = options;
 
   const cleanup = () => restoreSectionHeading(heading);
 
   if (reducedMotion) {
-    gsap.set(heading, { color: SECTION_HEADING_SOLID, clearProps: "transform" });
+    gsap.set(heading, { color: solidColor, clearProps: "transform" });
     return cleanup;
   }
 
   const chars = splitHeadingIntoChars(heading);
   if (!chars.length) return cleanup;
 
-  gsap.set(chars, { color: SECTION_HEADING_FADED });
+  gsap.set(chars, { color: fadedColor });
 
   const tween = gsap.to(chars, {
-    color: SECTION_HEADING_SOLID,
+    color: solidColor,
     ease: "none",
     stagger: { each: staggerEach, from: "start" },
     scrollTrigger: {

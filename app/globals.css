@@ -13,6 +13,7 @@
   --color-muted: #6b6b6b;
   --color-surface: #f7f7f5;
   --color-surface-dark: #111111;
+  --color-why-choose: #d0cce0;
   --font-sans: var(--font-inter), sans-serif, serif;
   /* Hamburger / desktop split at 1025px */
   --breakpoint-lg: 64.0625rem;
@@ -437,6 +438,42 @@
   @media (min-width: 1025px) {
     .templates-showcase__preview {
       aspect-ratio: auto;
+    }
+  }
+
+  /* ─── Why Choose ───────────────────────────────────────────────────────── */
+
+  .bg-why-choose {
+    background-color: var(--color-why-choose);
+  }
+
+  .text-why-choose-heading {
+    margin: 0 0 3rem;
+    font-size: clamp(2.75rem, 12vw, 5rem);
+    line-height: 1;
+    font-weight: 400;
+    color: #212529;
+  }
+
+  @media (min-width: 1025px) {
+    .text-why-choose-heading {
+      margin: 0 0 7rem;
+      font-size: 13.125rem;
+      line-height: 1;
+    }
+  }
+
+  .text-why-choose-feature-title {
+    font-size: 1.5rem;
+    line-height: 1.2;
+    font-weight: 700;
+    color: #000000;
+  }
+
+  @media (min-width: 1025px) {
+    .text-why-choose-feature-title {
+      font-size: 2.5rem;
+      line-height: 1.15;
     }
   }
 
