@@ -93,11 +93,9 @@ export function SiteHeader({
 
             {NAV_LINKS.map((link) => {
               const isActive =
-                link.href === "/contact"
-                  ? pathname === "/contact"
-                  : link.href === "/our-pricing"
-                    ? pathname === "/our-pricing"
-                    : pathname === "/" && link.href.startsWith("#");
+                (link.href === "/contact" && pathname === "/contact") ||
+                (link.href === "/our-pricing" && pathname === "/our-pricing") ||
+                (link.href === "/our-work" && pathname === "/our-work");
 
               return (
                 <Link

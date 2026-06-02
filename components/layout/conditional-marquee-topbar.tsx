@@ -7,7 +7,11 @@ import { MarqueeTopbar } from "./marquee-topbar";
 export function ConditionalMarqueeTopbar() {
   const pathname = usePathname();
 
-  if (pathname === "/contact" || pathname === "/our-pricing") {
+  if (
+    pathname === "/contact" ||
+    pathname === "/our-pricing" ||
+    pathname === "/our-work"
+  ) {
     return null;
   }
 
