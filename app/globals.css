@@ -370,6 +370,188 @@
     color: var(--color-white);
   }
 
+  .btn-outline-light {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(255, 255, 255, 0.23);
+    border-radius: 0;
+    background-color: transparent;
+    color: var(--color-white);
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    line-height: 1.25;
+    font-weight: 500;
+    padding: 1rem 1.5rem;
+    transition-property: color, background-color, border-color;
+    transition-duration: 300ms;
+    transition-timing-function: ease-out;
+  }
+
+  .btn-outline-light:hover,
+  .btn-outline-light:focus-visible {
+    border-color: rgba(255, 255, 255, 0.45);
+    background-color: #000000;
+    color: var(--color-white);
+  }
+
+  /* ─── Engage section ─────────────────────────────────────────────────── */
+
+  .engage-section {
+    background-color: var(--color-dark-accent);
+  }
+
+  .text-engage-heading {
+    margin: 0 0 3rem;
+    font-size: clamp(2.75rem, 12vw, 5rem);
+    line-height: 1;
+    font-weight: 400;
+    color: #ffffff;
+  }
+
+  @media (min-width: 1025px) {
+    .text-engage-heading {
+      margin: 0 0 7rem;
+      font-size: 13.125rem;
+    }
+  }
+
+  .text-engage-subheading {
+    margin: 0 0 0.5rem;
+    font-size: clamp(1.5rem, 5vw, 2.75rem);
+    line-height: 1.2;
+    font-weight: 400;
+    color: #ffffff;
+  }
+
+  @media (min-width: 1025px) {
+    .text-engage-subheading {
+      margin: 0 0 8px;
+      font-size: 74px;
+      line-height: 1.2;
+    }
+  }
+
+  .engage-grow {
+    margin: 3rem 0;
+  }
+
+  .engage-reveal {
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    margin: 0;
+  }
+
+  .engage-reveal__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .engage-grow__footer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  @media (min-width: 1025px) {
+    .engage-grow__footer {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .engage-grow__label {
+      flex: 0 0 42%;
+      font-size: 1.65rem;
+      font-weight: 600;
+      line-height: 1.25;
+    }
+
+    .engage-grow__copy {
+      flex: 0 0 42%;
+    }
+
+    .engage-grow__copy .text-body {
+      width: 100%;
+      max-width: none;
+    }
+  }
+
+  .engage-grow__label {
+    font-size: 1.35rem;
+    font-weight: 600;
+    line-height: 1.25;
+    color: #ffffff;
+  }
+
+  .engage-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin: 4rem 0;
+  }
+
+  @media (min-width: 1025px) {
+    .engage-row {
+      grid-template-columns: 5fr 6fr;
+      align-items: center;
+      gap: 3rem;
+      margin: 6rem 0;
+    }
+
+    .engage-row--image-left .engage-row__media {
+      order: 1;
+    }
+
+    .engage-row--image-left .engage-row__content {
+      order: 2;
+    }
+
+    .engage-row--image-right .engage-row__media {
+      order: 2;
+    }
+
+    .engage-row--image-right .engage-row__content {
+      order: 1;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .engage-section {
+      text-align: center;
+    }
+
+    .engage-row--image-right .engage-row__media,
+    .engage-row--image-left .engage-row__media {
+      order: 1;
+    }
+
+    .engage-row--image-right .engage-row__content,
+    .engage-row--image-left .engage-row__content {
+      order: 2;
+    }
+
+    .engage-row__content .btn-outline-light {
+      margin-inline: auto;
+    }
+
+    .engage-grow__copy .btn-outline-light {
+      margin-inline: auto;
+    }
+  }
+
+  .text-engage-feature-title {
+    font-size: clamp(1.75rem, 4.5vw, 2.5rem);
+    line-height: 1.2;
+    color: #ffffff;
+  }
+
   /* ─── Templates showcase ─────────────────────────────────────────────── */
 
   .templates-showcase__list {
@@ -617,20 +799,6 @@
     line-height: 1.2;
     font-weight: 600;
     color: #000000;
-  }
-
-  .streamlined-step__content {
-    display: grid;
-    grid-template-rows: 0fr;
-    transition: grid-template-rows 320ms ease;
-  }
-
-  .streamlined-step__content-inner {
-    overflow: hidden;
-  }
-
-  .streamlined-step__content.is-open {
-    grid-template-rows: 1fr;
   }
 
   /* ─── Marquee topbar ───────────────────────────────────────────────────── */

@@ -9,6 +9,7 @@ import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import { initHomePageParallax } from "@/lib/gsap/home-parallax";
 import { registerGsapPlugins, ScrollTrigger } from "@/lib/gsap/register";
 import { CollaborateSection } from "./collaborate-section";
+import { EngageSection } from "./engage-section";
 import { CustomWebsiteCtaSection } from "./custom-website-cta-section";
 import { FaqSection } from "./faq-section";
 import { HeroSection } from "./hero-section";
@@ -91,6 +92,7 @@ export function HomePage() {
           <ProjectsSection />
           <OptionsSection />
           <TemplatesSection />
+          <EngageSection />
           <WhyChooseSection />
           <StreamlinedSolutionsSection />
           <FaqSection />
