@@ -179,32 +179,9 @@ html {
   visibility: hidden;
 }
 
-.cursor-outer {
-  width: 50px;
-  height: 50px;
-  margin-left: -25px;
-  margin-top: -25px;
-  z-index: 10000000;
-  border: 1px solid rgba(29, 27, 44, 0.45);
-  background: transparent;
-  transition:
-    width 0.3s ease-in-out,
-    height 0.3s ease-in-out,
-    margin 0.3s ease-in-out,
-    opacity 0.3s ease-in-out;
-}
-
-.cursor-outer.cursor-hover {
-  width: 56px;
-  height: 56px;
-  margin-left: -28px;
-  margin-top: -28px;
-  opacity: 0.65;
-}
-
 .cursor-inner {
-  margin-left: 2px;
-  margin-top: 2px;
+  margin-left: -10px;
+  margin-top: -10px;
   width: 20px;
   height: 20px;
   z-index: 10000001;
@@ -263,7 +240,7 @@ html {
   body.has-mouse-cursor button,
   body.has-mouse-cursor img,
   body.has-mouse-cursor [data-cursor-card] {
-    cursor: none;
+    cursor: auto;
   }
 }
 

@@ -23,10 +23,7 @@ export function MouseCursor() {
   }
 
   return createPortal(
-    <>
-      <div className="mouse-cursor cursor-outer" aria-hidden />
-      <div className="mouse-cursor cursor-inner" aria-hidden />
-    </>,
+    <div className="mouse-cursor cursor-inner" aria-hidden />,
     document.body
   );
 }
