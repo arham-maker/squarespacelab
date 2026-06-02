@@ -7,7 +7,6 @@ export const FOOTER_DESCRIPTION =
 export const FOOTER_QUICK_LINKS = [
   { label: "Home", href: "/" },
   { label: "Our Portfolio", href: "/our-work" },
-  { label: "Our Pricing", href: "/our-pricing" },
   { label: "Contact Us", href: "/contact" },
 ] as const;
 

@@ -215,6 +215,16 @@ html.lenis body {
   }
 }
 
+/* ─── Work portfolio lightbox (Fancybox) ─────────────────────────────────── */
+
+html.with-fancybox .mouse-cursor {
+  display: none;
+}
+
+.work-fancybox .fancybox__slide {
+  padding: 1rem 0;
+}
+
 /* ─── Custom mouse cursor (squarespacemasters.com) ───────────────────────── */
 
 .mouse-cursor {

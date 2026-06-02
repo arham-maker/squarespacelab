@@ -7,8 +7,10 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Container } from "@/components/layout/container";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
+import { Fancybox } from "@fancyapps/ui";
 import { WORK_PORTFOLIO_ITEMS } from "@/lib/data/work";
 import {
+  WORK_PORTFOLIO_FANCYBOX_GROUP,
   bindWorkPortfolioFancybox,
   unbindWorkPortfolioFancybox,
 } from "@/lib/fancybox/work-portfolio";
@@ -57,6 +59,18 @@ export function WorkPortfolioSection() {
     return () => ctx.revert();
   }, [reducedMotion]);
 
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    bindWorkPortfolioFancybox(section);
+
+    return () => {
+      unbindWorkPortfolioFancybox(section);
+      Fancybox.close(true);
+    };
+  }, []);
+
   return (
     <section ref={sectionRef} className="work-portfolio-section" id="portfolio">
       <Container>
@@ -67,11 +81,13 @@ export function WorkPortfolioSection() {
                 <a
                   href={item.image}
                   className="work-portfolio-card__media"
-                  data-fancybox="work-portfolio"
+                  data-fancybox={WORK_PORTFOLIO_FANCYBOX_GROUP}
+                  data-type="image"
                   data-src={item.image}
                   data-width={item.width}
                   data-height={item.height}
                   data-caption={item.title}
+                  data-thumb={item.image}
                   aria-label={`View ${item.title} project preview`}
                 >
                   <Image
