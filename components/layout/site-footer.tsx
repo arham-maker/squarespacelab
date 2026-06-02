@@ -112,10 +112,10 @@ export function SiteFooter() {
 
         <div className="mt-10 border-t border-white/15 pt-6 sm:mt-12 sm:pt-8 lg:mt-14 lg:pt-10">
           <div className="text-footer-small flex flex-wrap items-center justify-center gap-4 text-neutral-400 sm:gap-6">
-            <Link href="#" className="transition-colors hover:text-white">
+            <Link href="/privacy" className="transition-colors hover:text-white">
               Privacy Policy
             </Link>
-            <Link href="#" className="transition-colors hover:text-white">
+            <Link href="/terms-and-conditions" className="transition-colors hover:text-white">
               Terms & Conditions
             </Link>
           </div>

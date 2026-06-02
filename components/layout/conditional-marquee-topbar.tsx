@@ -10,7 +10,8 @@ export function ConditionalMarqueeTopbar() {
   if (
     pathname === "/contact" ||
     pathname === "/our-pricing" ||
-    pathname === "/our-work"
+    pathname === "/our-work" ||
+    pathname === "/terms-and-conditions"
   ) {
     return null;
   }
