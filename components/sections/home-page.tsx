@@ -14,6 +14,7 @@ import { FaqSection } from "./faq-section";
 import { HeroSection } from "./hero-section";
 import { OptionsSection } from "./options-section";
 import { ProjectsSection } from "./projects-section";
+import { StreamlinedSolutionsSection } from "./streamlined-solutions-section";
 import { TemplatesSection } from "./templates-section";
 import { WhyChooseSection } from "./why-choose-section";
 
@@ -91,6 +92,7 @@ export function HomePage() {
           <OptionsSection />
           <TemplatesSection />
           <WhyChooseSection />
+          <StreamlinedSolutionsSection />
           <FaqSection />
           <CollaborateSection />
           <CustomWebsiteCtaSection />

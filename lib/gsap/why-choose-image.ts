@@ -16,7 +16,7 @@ export function initWhyChooseImageAnimation(
   gsap.set(reveal, {
     scale: 1.14,
     autoAlpha: 0,
-    x: 56,
+    x: -56,
     transformOrigin: "center center",
     force3D: true,
   });

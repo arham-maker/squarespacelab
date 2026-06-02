@@ -18,6 +18,7 @@ import { FAQ_ITEMS } from "@/lib/data/faq";
 export function FaqSection() {
   const reducedMotion = usePrefersReducedMotion();
   const [openId, setOpenId] = useState<string | null>(null);
+  const [closingId, setClosingId] = useState<string | null>(null);
 
   const sectionRef = useRef<HTMLElement>(null);
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
@@ -84,25 +85,51 @@ export function FaqSection() {
     };
   }, [reducedMotion]);
 
-  const toggleItem = (id: string) => {
-    const isClosing = openId === id;
-    const nextOpenId = isClosing ? null : id;
+  const queueOpen = (id: string) => {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const parts = getParts(id);
+        if (!parts) return;
+        timelineRef.current = openFaqItem(parts, reducedMotion);
+      });
+    });
+  };
 
+  const toggleItem = (id: string) => {
     timelineRef.current?.kill();
 
-    if (openId && openId !== id) {
-      const prev = getParts(openId);
-      if (prev) closeFaqItem(prev, reducedMotion);
+    if (openId === id) {
+      const current = getParts(id);
+      if (!current) return;
+
+      setClosingId(id);
+      setOpenId(null);
+      timelineRef.current = closeFaqItem(current, reducedMotion, () => {
+        setClosingId(null);
+      });
+      return;
     }
 
-    const current = getParts(id);
-    if (!current) return;
+    if (openId) {
+      const prev = getParts(openId);
+      if (!prev) {
+        setOpenId(id);
+        queueOpen(id);
+        return;
+      }
 
-    timelineRef.current = isClosing
-      ? closeFaqItem(current, reducedMotion)
-      : openFaqItem(current, reducedMotion);
+      setClosingId(openId);
+      setOpenId(null);
+      timelineRef.current = closeFaqItem(prev, reducedMotion, () => {
+        setClosingId(null);
+        setOpenId(id);
+        queueOpen(id);
+      });
+      return;
+    }
 
-    setOpenId(nextOpenId);
+    setOpenId(id);
+    queueOpen(id);
   };
 
   return (
@@ -119,6 +146,7 @@ export function FaqSection() {
         <ul className="list-none">
           {FAQ_ITEMS.map((item) => {
             const isOpen = openId === item.id;
+            const showAnswer = isOpen || closingId === item.id;
 
             return (
               <li
@@ -146,11 +174,14 @@ export function FaqSection() {
 
                 <div
                   id={`faq-answer-${item.id}`}
-                  className="h-0 overflow-hidden opacity-0"
+                  className="overflow-hidden"
+                  aria-hidden={!showAnswer}
                 >
-                  <p className="text-body m-0 px-4 py-3 text-white sm:px-6 sm:py-4 lg:px-8">
-                    {item.answer}
-                  </p>
+                  {showAnswer ? (
+                    <p className="text-body m-0 px-4 py-3 text-white sm:px-6 sm:py-4 lg:px-8">
+                      {item.answer}
+                    </p>
+                  ) : null}
                 </div>
               </li>
             );

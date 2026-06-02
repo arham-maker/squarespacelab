@@ -47,10 +47,12 @@ export function openFaqItem(
 
 export function closeFaqItem(
   { answer, icon }: FaqAccordionParts,
-  reducedMotion: boolean
+  reducedMotion: boolean,
+  onComplete?: () => void
 ): gsap.core.Timeline {
   if (reducedMotion) {
     setFaqItemClosed({ answer, icon });
+    onComplete?.();
     return gsap.timeline();
   }
 
@@ -58,6 +60,7 @@ export function closeFaqItem(
     defaults: { ease: "power2.inOut" },
     onComplete: () => {
       gsap.set(answer, { height: 0, overflow: "hidden" });
+      onComplete?.();
     },
   });
 

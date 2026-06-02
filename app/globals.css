@@ -14,6 +14,7 @@
   --color-surface: #f7f7f5;
   --color-surface-dark: #111111;
   --color-why-choose: #d0cce0;
+  --color-streamlined: #e8e4e4;
   --font-sans: var(--font-inter), sans-serif, serif;
   /* Hamburger / desktop split at 1025px */
   --breakpoint-lg: 64.0625rem;
@@ -475,6 +476,161 @@
       font-size: 2.5rem;
       line-height: 1.15;
     }
+  }
+
+  /* ─── Streamlined Solutions ───────────────────────────────────────────── */
+
+  .bg-streamlined {
+    background-color: var(--color-streamlined);
+  }
+
+  .text-streamlined-subtitle {
+    font-size: clamp(1.75rem, 6.6vw, 2.25rem);
+    line-height: 1.12;
+    font-weight: 400;
+    color: #212529;
+  }
+
+  @media (min-width: 1025px) {
+    .text-streamlined-subtitle {
+      font-size: 4rem;
+    }
+  }
+
+  .streamlined-slider {
+    width: 100%;
+  }
+
+  .streamlined-slider__track {
+    display: flex;
+    width: max-content;
+    will-change: transform;
+  }
+
+  .streamlined-slider__set {
+    display: flex;
+    flex-shrink: 0;
+  }
+
+  .streamlined-card {
+    position: relative;
+    width: min(72vw, 473px);
+    height: min(78vw, 516px);
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  @media (min-width: 768px) {
+    .streamlined-card {
+      width: min(46vw, 473px);
+      height: min(50vw, 516px);
+    }
+  }
+
+  @media (min-width: 1025px) {
+    .streamlined-card {
+      width: 473px;
+      height: 516px;
+    }
+  }
+
+  .streamlined-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .streamlined-card__title {
+    position: absolute;
+    left: 1.25rem;
+    bottom: 1.1rem;
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(1.125rem, 3.2vw, 2.125rem);
+    line-height: 1.1;
+    font-weight: 400;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .streamlined-progress {
+    width: 100%;
+    height: 4px;
+    margin-top: 0.7rem;
+    background: rgba(0, 0, 0, 0.18);
+    overflow: hidden;
+  }
+
+  .streamlined-progress__bar {
+    display: block;
+    width: 0%;
+    height: 100%;
+    background: #000000;
+  }
+
+  .text-streamlined-process-heading {
+    font-size: clamp(1.75rem, 4.5vw, 50px);
+    line-height: 1.12;
+    color: #212529;
+  }
+
+  @media (min-width: 1025px) {
+    .text-streamlined-process-heading {
+      font-size: 50px;
+    }
+  }
+
+  .streamlined-accordion__item {
+    padding: 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    color: #212529;
+  }
+
+  .streamlined-accordion__trigger {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border: 0;
+    background: transparent;
+    padding: 22.4px 48px 22.4px 0;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .streamlined-accordion__icon {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.75rem;
+    line-height: 1;
+    font-weight: 400;
+    color: #000000;
+  }
+
+  .text-streamlined-step-title {
+    font-size: 20px;
+    line-height: 1.2;
+    font-weight: 600;
+    color: #000000;
+  }
+
+  .streamlined-step__content {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 320ms ease;
+  }
+
+  .streamlined-step__content-inner {
+    overflow: hidden;
+  }
+
+  .streamlined-step__content.is-open {
+    grid-template-rows: 1fr;
   }
 
   /* ─── Marquee topbar ───────────────────────────────────────────────────── */
