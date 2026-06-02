@@ -26,7 +26,7 @@ export function SiteHeader({
   const [servicesOpen, setServicesOpen] = useState(false);
 
   const headerClass = inBanner
-    ? "site-header--banner relative z-10 border-b border-transparent bg-transparent pt-4"
+    ? "site-header--banner relative z-50 border-b border-transparent bg-transparent pt-4"
     : fixedBelowMarquee
       ? "site-header--inner fixed inset-x-0 z-50 border-b border-neutral-200/60 bg-primary-light/95 pt-4 backdrop-blur-sm"
       : "relative z-10 border-b border-neutral-200/60 bg-transparent pt-4";

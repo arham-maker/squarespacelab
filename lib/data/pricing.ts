@@ -319,6 +319,7 @@ export const PRICING_PLANS: Record<PricingTabId, PricingPlan[]> = {
 
 export const PRICING_TRUSTED_PARTNERS = {
   title: "OUR TRUSTED PARTNERS WORLDWIDE",
+  titleLines: ["OUR TRUSTED PARTNERS WORLDW", "IDE"] as const,
   badges: [
     { src: "/pricing/partners/1.webp", alt: "UpCity Best of Michigan" },
     { src: "/pricing/partners/2.webp", alt: "Squarespace Partner Legend" },

@@ -83,10 +83,14 @@ export function PricingTrustedPartnersSection() {
           data-scroll-heading
           className="pricing-partners-section__heading section-heading text-center"
         >
-          <span data-scroll-heading-line>{PRICING_TRUSTED_PARTNERS.title}</span>
+          {PRICING_TRUSTED_PARTNERS.titleLines.map((line) => (
+            <span key={line} className="block" data-scroll-heading-line>
+              {line}
+            </span>
+          ))}
         </h2>
 
-        <ul className="pricing-partners-grid m-0 list-none p-0">
+        <ul className="pricing-partners-grid m-0 list-none p-0 mx-auto w-full">
           {PRICING_TRUSTED_PARTNERS.badges.map((badge) => (
             <li key={badge.src} data-pricing-partner-badge>
               <Image
@@ -94,8 +98,8 @@ export function PricingTrustedPartnersSection() {
                 alt={badge.alt}
                 width={160}
                 height={120}
-                className="pricing-partners-grid__img"
-                sizes="(max-width: 768px) 42vw, 160px"
+                className="pricing-partners-grid__img h-auto"
+                sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 20vw"
               />
             </li>
           ))}
