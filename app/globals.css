@@ -137,34 +137,58 @@
 }
 
 /* ─── Scrollbar (squarespacemasters.com) ─────────────────────────────────── */
+/* Chrome 121+ ignores ::-webkit-scrollbar when scrollbar-width/color is set on
+   the same element — use webkit-only here so arrow buttons stay hidden. */
 
-::-webkit-scrollbar {
-  width: 2px;
-  height: 2px;
+@supports selector(::-webkit-scrollbar) {
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+
+  ::-webkit-scrollbar-button,
+  ::-webkit-scrollbar-button:single-button,
+  ::-webkit-scrollbar-button:double-button,
+  ::-webkit-scrollbar-button:vertical,
+  ::-webkit-scrollbar-button:horizontal,
+  ::-webkit-scrollbar-button:vertical:start:decrement,
+  ::-webkit-scrollbar-button:vertical:end:increment,
+  ::-webkit-scrollbar-button:horizontal:start:decrement,
+  ::-webkit-scrollbar-button:horizontal:end:increment {
+    display: none;
+    width: 0;
+    height: 0;
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    background-image: none;
+    border: none;
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgb(0 0 0 / 0%);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgb(0 0 0 / 50%);
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(0 0 0 / 80%);
+  }
 }
 
-::-webkit-scrollbar-button {
-  display: none;
-  width: 0;
-  height: 0;
-}
-
-::-webkit-scrollbar-track {
-  background: rgb(0 0 0 / 0%);
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgb(0 0 0 / 50%);
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgb(0 0 0 / 80%);
-}
-
-html {
-  scrollbar-width: thin;
-  scrollbar-color: rgb(0 0 0 / 50%) transparent;
+/* Firefox — no webkit pseudo-elements */
+@supports not selector(::-webkit-scrollbar) {
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(0 0 0 / 50%) transparent;
+  }
 }
 
 /* ─── Custom mouse cursor (squarespacemasters.com) ───────────────────────── */
