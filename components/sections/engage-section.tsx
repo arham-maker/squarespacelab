@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useLayoutEffect, useRef } from "react";
-import { FiArrowRight } from "react-icons/fi";
+import { MdKeyboardArrowRight } from "react-icons/md";
 import { Container } from "@/components/layout/container";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import {
@@ -74,15 +74,14 @@ export function EngageSection() {
                 {block.label}
               </p>
               <div data-engage-reveal className="engage-grow__copy">
-                <p className="text-body m-0 text-white">{block.description}</p>
+                <p className="text-engage-body m-0">{block.description}</p>
                 <a
                   href={ENGAGE_CTA.href}
                   className="btn btn-outline-light mt-6 gap-3"
                 >
                   {ENGAGE_CTA.label}
-                  <FiArrowRight
+                  <MdKeyboardArrowRight
                     className="h-8 w-8 shrink-0"
-                    strokeWidth={2.5}
                     aria-hidden
                   />
                 </a>
@@ -117,7 +116,7 @@ export function EngageSection() {
               >
                 {row.title}
               </h3>
-              <p data-engage-reveal className="text-body m-0 mt-4 text-white">
+              <p data-engage-reveal className="text-engage-body m-0 mt-4">
                 {row.description}
               </p>
               <a
@@ -126,9 +125,8 @@ export function EngageSection() {
                 className="btn btn-outline-light mt-8 gap-3"
               >
                 {ENGAGE_CTA.label}
-                <FiArrowRight
+                <MdKeyboardArrowRight
                   className="h-8 w-8 shrink-0"
-                  strokeWidth={2.5}
                   aria-hidden
                 />
               </a>
