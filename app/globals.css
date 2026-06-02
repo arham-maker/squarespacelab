@@ -136,6 +136,29 @@
   }
 }
 
+/* ─── Lenis smooth scroll (squarespacemasters.com) ───────────────────────── */
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+html.lenis body {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
 /* ─── Scrollbar (squarespacemasters.com) ─────────────────────────────────── */
 /* Chrome 121+ ignores ::-webkit-scrollbar when scrollbar-width/color is set on
    the same element — use webkit-only here so arrow buttons stay hidden. */

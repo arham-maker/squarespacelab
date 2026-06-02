@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { MarqueeTopbar } from "@/components/layout/marquee-topbar";
 import { GsapProvider } from "@/components/providers/gsap-provider";
+import { SmoothScrollProvider } from "@/components/providers/smooth-scroll-provider";
 import { MouseCursor } from "@/components/ui/mouse-cursor";
 import "./globals.css";
 
@@ -27,8 +28,10 @@ export default function RootLayout({
       <body className="flex min-h-full flex-col font-sans">
         <MarqueeTopbar />
         <GsapProvider>
-          {children}
-          <MouseCursor />
+          <SmoothScrollProvider>
+            {children}
+            <MouseCursor />
+          </SmoothScrollProvider>
         </GsapProvider>
       </body>
     </html>
