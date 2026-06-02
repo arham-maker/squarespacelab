@@ -22,7 +22,10 @@ function ProjectCard({
   project: (typeof PROJECT_ITEMS)[number];
 }) {
   return (
-    <article className="w-[min(85vw,320px)] shrink-0 sm:w-[360px] lg:w-[420px]">
+    <article
+      data-cursor-card
+      className="w-[min(85vw,320px)] shrink-0 cursor-pointer sm:w-[360px] lg:w-[420px]"
+    >
       <div className="relative h-[390px] w-full overflow-hidden bg-neutral-200 sm:h-[440px] lg:h-[510px] lg:w-[420px]">
         <Image
           src={project.image}

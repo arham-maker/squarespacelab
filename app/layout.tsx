@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { MarqueeTopbar } from "@/components/layout/marquee-topbar";
 import { GsapProvider } from "@/components/providers/gsap-provider";
+import { MouseCursor } from "@/components/ui/mouse-cursor";
 import "./globals.css";
 
 const inter = Inter({
@@ -25,7 +26,10 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col font-sans">
         <MarqueeTopbar />
-        <GsapProvider>{children}</GsapProvider>
+        <GsapProvider>
+          {children}
+          <MouseCursor />
+        </GsapProvider>
       </body>
     </html>
   );

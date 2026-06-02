@@ -136,6 +136,106 @@
   }
 }
 
+/* ─── Custom mouse cursor (squarespacemasters.com) ───────────────────────── */
+
+.mouse-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  border-radius: 50%;
+  transform: translateZ(0);
+  visibility: hidden;
+}
+
+.cursor-outer {
+  width: 50px;
+  height: 50px;
+  margin-left: -25px;
+  margin-top: -25px;
+  z-index: 10000000;
+  border: 1px solid rgba(29, 27, 44, 0.45);
+  background: transparent;
+  transition:
+    width 0.3s ease-in-out,
+    height 0.3s ease-in-out,
+    margin 0.3s ease-in-out,
+    opacity 0.3s ease-in-out;
+}
+
+.cursor-outer.cursor-hover {
+  width: 56px;
+  height: 56px;
+  margin-left: -28px;
+  margin-top: -28px;
+  opacity: 0.65;
+}
+
+.cursor-inner {
+  margin-left: 2px;
+  margin-top: 2px;
+  width: 20px;
+  height: 20px;
+  z-index: 10000001;
+  background-color: var(--color-dark-accent);
+  transition:
+    width 0.3s ease-in-out,
+    height 0.3s ease-in-out,
+    margin 0.3s ease-in-out,
+    opacity 0.3s ease-in-out;
+}
+
+.cursor-inner::before {
+  content: "Click Me";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 1rem;
+  line-height: 1;
+  color: #ffffff;
+  text-align: center;
+  opacity: 0;
+  transition:
+    width 0.3s ease-in-out,
+    height 0.3s ease-in-out,
+    margin 0.3s ease-in-out,
+    opacity 0.3s ease-in-out;
+}
+
+.cursor-inner.active::before {
+  opacity: 1;
+}
+
+.cursor-inner.cursor-hover {
+  margin-left: -10px;
+  margin-top: -10px;
+  width: 50px;
+  height: 50px;
+  opacity: 0.3;
+}
+
+.cursor-inner.cursor-hover.active {
+  margin-left: -40px;
+  margin-top: -40px;
+  width: 120px;
+  height: 120px;
+  opacity: 1;
+  background-color: rgba(83, 190, 132, 0.44);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body.has-mouse-cursor,
+  body.has-mouse-cursor a,
+  body.has-mouse-cursor button,
+  body.has-mouse-cursor img,
+  body.has-mouse-cursor [data-cursor-card] {
+    cursor: none;
+  }
+}
+
 /* ─── Layout & typography components ─────────────────────────────────────── */
 
 @layer components {
