@@ -1,12 +1,17 @@
 "use client";
 
+import "@fancyapps/ui/dist/fancybox/fancybox.css";
 import Image from "next/image";
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Container } from "@/components/layout/container";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import { WORK_PORTFOLIO_ITEMS } from "@/lib/data/work";
+import {
+  bindWorkPortfolioFancybox,
+  unbindWorkPortfolioFancybox,
+} from "@/lib/fancybox/work-portfolio";
 import { registerGsapPlugins } from "@/lib/gsap/register";
 
 export function WorkPortfolioSection() {
@@ -55,15 +60,18 @@ export function WorkPortfolioSection() {
   return (
     <section ref={sectionRef} className="work-portfolio-section" id="portfolio">
       <Container>
-        <ul className="work-portfolio-grid m-0 list-none p-0">
+        <ul className="work-portfolio-grid m-0 list-none p-0 m-auto">
           {WORK_PORTFOLIO_ITEMS.map((item) => (
             <li key={item.id} data-work-portfolio-item>
               <article className="work-portfolio-card">
                 <a
                   href={item.image}
                   className="work-portfolio-card__media"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  data-fancybox="work-portfolio"
+                  data-src={item.image}
+                  data-width={item.width}
+                  data-height={item.height}
+                  data-caption={item.title}
                   aria-label={`View ${item.title} project preview`}
                 >
                   <Image

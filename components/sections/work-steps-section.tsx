@@ -68,7 +68,7 @@ export function WorkStepsSection() {
         <h4
           id="work-steps-heading"
           data-work-steps-heading
-          className="work-steps-section__title m-0 text-center"
+          className="work-steps-section__title text-center"
         >
           {WORK_STEPS.title}
         </h4>
