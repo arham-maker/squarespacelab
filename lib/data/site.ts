@@ -4,6 +4,8 @@ export const SITE = {
   phoneHref: "tel:+18332923252",
   email: "info@squarespacedev.com",
   emailHref: "mailto:info@squarespacedev.com",
+  logoBlack: "/Square Space Dev Logo V3 Black.png",
+  logoWhite: "/Square Space Dev Logo V3 White.png",
 } as const;
 
 export const NAV_LINKS = [

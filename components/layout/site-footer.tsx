@@ -55,11 +55,11 @@ export function SiteFooter() {
           <div className="sm:col-span-2 lg:col-span-4">
             <Link href="/" className="inline-block">
               <Image
-                src="/f-logo.webp"
+                src={SITE.logoWhite}
                 alt={SITE.name}
-                width={336}
-                height={58}
-                className="h-10 w-auto max-w-[240px] sm:h-12 lg:h-[58px] lg:w-[336px] lg:max-w-full"
+                width={340}
+                height={75}
+                className="h-10 w-auto max-w-[240px] sm:h-12 lg:h-[75px] lg:w-auto lg:max-w-[340px]"
               />
             </Link>
             <p className="text-body mt-4 max-w-sm text-white sm:mt-5">
