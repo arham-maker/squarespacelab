@@ -5142,11 +5142,19 @@ html.with-fancybox .mouse-cursor {
   .get-started-modal {
     position: fixed;
     inset: 0;
-    z-index: 100000;
+    z-index: 10000001;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 1rem;
+    font-family: var(--font-inter), Inter, sans-serif;
+    box-sizing: border-box;
+  }
+
+  .get-started-modal *,
+  .get-started-modal *::before,
+  .get-started-modal *::after {
+    box-sizing: border-box;
   }
 
   .get-started-modal__overlay {
@@ -5260,10 +5268,15 @@ html.with-fancybox .mouse-cursor {
   }
 
   .get-started-modal__package-price,
-  .get-started-modal__package-category {
+  .get-started-modal__package-category,
+  .get-started-modal__package-details {
     font-size: 0.875rem;
     line-height: 1.4;
     color: #4b5563;
+  }
+
+  .get-started-modal__package-details {
+    white-space: pre-line;
   }
 
   .get-started-modal__field {
@@ -5319,6 +5332,19 @@ html.with-fancybox .mouse-cursor {
     justify-content: center;
     margin-top: 0.75rem;
     text-transform: uppercase;
+  }
+
+  .get-started-modal__contact {
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    line-height: 1.4;
+    color: #6b6b6b;
+    text-align: center;
+  }
+
+  .get-started-modal__contact a {
+    color: #2563eb;
+    text-decoration: underline;
   }
 
   .contact-form__error {

@@ -1,0 +1,221 @@
+/* LP popup — matches squarespacemasters.com/lp mmpopup layout */
+.lp-lead-modal-root .overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999998;
+  background-color: rgb(197 197 197 / 32%);
+  backdrop-filter: blur(10px);
+}
+
+.lp-lead-modal-root .overlay.active {
+  display: block;
+}
+
+.lp-lead-modal-root .popupmain.lp-lead-modal--visible {
+  display: block;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  transform: translate(-50%, -50%);
+  z-index: 9999999;
+  width: 975px;
+  max-width: 97%;
+  max-height: 90vh;
+  overflow-y: auto;
+  margin: 0;
+  background: #fff;
+  box-shadow: 0 0 30px -9px rgb(0 0 0 / 43%);
+  border-radius: 8px;
+}
+
+.lp-lead-modal-root .mmpopup {
+  display: flex;
+  align-items: stretch;
+  background: #000;
+  padding: 1rem;
+  gap: 0;
+  min-height: 520px;
+}
+
+.lp-lead-modal-root .popup-text {
+  flex: 1 1 46%;
+  max-width: 46%;
+  padding: 1rem;
+}
+
+.lp-lead-modal-root .popup-image {
+  flex: 1 1 54%;
+  display: block !important;
+  overflow: hidden;
+  min-height: 100%;
+  padding: 1rem;
+}
+
+.lp-lead-modal-root .popup-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 340px;
+  object-fit: cover;
+}
+
+.lp-lead-modal-root .centercont h3 span,
+.lp-lead-modal-root .centercont h3 {
+  display: block;
+  font-weight: 700;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  line-height: 1.35;
+  color: #fff;
+  text-align: left;
+  margin: 0 0 1.25rem;
+}
+
+.lp-lead-modal-root .centercont h4 {
+  font-size: 1.25rem;
+  color: #fff;
+  text-align: left;
+  margin: 0 0 1rem;
+  font-weight: 400;
+}
+
+.lp-lead-modal-root .centercont h4 span {
+  font-weight: 700;
+  color: #ff8d4d;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.lp-lead-modal-root .lp-lead-modal__package {
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  background: rgb(255 255 255 / 8%);
+  color: #fff;
+  font-size: 0.875rem;
+  line-height: 1.45;
+}
+
+.lp-lead-modal-root .formpop {
+  width: 100%;
+}
+
+.lp-lead-modal-root .fld-input {
+  width: 100%;
+  max-width: 100%;
+  height: 66px;
+  margin-bottom: 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 5px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.lp-lead-modal-root .fld-input input,
+.lp-lead-modal-root .fld-input textarea,
+.lp-lead-modal-root .fld-input select {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  padding: 0 1rem;
+  font-size: 16px;
+  border: 0 !important;
+  box-shadow: none !important;
+  background: #fff !important;
+  color: #000 !important;
+  font-family: "Wix Madefor Display", sans-serif;
+}
+
+.lp-lead-modal-root .fld-input textarea {
+  padding: 0.75rem 1rem;
+  resize: vertical;
+  min-height: 66px;
+}
+
+.lp-lead-modal-root .fld-input--phone {
+  display: flex;
+  align-items: stretch;
+  padding: 0;
+  overflow: hidden;
+}
+
+.lp-lead-modal-root .fld-input--phone select {
+  width: auto;
+  min-width: 6.5rem;
+  max-width: 7.5rem;
+  padding: 0 0.5rem 0 0.75rem;
+  border-right: 1px solid #d1d5db !important;
+  border-radius: 0;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.lp-lead-modal-root .fld-input--phone input {
+  flex: 1;
+  min-width: 0;
+}
+
+.lp-lead-modal-root .fld-btn button {
+  border-radius: 5px;
+  background-color: #ff8d4d !important;
+  width: 100%;
+  color: #000 !important;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: none;
+  height: 59px;
+  cursor: pointer;
+  border: 0;
+  font-family: "Wix Madefor Display", sans-serif;
+  transition: background-color 0.25s ease;
+}
+
+.lp-lead-modal-root .fld-btn button:hover:not(:disabled) {
+  background-color: #f57a35 !important;
+}
+
+.lp-lead-modal-root .fld-btn button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.lp-lead-modal-root .closeico {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 100px;
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+}
+
+.lp-lead-modal-root .closeico svg {
+  display: block;
+  width: 14px;
+  height: 14px;
+  color: #000;
+}
+
+.lp-lead-modal-root .lp-lead-modal__error {
+  color: #ff8d4d;
+  font-size: 14px;
+  margin: 0 0 0.75rem;
+}
+
+@media (max-width: 767px) {
+  .lp-lead-modal-root .popup-image {
+    display: none !important;
+  }
+
+  .lp-lead-modal-root .popup-text {
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
+
+  .lp-lead-modal-root .mmpopup {
+    min-height: auto;
+  }
+}

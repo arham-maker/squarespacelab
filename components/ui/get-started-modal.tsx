@@ -3,10 +3,18 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useId, useRef, useState, type FormEvent } from "react";
+import {
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  type FormEvent,
+} from "react";
+import { createPortal } from "react-dom";
 import { FaArrowRight } from "react-icons/fa6";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import { LEAD_FORM } from "@/lib/data/lead-form";
+import { SITE } from "@/lib/data/site";
 import {
   getFormCheckbox,
   getFormString,
@@ -36,6 +44,11 @@ export function GetStartedModal({
   const dialogRef = useRef<HTMLDivElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -144,9 +157,9 @@ export function GetStartedModal({
     }
   };
 
-  if (!isOpen) return null;
+  if (!isOpen || !mounted) return null;
 
-  return (
+  const modal = (
     <div className="get-started-modal" aria-hidden={false}>
       <div
         ref={overlayRef}
@@ -212,13 +225,13 @@ export function GetStartedModal({
                   </strong>
                   <span className="get-started-modal__package-price">
                     {selectedPackage.price}
-                    {selectedPackage.details
-                      ? ` · ${selectedPackage.details}`
+                    {selectedPackage.category
+                      ? ` · ${selectedPackage.category}`
                       : ""}
                   </span>
-                  {selectedPackage.category ? (
-                    <span className="get-started-modal__package-category">
-                      {selectedPackage.category}
+                  {selectedPackage.details ? (
+                    <span className="get-started-modal__package-details">
+                      {selectedPackage.details}
                     </span>
                   ) : null}
                 </div>
@@ -326,16 +339,23 @@ export function GetStartedModal({
 
               <button
                 type="submit"
-                className="btn btn-primary get-started-modal__submit"
+                className="get-started-modal__submit"
                 disabled={isSubmitting}
               >
                 {LEAD_FORM.submitLabel}
                 <FaArrowRight className="h-4 w-4 shrink-0" aria-hidden />
               </button>
+
+              <p className="get-started-modal__contact m-0">
+                Questions? Email us at{" "}
+                <a href={SITE.emailHref}>{SITE.email}</a>
+              </p>
             </form>
           </div>
         </div>
       </div>
     </div>
   );
+
+  return createPortal(modal, document.body);
 }

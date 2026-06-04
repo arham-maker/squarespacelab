@@ -1,0 +1,130 @@
+/* Squarespacedev branding on reference LP layout */
+.lp-root header .logo {
+  max-width: 400px;
+  width: 100%;
+}
+
+.lp-root header .logo img {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+}
+
+.lp-root footer .logo {
+  max-width: 700px;
+  width: 100%;
+}
+
+.lp-root footer .logo img {
+  max-width: 700px;
+  width: 100%;
+  height: auto;
+}
+
+.lp-root footer .logo img {
+  filter: none;
+}
+
+.lp-root .menu > li > a img {
+  filter: invert(1);
+}
+
+.lp-root .menu > li > a {
+  color: #ffffff;
+}
+
+/* Hide site-wide custom cursor on standalone LP */
+body:has(.lp-root) .mouse-cursor {
+  display: none !important;
+}
+
+/* Wix Madefor Display sitewide on /lp (matches reference style.css tokens) */
+body:has(.lp-root) {
+  --font-heading: "Wix Madefor Display", sans-serif;
+  --font-accent: "Wix Madefor Display", sans-serif;
+  --font-body: "Wix Madefor Display", sans-serif;
+  font-family: "Wix Madefor Display", sans-serif;
+}
+
+.lp-root,
+.lp-root :where(
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  a,
+  span,
+  li,
+  button,
+  input,
+  textarea,
+  select,
+  label,
+  div,
+  .theme-btn,
+  .sec-heading,
+  .banner-heading,
+  .banner-text,
+  .copyright,
+  .f-menu
+) {
+  font-family: var(--font-body);
+}
+
+.lp-root .fld-btn button,
+.lp-root .fld-input input {
+  font-family: var(--font-body);
+}
+
+/* Lead form modal: isolate from LP global input/button rules */
+.get-started-modal {
+  z-index: 10000001 !important;
+  font-family: "Wix Madefor Display", sans-serif !important;
+}
+
+.get-started-modal__dialog {
+  display: block !important;
+  transform: none !important;
+  top: auto !important;
+  margin: 0 !important;
+  max-height: none !important;
+  overflow: visible !important;
+  border-radius: 0 !important;
+}
+
+.get-started-modal__title,
+.get-started-modal__title-highlight,
+.get-started-modal__field input,
+.get-started-modal__checkbox,
+.get-started-modal__checkbox label,
+.get-started-modal__contact,
+.get-started-modal__submit {
+  font-family: "Wix Madefor Display", sans-serif !important;
+}
+
+.get-started-modal__field input {
+  display: block !important;
+  width: 100% !important;
+  height: 50px !important;
+  padding: 10px !important;
+  border: 1px solid #e6e6e6 !important;
+  border-radius: 5px !important;
+  background: #ffffff !important;
+  color: #000000 !important;
+  letter-spacing: normal !important;
+}
+
+.get-started-modal__close {
+  display: flex !important;
+  position: absolute !important;
+  background: #ececec !important;
+}
+
+.get-started-modal__submit.btn {
+  display: inline-flex !important;
+  width: 100% !important;
+  text-transform: uppercase !important;
+}

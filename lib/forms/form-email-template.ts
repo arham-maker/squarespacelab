@@ -20,6 +20,7 @@ const FIELD_LABELS: Record<string, string> = {
   packagePrice: "Package Price",
   packageCategory: "Package Category",
   packageDetails: "Package Details",
+  businessIndustry: "Business Industry",
 };
 
 function escapeHtml(value: string): string {

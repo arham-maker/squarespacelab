@@ -8,6 +8,8 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import { usePathname } from "next/navigation";
+import { LpLeadModal } from "@/components/lp/lp-lead-modal";
 import { GetStartedModal } from "@/components/ui/get-started-modal";
 import type { SelectedPackage } from "@/lib/forms/selected-package";
 
@@ -21,6 +23,8 @@ type LeadFormContextValue = {
 const LeadFormContext = createContext<LeadFormContextValue | null>(null);
 
 export function LeadFormProvider({ children }: { children: ReactNode }) {
+  const pathname = usePathname();
+  const isLp = pathname === "/lp";
   const [isOpen, setIsOpen] = useState(false);
   const [selectedPackage, setSelectedPackage] =
     useState<SelectedPackage | null>(null);
@@ -43,11 +47,19 @@ export function LeadFormProvider({ children }: { children: ReactNode }) {
   return (
     <LeadFormContext.Provider value={value}>
       {children}
-      <GetStartedModal
-        isOpen={isOpen}
-        selectedPackage={selectedPackage}
-        onClose={closeLeadForm}
-      />
+      {isLp ? (
+        <LpLeadModal
+          isOpen={isOpen}
+          selectedPackage={selectedPackage}
+          onClose={closeLeadForm}
+        />
+      ) : (
+        <GetStartedModal
+          isOpen={isOpen}
+          selectedPackage={selectedPackage}
+          onClose={closeLeadForm}
+        />
+      )}
     </LeadFormContext.Provider>
   );
 }
