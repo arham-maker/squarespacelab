@@ -89,7 +89,7 @@ export function AdvertisingIntroSection() {
           ))}
         </h2>
 
-        <p data-ad-intro-reveal className="text-ad-intro-desc m-0">
+        <p data-ad-intro-reveal className="text-ad-intro-desc mb-10 m-0">
           {ADVERTISING_INTRO.description}
         </p>
 
