@@ -13,7 +13,7 @@ export const FOOTER_QUICK_LINKS = [
 export const FOOTER_SERVICES_LEFT = [
   { label: "Web Design", href: "/web-design" },
   { label: "Graphic Design", href: "/graphic-design" },
-  "Social Media",
+  { label: "Social Media", href: "/social-media" },
   { label: "Branding", href: "/branding" },
   { label: "Logo Design", href: "/logo-design" },
   "Web Design",
@@ -25,7 +25,7 @@ export const FOOTER_SERVICES_RIGHT = [
   { label: "Email & Hosting", href: "/email-hosting" },
   { label: "Advertising Services", href: "/advertising" },
   { label: "Your All-in-One", href: "/your-all-in-one" },
-  "Social Media",
+  { label: "Social Media", href: "/social-media" },
 ] as const;
 
 export const FOOTER_SOCIAL_LINKS = [
