@@ -24,5 +24,5 @@ export const SERVICE_LINKS = [
   { label: "Advertising Services", href: "/advertising" },
   { label: "Your All-in-One", href: "/your-all-in-one" },
   { label: "Social Media", href: "/social-media" },
-  { label: "Support", href: "#services" },
+  { label: "Support", href: "/support" },
 ] as const;

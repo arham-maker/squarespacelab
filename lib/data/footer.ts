@@ -16,16 +16,13 @@ export const FOOTER_SERVICES_LEFT = [
   { label: "Social Media", href: "/social-media" },
   { label: "Branding", href: "/branding" },
   { label: "Logo Design", href: "/logo-design" },
-  "Web Design",
 ] as const;
 
 export const FOOTER_SERVICES_RIGHT = [
-  "Branding",
-  { label: "Graphic Design", href: "/graphic-design" },
+  { label: "Digital Marketing", href: "/digital-marketing" },
   { label: "Email & Hosting", href: "/email-hosting" },
   { label: "Advertising Services", href: "/advertising" },
   { label: "Your All-in-One", href: "/your-all-in-one" },
-  { label: "Social Media", href: "/social-media" },
 ] as const;
 
 export const FOOTER_SOCIAL_LINKS = [
