@@ -15,11 +15,3 @@ export const LP_LEAD_FORM = {
   submitLabel: "Get Started Now!",
   thankYouPath: "/thankyou",
 } as const;
-
-export const LP_PHONE_COUNTRIES = [
-  { dial: "+1", label: "US" },
-  { dial: "+92", label: "PK" },
-  { dial: "+44", label: "UK" },
-  { dial: "+61", label: "AU" },
-  { dial: "+91", label: "IN" },
-] as const;

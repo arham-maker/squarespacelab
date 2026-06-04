@@ -10,10 +10,7 @@ import {
 } from "react";
 import { createPortal } from "react-dom";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
-import {
-  LP_LEAD_FORM,
-  LP_PHONE_COUNTRIES,
-} from "@/lib/data/lp-lead-form";
+import { LP_LEAD_FORM } from "@/lib/data/lp-lead-form";
 import {
   getFormString,
   submitForm,
@@ -43,9 +40,6 @@ export function LpLeadModal({
   const [mounted, setMounted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
-  const [countryDial, setCountryDial] = useState<string>(
-    LP_PHONE_COUNTRIES[0].dial
-  );
 
   useEffect(() => {
     setMounted(true);
@@ -118,15 +112,12 @@ export function LpLeadModal({
     setIsSubmitting(true);
 
     const formData = new FormData(event.currentTarget);
-    const phoneLocal = getFormString(formData, LP_LEAD_FORM.fields.phone.name);
-    const dial =
-      getFormString(formData, "countryDial") || countryDial;
 
     try {
       const baseFields = {
         fullName: getFormString(formData, LP_LEAD_FORM.fields.name.name),
         email: getFormString(formData, LP_LEAD_FORM.fields.email.name),
-        phone: `${dial}${phoneLocal}`.replace(/\s+/g, ""),
+        phone: getFormString(formData, LP_LEAD_FORM.fields.phone.name),
         businessIndustry: getFormString(
           formData,
           LP_LEAD_FORM.fields.industry.name
@@ -240,45 +231,16 @@ export function LpLeadModal({
                   />
                 </div>
 
-                <div className="fld-input fld-input--phone">
-                  <select
-                    name="countryDial"
-                    value={countryDial}
-                    onChange={(event) => setCountryDial(event.target.value)}
-                    aria-label="Country code"
-                  >
-                    {LP_PHONE_COUNTRIES.map((country) => (
-                      <option key={country.dial} value={country.dial}>
-                        {country.label} {country.dial}
-                      </option>
-                    ))}
-                  </select>
+                <div className="fld-input">
                   <input
                     type="tel"
                     name={LP_LEAD_FORM.fields.phone.name}
                     placeholder={LP_LEAD_FORM.fields.phone.placeholder}
                     autoComplete="tel"
                     inputMode="tel"
+                    minLength={10}
+                    maxLength={15}
                     required
-                    onKeyDown={(event) => {
-                      if (
-                        event.key === "Backspace" ||
-                        event.key === "Delete" ||
-                        event.key === "ArrowLeft" ||
-                        event.key === "ArrowRight" ||
-                        event.key === "Tab" ||
-                        event.key === "Enter"
-                      ) {
-                        return;
-                      }
-                      if (
-                        (event.ctrlKey || event.metaKey) &&
-                        ["a", "c", "v", "x"].includes(event.key.toLowerCase())
-                      ) {
-                        return;
-                      }
-                      if (!/^\d$/.test(event.key)) event.preventDefault();
-                    }}
                   />
                 </div>
 
