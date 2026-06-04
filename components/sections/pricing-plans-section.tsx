@@ -130,7 +130,10 @@ export function PricingPlansSection() {
         >
           {plans.map((plan) => (
             <div key={plan.id} data-pricing-card>
-              <PricingCard plan={plan} />
+              <PricingCard
+                plan={plan}
+                category={PRICING_TABS.find((t) => t.id === activeTab)?.label}
+              />
             </div>
           ))}
         </div>

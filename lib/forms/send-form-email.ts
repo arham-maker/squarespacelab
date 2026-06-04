@@ -8,6 +8,10 @@ import {
 import type { FormSubmissionPayload } from "@/lib/forms/types";
 import fs from "node:fs";
 
+function getRecipientEmail(): string {
+  return process.env.FORM_RECIPIENT_EMAIL?.trim() || FORM_RECIPIENT_EMAIL;
+}
+
 function getSmtpConfig() {
   const host = process.env.SMTP_HOST?.trim();
   const user = process.env.SMTP_USER?.trim();
@@ -19,11 +23,7 @@ function getSmtpConfig() {
   const secure =
     process.env.SMTP_SECURE === "true" || port === 465;
 
-  const from =
-    process.env.SMTP_FROM?.trim() ??
-    `"Squarespacedev Website" <${user}>`;
-
-  return { host, user, pass, port, secure, from };
+  return { host, user, pass, port, secure };
 }
 
 function smtpIsConfigured(): boolean {
@@ -71,20 +71,57 @@ async function sendViaSmtp(payload: FormSubmissionPayload): Promise<void> {
     },
   });
 
+  const recipient = getRecipientEmail();
   const text = buildFormEmailText(payload);
   const html = buildFormEmailHtml(payload);
   const attachments = logoAttachment ? [logoAttachment] : undefined;
+  const subject = buildFormEmailSubject(payload);
+
+  // When SMTP login is a different mailbox (e.g. arham@), BCC that account so
+  // you still receive a copy while the primary notification goes to info@.
+  const bcc =
+    process.env.FORM_BCC_EMAIL?.trim() ||
+    (config.user.toLowerCase() !== recipient.toLowerCase()
+      ? config.user
+      : undefined);
 
   try {
-    await transporter.sendMail({
-      from: config.from,
-      to: FORM_RECIPIENT_EMAIL,
+    const result = await transporter.sendMail({
+      from: {
+        name: "Squarespacedev Website",
+        address: config.user,
+      },
+      sender: config.user,
+      to: recipient,
+      bcc,
+      envelope: {
+        from: config.user,
+        to: bcc ? [recipient, bcc] : [recipient],
+      },
       replyTo: payload.fields.email || undefined,
-      subject: buildFormEmailSubject(payload),
+      subject,
       text,
       html,
       attachments,
+      headers: {
+        "X-Entity-Ref-ID": `form-${Date.now()}`,
+      },
     });
+
+    if (process.env.NODE_ENV !== "production") {
+      console.info("Form email dispatched:", {
+        to: recipient,
+        bcc: bcc ?? null,
+        from: config.user,
+        messageId: result.messageId,
+        accepted: result.accepted,
+        rejected: result.rejected,
+      });
+    }
+
+    if (result.rejected.length > 0) {
+      throw new Error(`Message rejected by server: ${result.rejected.join(", ")}`);
+    }
   } catch (error) {
     throw new Error(formatSmtpError(error));
   }

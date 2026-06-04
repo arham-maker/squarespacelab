@@ -107,7 +107,11 @@ export function LogoDesignPricingSection() {
         <div ref={gridRef} className="pricing-plans-grid">
           {LOGO_DESIGN_PLANS.map((plan) => (
             <div key={plan.id} data-pricing-card>
-              <PricingCard plan={plan} packageIcon={LOGO_DESIGN_PACKAGE_ICON} />
+              <PricingCard
+                plan={plan}
+                packageIcon={LOGO_DESIGN_PACKAGE_ICON}
+                category="Logo Design"
+              />
             </div>
           ))}
         </div>

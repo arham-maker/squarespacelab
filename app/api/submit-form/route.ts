@@ -8,7 +8,13 @@ function isValidPayload(body: unknown): body is FormSubmissionPayload {
   const formType = record.formType;
   const fields = record.fields;
 
-  if (formType !== "contact" && formType !== "get-started") return false;
+  if (
+    formType !== "contact" &&
+    formType !== "get-started" &&
+    formType !== "package"
+  ) {
+    return false;
+  }
   if (!fields || typeof fields !== "object" || Array.isArray(fields)) {
     return false;
   }

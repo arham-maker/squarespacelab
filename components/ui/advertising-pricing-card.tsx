@@ -1,16 +1,21 @@
+"use client";
+
 import Image from "next/image";
 import type { AdvertisingPlan } from "@/lib/data/advertising";
 import { ADVERTISING_PACKAGE_ICON } from "@/lib/data/advertising";
+import { SelectPackageButton } from "@/components/ui/select-package-button";
 import { FaCheck } from "react-icons/fa";
 
 type AdvertisingPricingCardProps = {
   plan: AdvertisingPlan;
   packageIcon?: string;
+  category?: string;
 };
 
 export function AdvertisingPricingCard({
   plan,
   packageIcon = ADVERTISING_PACKAGE_ICON,
+  category,
 }: AdvertisingPricingCardProps) {
   return (
     <article className="pricing-card group">
@@ -46,9 +51,13 @@ export function AdvertisingPricingCard({
             )
           )}
         </ul>
-        <a href="/contact" className="pricing-card__btn">
-          Select Package
-        </a>
+        <SelectPackageButton
+          selectedPackage={{
+            name: plan.title,
+            price: `${plan.price} ${plan.period}`.trim(),
+            category,
+          }}
+        />
       </div>
     </article>
   );

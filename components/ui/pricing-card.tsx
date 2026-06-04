@@ -1,14 +1,22 @@
+"use client";
+
 import Image from "next/image";
 import type { PricingPlan } from "@/lib/data/pricing";
 import { PRICING_PACKAGE_ICON } from "@/lib/data/pricing";
+import { SelectPackageButton } from "@/components/ui/select-package-button";
 import { FaCheck } from "react-icons/fa";
 
 type PricingCardProps = {
   plan: PricingPlan;
   packageIcon?: string;
+  category?: string;
 };
 
-export function PricingCard({ plan, packageIcon = PRICING_PACKAGE_ICON }: PricingCardProps) {
+export function PricingCard({
+  plan,
+  packageIcon = PRICING_PACKAGE_ICON,
+  category,
+}: PricingCardProps) {
   return (
     <article className="pricing-card group">
       <div className="pricing-card__head">
@@ -45,9 +53,14 @@ export function PricingCard({ plan, packageIcon = PRICING_PACKAGE_ICON }: Pricin
             </li>
           ))}
         </ul>
-        <a href="/contact" className="pricing-card__btn">
-          Select Package
-        </a>
+        <SelectPackageButton
+          selectedPackage={{
+            name: plan.title,
+            price: plan.price,
+            category,
+            details: `${plan.originalPrice} → ${plan.discount}`,
+          }}
+        />
       </div>
     </article>
   );

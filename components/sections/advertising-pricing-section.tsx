@@ -127,7 +127,10 @@ export function AdvertisingPricingSection() {
         >
           {plans.map((plan) => (
             <div key={plan.id} data-ad-pricing-card>
-              <AdvertisingPricingCard plan={plan} />
+              <AdvertisingPricingCard
+                plan={plan}
+                category={ADVERTISING_TABS.find((t) => t.id === activeTab)?.label}
+              />
             </div>
           ))}
         </div>

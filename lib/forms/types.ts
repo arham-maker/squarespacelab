@@ -1,4 +1,4 @@
-export type FormSubmissionType = "contact" | "get-started";
+export type FormSubmissionType = "contact" | "get-started" | "package";
 
 export type FormSubmissionPayload = {
   formType: FormSubmissionType;

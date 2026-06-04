@@ -9,10 +9,12 @@ import {
   type ReactNode,
 } from "react";
 import { GetStartedModal } from "@/components/ui/get-started-modal";
+import type { SelectedPackage } from "@/lib/forms/selected-package";
 
 type LeadFormContextValue = {
   isOpen: boolean;
-  openLeadForm: () => void;
+  selectedPackage: SelectedPackage | null;
+  openLeadForm: (selectedPackage?: SelectedPackage | null) => void;
   closeLeadForm: () => void;
 };
 
@@ -20,19 +22,32 @@ const LeadFormContext = createContext<LeadFormContextValue | null>(null);
 
 export function LeadFormProvider({ children }: { children: ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedPackage, setSelectedPackage] =
+    useState<SelectedPackage | null>(null);
 
-  const openLeadForm = useCallback(() => setIsOpen(true), []);
-  const closeLeadForm = useCallback(() => setIsOpen(false), []);
+  const openLeadForm = useCallback((pkg?: SelectedPackage | null) => {
+    setSelectedPackage(pkg ?? null);
+    setIsOpen(true);
+  }, []);
+
+  const closeLeadForm = useCallback(() => {
+    setIsOpen(false);
+    setSelectedPackage(null);
+  }, []);
 
   const value = useMemo(
-    () => ({ isOpen, openLeadForm, closeLeadForm }),
-    [isOpen, openLeadForm, closeLeadForm]
+    () => ({ isOpen, selectedPackage, openLeadForm, closeLeadForm }),
+    [isOpen, selectedPackage, openLeadForm, closeLeadForm]
   );
 
   return (
     <LeadFormContext.Provider value={value}>
       {children}
-      <GetStartedModal isOpen={isOpen} onClose={closeLeadForm} />
+      <GetStartedModal
+        isOpen={isOpen}
+        selectedPackage={selectedPackage}
+        onClose={closeLeadForm}
+      />
     </LeadFormContext.Provider>
   );
 }

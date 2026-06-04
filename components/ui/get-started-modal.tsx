@@ -12,14 +12,23 @@ import {
   getFormString,
   submitForm,
 } from "@/lib/forms/submit-form-client";
+import {
+  selectedPackageToFields,
+  type SelectedPackage,
+} from "@/lib/forms/selected-package";
 import gsap from "gsap";
 
 type GetStartedModalProps = {
   isOpen: boolean;
+  selectedPackage: SelectedPackage | null;
   onClose: () => void;
 };
 
-export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
+export function GetStartedModal({
+  isOpen,
+  selectedPackage,
+  onClose,
+}: GetStartedModalProps) {
   const router = useRouter();
   const reducedMotion = usePrefersReducedMotion();
   const titleId = useId();
@@ -104,19 +113,23 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
     const formData = new FormData(event.currentTarget);
 
     try {
+      const baseFields = {
+        fullName: getFormString(formData, LEAD_FORM.fields.name.name),
+        email: getFormString(formData, LEAD_FORM.fields.email.name),
+        phone: getFormString(formData, LEAD_FORM.fields.phone.name),
+        consentMarketing: getFormCheckbox(
+          formData,
+          LEAD_FORM.checkboxes[0].name
+        ),
+        consentSms: getFormCheckbox(formData, LEAD_FORM.checkboxes[1].name),
+        consentTerms: getFormCheckbox(formData, LEAD_FORM.checkboxes[2].name),
+      };
+
       await submitForm({
-        formType: "get-started",
-        fields: {
-          fullName: getFormString(formData, LEAD_FORM.fields.name.name),
-          email: getFormString(formData, LEAD_FORM.fields.email.name),
-          phone: getFormString(formData, LEAD_FORM.fields.phone.name),
-          consentMarketing: getFormCheckbox(
-            formData,
-            LEAD_FORM.checkboxes[0].name
-          ),
-          consentSms: getFormCheckbox(formData, LEAD_FORM.checkboxes[1].name),
-          consentTerms: getFormCheckbox(formData, LEAD_FORM.checkboxes[2].name),
-        },
+        formType: selectedPackage ? "package" : "get-started",
+        fields: selectedPackage
+          ? { ...baseFields, ...selectedPackageToFields(selectedPackage) }
+          : baseFields,
       });
 
       onClose();
@@ -189,6 +202,27 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
               <p className="get-started-modal__title-highlight m-0">
                 {LEAD_FORM.titleHighlight}
               </p>
+              {selectedPackage ? (
+                <div className="get-started-modal__package m-0">
+                  <span className="get-started-modal__package-label">
+                    Selected package
+                  </span>
+                  <strong className="get-started-modal__package-name">
+                    {selectedPackage.name}
+                  </strong>
+                  <span className="get-started-modal__package-price">
+                    {selectedPackage.price}
+                    {selectedPackage.details
+                      ? ` · ${selectedPackage.details}`
+                      : ""}
+                  </span>
+                  {selectedPackage.category ? (
+                    <span className="get-started-modal__package-category">
+                      {selectedPackage.category}
+                    </span>
+                  ) : null}
+                </div>
+              ) : null}
             </div>
 
             <form className="get-started-modal__form" onSubmit={handleSubmit} noValidate>

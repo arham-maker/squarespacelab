@@ -110,7 +110,11 @@ export function BrandingPricingSection() {
         <div ref={gridRef} className="pricing-plans-grid">
           {BRANDING_PLANS.map((plan) => (
             <div key={plan.id} data-pricing-card>
-              <PricingCard plan={plan} packageIcon={BRANDING_PACKAGE_ICON} />
+              <PricingCard
+                plan={plan}
+                packageIcon={BRANDING_PACKAGE_ICON}
+                category="Branding"
+              />
             </div>
           ))}
         </div>
