@@ -22,7 +22,7 @@ export const FOOTER_SERVICES_LEFT = [
 export const FOOTER_SERVICES_RIGHT = [
   "Branding",
   { label: "Graphic Design", href: "/graphic-design" },
-  "Email & Hosting",
+  { label: "Email & Hosting", href: "/email-hosting" },
   "Advertising Services",
   "Your All-in-One",
   "Social Media",

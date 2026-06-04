@@ -20,7 +20,7 @@ export const SERVICE_LINKS = [
   { label: "Web Design", href: "/web-design" },
   { label: "Branding", href: "/branding" },
   { label: "Graphic Design", href: "/graphic-design" },
-  { label: "Email & Hosting", href: "#services" },
+  { label: "Email & Hosting", href: "/email-hosting" },
   { label: "Advertising Services", href: "#services" },
   { label: "Your All-in-One", href: "#services" },
   { label: "Social Media", href: "#services" },

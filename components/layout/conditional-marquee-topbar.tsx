@@ -17,7 +17,8 @@ export function ConditionalMarqueeTopbar() {
     pathname === "/logo-design" ||
     pathname === "/web-design" ||
     pathname === "/branding" ||
-    pathname === "/graphic-design"
+    pathname === "/graphic-design" ||
+    pathname === "/email-hosting"
   ) {
     return null;
   }
