@@ -5,6 +5,7 @@ import { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { FiArrowRight } from "react-icons/fi";
 import { Container } from "@/components/layout/container";
+import { CtaButton } from "@/components/ui/cta-button";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import {
   TEMPLATE_CATEGORIES,
@@ -53,13 +54,10 @@ export function TemplatesSection() {
 
           <div className="flex flex-col items-start lg:max-w-[600px]">
             <p className="text-templates-intro">{TEMPLATES_INTRO.description}</p>
-            <a
-              href={TEMPLATES_INTRO.cta.href}
-              className="btn btn-outline gap-3"
-            >
+            <CtaButton opensLeadForm className="btn btn-outline gap-3">
               {TEMPLATES_INTRO.cta.label}
               <FiArrowRight className="h-8 w-8 shrink-0" strokeWidth={2.5} aria-hidden />
-            </a>
+            </CtaButton>
           </div>
         </div>
 

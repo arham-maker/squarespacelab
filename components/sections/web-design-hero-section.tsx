@@ -39,7 +39,7 @@ export function WebDesignHeroSection() {
             {WEB_DESIGN_HERO.description}
           </p>
           <div data-wd-hero-reveal className="web-design-inner-banner__cta">
-            <CtaButton href={WEB_DESIGN_HERO.cta.href}>
+            <CtaButton opensLeadForm>
               {WEB_DESIGN_HERO.cta.label}
             </CtaButton>
           </div>

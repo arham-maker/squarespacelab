@@ -74,7 +74,7 @@ export function AllInOneFeaturesSection() {
           data-aio-features-reveal
           className="all-in-one-features-section__cta flex justify-center"
         >
-          <CtaButton href={ALL_IN_ONE_HERO.cta.href}>
+          <CtaButton opensLeadForm>
             {ALL_IN_ONE_HERO.cta.label}
           </CtaButton>
         </div>

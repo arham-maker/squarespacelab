@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useLayoutEffect, useRef } from "react";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { Container } from "@/components/layout/container";
+import { CtaButton } from "@/components/ui/cta-button";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import {
   ENGAGE_CTA,
@@ -75,8 +76,8 @@ export function EngageSection() {
               </p>
               <div data-engage-reveal className="engage-grow__copy">
                 <p className="text-engage-body m-0">{block.description}</p>
-                <a
-                  href={ENGAGE_CTA.href}
+                <CtaButton
+                  opensLeadForm
                   className="btn btn-outline-light mt-6 gap-3"
                 >
                   {ENGAGE_CTA.label}
@@ -84,7 +85,7 @@ export function EngageSection() {
                     className="h-8 w-8 shrink-0"
                     aria-hidden
                   />
-                </a>
+                </CtaButton>
               </div>
             </div>
           </article>
@@ -119,9 +120,9 @@ export function EngageSection() {
               <p data-engage-reveal className="text-engage-body m-0 mt-4">
                 {row.description}
               </p>
-              <a
+              <CtaButton
                 data-engage-reveal
-                href={ENGAGE_CTA.href}
+                opensLeadForm
                 className="btn btn-outline-light mt-8 gap-3"
               >
                 {ENGAGE_CTA.label}
@@ -129,7 +130,7 @@ export function EngageSection() {
                   className="h-8 w-8 shrink-0"
                   aria-hidden
                 />
-              </a>
+              </CtaButton>
             </div>
           </div>
         ))}

@@ -1,12 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useLayoutEffect, useRef } from "react";
 import { FiArrowRight } from "react-icons/fi";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Container } from "@/components/layout/container";
+import { CtaButton } from "@/components/ui/cta-button";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import { WEB_DESIGN_ECOMMERCE } from "@/lib/data/web-design";
 import { registerGsapPlugins } from "@/lib/gsap/register";
@@ -71,13 +71,13 @@ export function WebDesignEcommerceSection() {
             <p className="text-wd-ecommerce-desc m-0">
               {WEB_DESIGN_ECOMMERCE.description}
             </p>
-            <Link
-              href={WEB_DESIGN_ECOMMERCE.cta.href}
+            <CtaButton
+              opensLeadForm
               className="btn btn-outline-light mt-6 gap-3"
             >
               {WEB_DESIGN_ECOMMERCE.cta.label}
               <FiArrowRight className="h-8 w-8 shrink-0" strokeWidth={2.5} aria-hidden />
-            </Link>
+            </CtaButton>
           </div>
 
           <figure

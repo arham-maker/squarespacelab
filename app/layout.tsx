@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ConditionalMarqueeTopbar } from "@/components/layout/conditional-marquee-topbar";
+import { LeadFormProvider } from "@/components/providers/lead-form-provider";
 import { GsapProvider } from "@/components/providers/gsap-provider";
 import { SmoothScrollProvider } from "@/components/providers/smooth-scroll-provider";
 import { MouseCursor } from "@/components/ui/mouse-cursor";
@@ -28,10 +29,12 @@ export default function RootLayout({
       <body className="flex min-h-full flex-col font-sans">
         <ConditionalMarqueeTopbar />
         <GsapProvider>
-          <SmoothScrollProvider>
-            {children}
-            <MouseCursor />
-          </SmoothScrollProvider>
+          <LeadFormProvider>
+            <SmoothScrollProvider>
+              {children}
+              <MouseCursor />
+            </SmoothScrollProvider>
+          </LeadFormProvider>
         </GsapProvider>
       </body>
     </html>

@@ -39,7 +39,7 @@ export function EmailHostingHeroSection() {
             {EMAIL_HOSTING_HERO.description}
           </p>
           <div data-eh-hero-reveal className="email-hosting-inner-banner__cta">
-            <CtaButton href={EMAIL_HOSTING_HERO.cta.href}>
+            <CtaButton opensLeadForm>
               {EMAIL_HOSTING_HERO.cta.label}
             </CtaButton>
           </div>

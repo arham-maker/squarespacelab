@@ -45,7 +45,7 @@ export function WorkHeroSection() {
             {WORK_HERO.subtitle}
           </p>
           <div data-work-hero-reveal className="work-inner-banner__cta">
-            <CtaButton href={WORK_HERO.cta.href}>{WORK_HERO.cta.label}</CtaButton>
+            <CtaButton opensLeadForm>{WORK_HERO.cta.label}</CtaButton>
           </div>
         </div>
       </Container>

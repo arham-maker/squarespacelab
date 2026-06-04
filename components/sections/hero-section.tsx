@@ -25,7 +25,7 @@ export function HeroSection() {
             smooth shopping experience for your customers.
           </p>
           <CtaButton
-            href="#contact"
+            opensLeadForm
             className="mt-6 w-full max-w-sm sm:mt-8 sm:w-auto"
           >
             Get Started

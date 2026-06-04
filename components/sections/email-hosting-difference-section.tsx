@@ -110,7 +110,7 @@ export function EmailHostingDifferenceSection() {
             data-eh-difference-reveal
             className="email-hosting-difference-section__cta flex justify-center"
           >
-            <CtaButton href={EMAIL_HOSTING_DIFFERENCE.cta.href}>
+            <CtaButton opensLeadForm>
               {EMAIL_HOSTING_DIFFERENCE.cta.label}
             </CtaButton>
           </div>

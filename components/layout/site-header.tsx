@@ -114,7 +114,7 @@ export function SiteHeader({
             <a href={SITE.phoneHref} className="nav-link">
               {SITE.phone}
             </a>
-            <CtaButton href="/contact">Get Started</CtaButton>
+            <CtaButton opensLeadForm>Get Started</CtaButton>
           </div>
 
           <MobileMenuTrigger

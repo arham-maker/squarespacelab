@@ -43,7 +43,7 @@ export function AdvertisingHeroSection() {
             ))}
           </p>
           <div data-ad-hero-reveal className="advertising-inner-banner__cta">
-            <CtaButton href={ADVERTISING_HERO.cta.href}>
+            <CtaButton opensLeadForm>
               {ADVERTISING_HERO.cta.label}
             </CtaButton>
           </div>

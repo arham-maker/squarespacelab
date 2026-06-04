@@ -41,7 +41,7 @@ export function BrandingHeroSection() {
             {BRANDING_HERO.descriptionLines[1]}
           </p>
           <div data-brand-hero-reveal className="branding-inner-banner__cta">
-            <CtaButton href={BRANDING_HERO.cta.href}>
+            <CtaButton opensLeadForm>
               {BRANDING_HERO.cta.label}
             </CtaButton>
           </div>

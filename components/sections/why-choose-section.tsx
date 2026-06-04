@@ -5,6 +5,7 @@ import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { FiArrowRight } from "react-icons/fi";
 import { Container } from "@/components/layout/container";
+import { CtaButton } from "@/components/ui/cta-button";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import { WHY_CHOOSE, WHY_CHOOSE_FEATURES } from "@/lib/data/why-choose";
 import { registerGsapPlugins } from "@/lib/gsap/register";
@@ -103,14 +104,14 @@ export function WhyChooseSection() {
               ))}
             </div>
 
-            <a
-              href={WHY_CHOOSE.cta.href}
+            <CtaButton
+              opensLeadForm
               data-why-choose-reveal
               className="btn btn-outline mt-10 gap-3 sm:mt-12"
             >
               {WHY_CHOOSE.cta.label}
               <FiArrowRight className="h-8 w-8 shrink-0" strokeWidth={2.5} aria-hidden />
-            </a>
+            </CtaButton>
           </div>
 
           <figure

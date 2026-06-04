@@ -218,7 +218,11 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           </a>
 
           <div data-menu-item className="mt-6">
-            <CtaButton href="/contact" className="w-full text-center" onClick={onClose}>
+            <CtaButton
+              opensLeadForm
+              className="w-full text-center"
+              onClick={onClose}
+            >
               Get Started
             </CtaButton>
           </div>

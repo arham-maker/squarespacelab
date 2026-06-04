@@ -4,6 +4,7 @@ import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Container } from "@/components/layout/container";
+import { CtaButton } from "@/components/ui/cta-button";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import { CUSTOM_WEBSITE_CTA } from "@/lib/data/custom-website-cta";
 import { registerGsapPlugins } from "@/lib/gsap/register";
@@ -96,12 +97,12 @@ export function CustomWebsiteCtaSection() {
               {CUSTOM_WEBSITE_CTA.description}
             </p>
 
-            <a
-              href={CUSTOM_WEBSITE_CTA.cta.href}
+            <CtaButton
+              opensLeadForm
               className="btn btn-inverse w-full max-w-xs sm:w-auto"
             >
               {CUSTOM_WEBSITE_CTA.cta.label}
-            </a>
+            </CtaButton>
           </div>
         </div>
       </Container>

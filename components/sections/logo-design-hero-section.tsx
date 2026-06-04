@@ -39,7 +39,7 @@ export function LogoDesignHeroSection() {
             {LOGO_DESIGN_HERO.description}
           </p>
           <div data-ld-hero-reveal className="logo-design-inner-banner__cta">
-            <CtaButton href={LOGO_DESIGN_HERO.cta.href}>
+            <CtaButton opensLeadForm>
               {LOGO_DESIGN_HERO.cta.label}
             </CtaButton>
           </div>

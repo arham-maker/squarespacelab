@@ -39,7 +39,7 @@ export function GraphicDesignHeroSection() {
             {GRAPHIC_DESIGN_HERO.description}
           </p>
           <div data-gd-hero-reveal className="graphic-design-inner-banner__cta">
-            <CtaButton href={GRAPHIC_DESIGN_HERO.cta.href}>
+            <CtaButton opensLeadForm>
               {GRAPHIC_DESIGN_HERO.cta.label}
             </CtaButton>
           </div>

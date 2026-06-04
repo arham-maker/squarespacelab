@@ -65,7 +65,7 @@ export function AllInOneCtaSection() {
             <strong>{ALL_IN_ONE_CTA.description}</strong>
           </p>
           <div data-aio-cta-reveal className="all-in-one-cta-section__btn flex justify-center">
-            <CtaButton href={ALL_IN_ONE_CTA.cta.href}>
+            <CtaButton opensLeadForm>
               {ALL_IN_ONE_CTA.cta.label}
             </CtaButton>
           </div>

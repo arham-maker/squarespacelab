@@ -48,7 +48,7 @@ export function DigitalMarketingHeroSection() {
             {DIGITAL_MARKETING_HERO.description}
           </p>
           <div data-dm-hero-reveal className="digital-marketing-inner-banner__cta">
-            <CtaButton href={DIGITAL_MARKETING_HERO.cta.href}>
+            <CtaButton opensLeadForm>
               {DIGITAL_MARKETING_HERO.cta.label}
             </CtaButton>
           </div>
