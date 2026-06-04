@@ -2,8 +2,8 @@ export const SITE = {
   name: "SQUARESPACEDEV",
   phone: "+1 (833) 292-3252",
   phoneHref: "tel:+18332923252",
-  email: "info@squarespacedev.com",
-  emailHref: "mailto:info@squarespacedev.com",
+  email: "info@crosswayconsulting.com",
+  emailHref: "mailto:info@crosswayconsulting.com",
   logoBlack: "/Square Space Dev Logo V3 Black.png",
   logoWhite: "/Square Space Dev Logo V3 White.png",
 } as const;

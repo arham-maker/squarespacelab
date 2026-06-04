@@ -7,6 +7,11 @@ import { useEffect, useId, useRef, useState, type FormEvent } from "react";
 import { FaArrowRight } from "react-icons/fa6";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import { LEAD_FORM } from "@/lib/data/lead-form";
+import {
+  getFormCheckbox,
+  getFormString,
+  submitForm,
+} from "@/lib/forms/submit-form-client";
 import gsap from "gsap";
 
 type GetStartedModalProps = {
@@ -21,6 +26,7 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
   const overlayRef = useRef<HTMLDivElement>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -88,13 +94,41 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
     });
   }, [isOpen, reducedMotion]);
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (isSubmitting) return;
 
+    setSubmitError(null);
     setIsSubmitting(true);
-    onClose();
-    router.push(LEAD_FORM.thankYouPath);
+
+    const formData = new FormData(event.currentTarget);
+
+    try {
+      await submitForm({
+        formType: "get-started",
+        fields: {
+          fullName: getFormString(formData, LEAD_FORM.fields.name.name),
+          email: getFormString(formData, LEAD_FORM.fields.email.name),
+          phone: getFormString(formData, LEAD_FORM.fields.phone.name),
+          consentMarketing: getFormCheckbox(
+            formData,
+            LEAD_FORM.checkboxes[0].name
+          ),
+          consentSms: getFormCheckbox(formData, LEAD_FORM.checkboxes[1].name),
+          consentTerms: getFormCheckbox(formData, LEAD_FORM.checkboxes[2].name),
+        },
+      });
+
+      onClose();
+      router.push(LEAD_FORM.thankYouPath);
+    } catch (error) {
+      setSubmitError(
+        error instanceof Error
+          ? error.message
+          : "Unable to submit form. Please try again."
+      );
+      setIsSubmitting(false);
+    }
   };
 
   if (!isOpen) return null;
@@ -249,6 +283,12 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
                   </label>
                 </div>
               ))}
+
+              {submitError ? (
+                <p className="get-started-modal__error m-0" role="alert">
+                  {submitError}
+                </p>
+              ) : null}
 
               <button
                 type="submit"

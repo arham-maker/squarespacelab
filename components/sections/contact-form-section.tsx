@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useLayoutEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
+import { useLayoutEffect, useRef, useState, type FormEvent } from "react";
 import { FaEnvelope, FaPhoneAlt } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa6";
 import { Container } from "@/components/layout/container";
@@ -10,11 +11,20 @@ import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import { CONTACT_FORM, CONTACT_PARTNER_LOGOS } from "@/lib/data/contact";
 import { revealOnScroll } from "@/lib/gsap/animations";
 import { registerGsapPlugins } from "@/lib/gsap/register";
+import { LEAD_FORM } from "@/lib/data/lead-form";
 import { SITE } from "@/lib/data/site";
+import {
+  getFormCheckbox,
+  getFormString,
+  submitForm,
+} from "@/lib/forms/submit-form-client";
 
 export function ContactFormSection() {
+  const router = useRouter();
   const reducedMotion = usePrefersReducedMotion();
   const sectionRef = useRef<HTMLElement>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   useLayoutEffect(() => {
     registerGsapPlugins();
@@ -26,6 +36,41 @@ export function ContactFormSection() {
       revealOnScroll(el, el, { y: 40, duration: 0.85, start: "top 92%" });
     });
   }, [reducedMotion]);
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (isSubmitting) return;
+
+    setSubmitError(null);
+    setIsSubmitting(true);
+
+    const formData = new FormData(event.currentTarget);
+
+    try {
+      await submitForm({
+        formType: "contact",
+        fields: {
+          firstName: getFormString(formData, "firstName"),
+          lastName: getFormString(formData, "lastName"),
+          phone: getFormString(formData, "phone"),
+          email: getFormString(formData, "email"),
+          message: getFormString(formData, "message"),
+          consentMarketing: getFormCheckbox(formData, "contact-consent-marketing"),
+          consentSms: getFormCheckbox(formData, "contact-consent-sms"),
+          consentTerms: getFormCheckbox(formData, "contact-consent-terms"),
+        },
+      });
+
+      router.push(LEAD_FORM.thankYouPath);
+    } catch (error) {
+      setSubmitError(
+        error instanceof Error
+          ? error.message
+          : "Unable to submit form. Please try again."
+      );
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <section ref={sectionRef} className="contact-section" id="contact-form">
@@ -71,7 +116,7 @@ export function ContactFormSection() {
 
             <form
               className="contact-form mt-8"
-              onSubmit={(e) => e.preventDefault()}
+              onSubmit={handleSubmit}
               noValidate
             >
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -169,8 +214,18 @@ export function ContactFormSection() {
                 </li>
               </ul>
 
-              <button type="submit" className="btn btn-primary mt-6 gap-3">
-                {CONTACT_FORM.submitLabel}
+              {submitError ? (
+                <p className="contact-form__error m-0" role="alert">
+                  {submitError}
+                </p>
+              ) : null}
+
+              <button
+                type="submit"
+                className="btn btn-primary mt-6 gap-3"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Submitting…" : CONTACT_FORM.submitLabel}
                 <FaArrowRight
                   className="h-5 w-5 shrink-0"
                   aria-hidden
