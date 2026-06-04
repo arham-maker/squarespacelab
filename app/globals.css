@@ -1319,6 +1319,7 @@ html.with-fancybox .mouse-cursor {
   }
 
   .contact-inner-banner,
+  .thank-you-inner-banner,
   .pricing-inner-banner,
   .work-inner-banner,
   .terms-inner-banner,
@@ -1346,6 +1347,7 @@ html.with-fancybox .mouse-cursor {
   }
 
   .contact-inner-banner .container-main,
+  .thank-you-inner-banner .container-main,
   .pricing-inner-banner .container-main,
   .work-inner-banner .container-main,
   .terms-inner-banner .container-main,
@@ -1369,6 +1371,7 @@ html.with-fancybox .mouse-cursor {
   }
 
   .contact-inner-banner__text,
+  .thank-you-inner-banner__text,
   .pricing-inner-banner__text,
   .work-inner-banner__text,
   .terms-inner-banner__text,
@@ -5160,19 +5163,32 @@ html.with-fancybox .mouse-cursor {
 
   .get-started-modal__close {
     position: absolute;
-    top: 2px;
-    right: 2px;
+    top: 15px;
+    right: 20px;
     z-index: 3;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 35px;
     height: 35px;
+    padding: 0;
     border: 0;
-    background: transparent;
-    color: #000000;
-    font-size: 1.25rem;
+    border-radius: 50%;
+    background: #ececec;
+    color: #4a9ae8;
     cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .get-started-modal__close:hover {
+    background: #e2e2e2;
+    color: #3a8ad8;
+  }
+
+  .get-started-modal__close-icon {
+    display: block;
+    width: 14px;
+    height: 14px;
   }
 
   .get-started-modal__inner {
@@ -5279,7 +5295,7 @@ html.with-fancybox .mouse-cursor {
 
     .get-started-modal__form-wrap {
       width: 55%;
-      padding: 2rem;
+      padding:3.5rem 2rem;
     }
   }
 
@@ -5300,23 +5316,13 @@ html.with-fancybox .mouse-cursor {
     background-repeat: no-repeat;
   }
 
-  .thank-you-inner-banner {
-    display: flex;
-    min-height: inherit;
-    align-items: flex-end;
-    padding-bottom: clamp(2rem, 8vh, 4rem);
-  }
-
-  .thank-you-inner-banner__text {
-    width: 100%;
-  }
-
   .text-thank-you-hero-title {
     font-family: var(--font-inter), Inter, sans-serif;
     font-size: clamp(2.5rem, 10vw, 5.5rem);
     font-weight: 700;
     line-height: 1.05;
     color: #000000;
+    text-align: center;
   }
 
   .text-thank-you-hero-accent {
@@ -5324,17 +5330,20 @@ html.with-fancybox .mouse-cursor {
   }
 
   .thank-you-content-section {
-    padding: 3rem 0 4rem;
+    padding: clamp(3.5rem, 10vh, 5rem) 0 clamp(4rem, 12vh, 8rem);
     background-color: #ffffff;
   }
 
   @media (min-width: 1025px) {
     .thank-you-content-section {
-      padding: 4rem 0 6rem;
+      padding: clamp(5rem, 12vh, 8rem) 0 clamp(6rem, 14vh, 10rem);
     }
   }
 
   .thank-you-content-section__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-inline: auto;
     max-width: 920px;
     text-align: center;
@@ -5342,18 +5351,32 @@ html.with-fancybox .mouse-cursor {
 
   .text-thank-you-content-heading {
     font-family: var(--font-inter), Inter, sans-serif;
-    font-size: clamp(1.75rem, 5vw, 3rem);
-    font-weight: 600;
-    line-height: 1.2;
-    color: #000000;
+    font-size: clamp(2.25rem, 6vw, 3.75rem);
+    font-weight: 700;
+    font-style: normal;
+    line-height: 1.1;
+    color: #222222;
+    text-align: center;
+    text-wrap: balance;
+  }
+
+  .thank-you-content-heading__line {
+    display: block;
   }
 
   .text-thank-you-content-desc {
-    margin-top: 1.25rem;
+    margin-top: clamp(1.5rem, 4vw, 2.5rem);
+    max-width: 52rem;
     font-family: var(--font-inter), Inter, sans-serif;
-    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    font-size: clamp(1rem, 2.2vw, 1.125rem);
     font-weight: 400;
-    line-height: 1.6;
-    color: #212529;
+    font-style: normal;
+    line-height: 1.65;
+    color: #222222;
+    text-align: center;
+  }
+
+  .thank-you-content-desc__line + .thank-you-content-desc__line {
+    margin-top: 0;
   }
 }

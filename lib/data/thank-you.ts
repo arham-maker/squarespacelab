@@ -4,8 +4,9 @@ export const THANK_YOU_HERO = {
 } as const;
 
 export const THANK_YOU_CONTENT = {
-  headingLine1: "Request",
-  headingHighlight: "Sent Successfully!",
-  description:
-    "Thanks! We have received your request. Expect a quick reply. Should you have any questions or queries, please feel free to contact our experts",
+  headingLines: ["Request", "Sent Successfully!"] as const,
+  descriptionLines: [
+    "Thanks! We have received your request. Expect a quick reply.",
+    "Should you have any questions or queries, please feel free to contact our experts",
+  ] as const,
 } as const;

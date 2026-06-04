@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useId, useRef, useState, type FormEvent } from "react";
-import { FaArrowRight, FaXmark } from "react-icons/fa6";
+import { FaArrowRight } from "react-icons/fa6";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import { LEAD_FORM } from "@/lib/data/lead-form";
 import gsap from "gsap";
@@ -122,7 +122,19 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
           onClick={onClose}
           aria-label="Close form"
         >
-          <FaXmark aria-hidden />
+          <svg
+            className="get-started-modal__close-icon"
+            viewBox="0 0 14 14"
+            fill="none"
+            aria-hidden
+          >
+            <path
+              d="M1 1L13 13M13 1L1 13"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
+          </svg>
         </button>
 
         <div className="get-started-modal__inner">

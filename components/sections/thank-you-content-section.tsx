@@ -34,17 +34,22 @@ export function ThankYouContentSection() {
             data-thank-you-content-reveal
             className="text-thank-you-content-heading m-0"
           >
-            {THANK_YOU_CONTENT.headingLine1}{" "}
-            <span className="text-thank-you-hero-accent">
-              {THANK_YOU_CONTENT.headingHighlight}
-            </span>
+            {THANK_YOU_CONTENT.headingLines.map((line) => (
+              <span key={line} className="thank-you-content-heading__line">
+                {line}
+              </span>
+            ))}
           </h2>
-          <p
+          <div
             data-thank-you-content-reveal
             className="text-thank-you-content-desc m-0"
           >
-            {THANK_YOU_CONTENT.description}
-          </p>
+            {THANK_YOU_CONTENT.descriptionLines.map((line) => (
+              <p key={line} className="thank-you-content-desc__line m-0">
+                {line}
+              </p>
+            ))}
+          </div>
         </div>
       </Container>
     </section>
