@@ -2527,7 +2527,7 @@ html.with-fancybox .mouse-cursor {
 
   .logo-design-intro-section {
     padding: 2.5rem 0 3rem;
-    background-color: #ffffff;
+    background: #e8e4e4;
   }
 
   @media (min-width: 768px) {
@@ -2539,6 +2539,28 @@ html.with-fancybox .mouse-cursor {
   @media (min-width: 1025px) {
     .logo-design-intro-section {
       padding: 5rem 0 6rem;
+    }
+  }
+
+  .text-ld-intro-title {
+    font-size: clamp(1.75rem, 5vw, 2.25rem);
+    line-height: 1.15;
+    color: rgba(0, 0, 0, 0.3);
+  }
+
+  .text-ld-intro-title [data-scroll-heading-line] {
+    display: block;
+  }
+
+  .text-ld-intro-title [data-scroll-heading-char] {
+    will-change: color;
+  }
+
+  @media (min-width: 1025px) {
+    .text-ld-intro-title {
+      margin-bottom: 3rem;
+      font-size: 9.375rem;
+      line-height: 1.12;
     }
   }
 
@@ -2594,7 +2616,7 @@ html.with-fancybox .mouse-cursor {
 
   .logo-design-portfolio-section {
     padding: 2.5rem 0 3.5rem;
-    background-color: #ffffff;
+    background-color: var(--color-why-choose);
   }
 
   @media (min-width: 768px) {
@@ -2642,7 +2664,7 @@ html.with-fancybox .mouse-cursor {
 
   .logo-design-pricing-section {
     padding: 2.5rem 0 3.5rem;
-    background-color: var(--color-why-choose);
+    background-color: #ffffff;
   }
 
   @media (min-width: 768px) {

@@ -7,6 +7,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Container } from "@/components/layout/container";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import { LOGO_DESIGN_INTRO, LOGO_DESIGN_INTRO_IMAGES } from "@/lib/data/logo-design";
+import {
+  initSectionHeadingScroll,
+  SECTION_HEADING_FADED_DARK,
+} from "@/lib/gsap/section-heading-scroll";
 import { registerGsapPlugins } from "@/lib/gsap/register";
 
 export function LogoDesignIntroSection() {
@@ -20,6 +24,19 @@ export function LogoDesignIntroSection() {
     if (!section) return;
 
     const targets = section.querySelectorAll("[data-ld-intro-reveal]");
+    const heading = section.querySelector<HTMLElement>("[data-scroll-heading]");
+
+    const headingCleanup = heading
+      ? initSectionHeadingScroll(heading, reducedMotion, {
+          trigger: section,
+          start: "top 90%",
+          end: "top 18%",
+          scrub: 0.9,
+          staggerEach: 0.025,
+          fadedColor: SECTION_HEADING_FADED_DARK,
+          solidColor: "#000000",
+        })
+      : undefined;
 
     const ctx = gsap.context(() => {
       if (reducedMotion) {
@@ -47,7 +64,14 @@ export function LogoDesignIntroSection() {
       });
     }, section);
 
-    return () => ctx.revert();
+    requestAnimationFrame(() => {
+      ScrollTrigger.refresh();
+    });
+
+    return () => {
+      headingCleanup?.();
+      ctx.revert();
+    };
   }, [reducedMotion]);
 
   return (
@@ -60,11 +84,15 @@ export function LogoDesignIntroSection() {
         <div className="logo-design-intro-section__layout">
           <div className="logo-design-intro-section__copy">
             <h2
-              data-ld-intro-reveal
-              className="text-dm-intro-title m-0 font-normal"
+              data-scroll-heading
+              data-scroll-heading-start="top 90%"
+              data-scroll-heading-end="top 18%"
+              data-scroll-heading-scrub="0.9"
+              data-scroll-heading-stagger="0.025"
+              className="text-ld-intro-title m-0 text-left font-normal"
             >
               {LOGO_DESIGN_INTRO.titleLines.map((line) => (
-                <span key={line} className="block">
+                <span key={line} className="block" data-scroll-heading-line>
                   {line}
                 </span>
               ))}
