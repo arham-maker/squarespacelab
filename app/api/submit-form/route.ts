@@ -11,7 +11,8 @@ function isValidPayload(body: unknown): body is FormSubmissionPayload {
   if (
     formType !== "contact" &&
     formType !== "get-started" &&
-    formType !== "package"
+    formType !== "package" &&
+    formType !== "auto-popup"
   ) {
     return false;
   }

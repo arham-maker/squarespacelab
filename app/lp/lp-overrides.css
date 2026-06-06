@@ -123,8 +123,17 @@ body:has(.lp-root) {
   background: #ececec !important;
 }
 
-.get-started-modal__submit.btn {
+.get-started-modal__submit {
   display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.625rem !important;
   width: 100% !important;
+  height: 52px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
   text-transform: uppercase !important;
 }

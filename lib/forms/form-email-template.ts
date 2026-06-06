@@ -34,6 +34,7 @@ function escapeHtml(value: string): string {
 function getFormLabel(formType: FormSubmissionPayload["formType"]): string {
   if (formType === "package") return "Package Selection";
   if (formType === "get-started") return "Get Started";
+  if (formType === "auto-popup") return "Auto Popup";
   return "Contact Form";
 }
 
@@ -132,7 +133,9 @@ export function buildFormEmailSubject(payload: FormSubmissionPayload): string {
 
   return payload.formType === "get-started"
     ? `Get Started: ${name}`
-    : `Contact form: ${name}`;
+    : payload.formType === "auto-popup"
+      ? `Auto popup: ${name}`
+      : `Contact form: ${name}`;
 }
 
 export function buildFormEmailText(payload: FormSubmissionPayload): string {

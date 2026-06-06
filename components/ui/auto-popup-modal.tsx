@@ -12,28 +12,19 @@ import {
 import { createPortal } from "react-dom";
 import { FaArrowRight } from "react-icons/fa6";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
-import { LEAD_FORM } from "@/lib/data/lead-form";
+import { AUTO_POPUP_FORM } from "@/lib/data/auto-popup-form";
 import {
   getFormString,
   submitForm,
 } from "@/lib/forms/submit-form-client";
-import {
-  selectedPackageToFields,
-  type SelectedPackage,
-} from "@/lib/forms/selected-package";
 import gsap from "gsap";
 
-type GetStartedModalProps = {
+type AutoPopupModalProps = {
   isOpen: boolean;
-  selectedPackage: SelectedPackage | null;
   onClose: () => void;
 };
 
-export function GetStartedModal({
-  isOpen,
-  selectedPackage,
-  onClose,
-}: GetStartedModalProps) {
+export function AutoPopupModal({ isOpen, onClose }: AutoPopupModalProps) {
   const router = useRouter();
   const reducedMotion = usePrefersReducedMotion();
   const titleId = useId();
@@ -121,23 +112,24 @@ export function GetStartedModal({
     setIsSubmitting(true);
 
     const formData = new FormData(event.currentTarget);
+    const message = getFormString(
+      formData,
+      AUTO_POPUP_FORM.fields.message.name
+    );
 
     try {
-      const baseFields = {
-        fullName: getFormString(formData, LEAD_FORM.fields.name.name),
-        email: getFormString(formData, LEAD_FORM.fields.email.name),
-        phone: getFormString(formData, LEAD_FORM.fields.phone.name),
-      };
-
       await submitForm({
-        formType: selectedPackage ? "package" : "get-started",
-        fields: selectedPackage
-          ? { ...baseFields, ...selectedPackageToFields(selectedPackage) }
-          : baseFields,
+        formType: "auto-popup",
+        fields: {
+          fullName: getFormString(formData, AUTO_POPUP_FORM.fields.name.name),
+          phone: getFormString(formData, AUTO_POPUP_FORM.fields.phone.name),
+          email: getFormString(formData, AUTO_POPUP_FORM.fields.email.name),
+          ...(message ? { message } : {}),
+        },
       });
 
       onClose();
-      router.push(LEAD_FORM.thankYouPath);
+      router.push(AUTO_POPUP_FORM.thankYouPath);
     } catch (error) {
       setSubmitError(
         error instanceof Error
@@ -191,8 +183,8 @@ export function GetStartedModal({
         <div className="get-started-modal__inner">
           <div className="get-started-modal__media">
             <Image
-              src={LEAD_FORM.image.src}
-              alt={LEAD_FORM.image.alt}
+              src={AUTO_POPUP_FORM.image.src}
+              alt={AUTO_POPUP_FORM.image.alt}
               width={396}
               height={600}
               className="get-started-modal__img"
@@ -202,57 +194,33 @@ export function GetStartedModal({
 
           <div className="get-started-modal__form-wrap">
             <div className="get-started-modal__heading" id={titleId}>
-              <h3 className="get-started-modal__title m-0">{LEAD_FORM.title}</h3>
+              <h3 className="get-started-modal__title m-0">
+                {AUTO_POPUP_FORM.title}
+              </h3>
               <p className="get-started-modal__title-highlight m-0">
-                {LEAD_FORM.titleHighlight}
+                {AUTO_POPUP_FORM.titleHighlight}
               </p>
-              {selectedPackage ? (
-                <div className="get-started-modal__package m-0">
-                  <span className="get-started-modal__package-label">
-                    Selected package
-                  </span>
-                  <strong className="get-started-modal__package-name">
-                    {selectedPackage.name}
-                  </strong>
-                  <span className="get-started-modal__package-price">
-                    {selectedPackage.price}
-                    {selectedPackage.category
-                      ? ` · ${selectedPackage.category}`
-                      : ""}
-                  </span>
-                  {selectedPackage.details ? (
-                    <span className="get-started-modal__package-details">
-                      {selectedPackage.details}
-                    </span>
-                  ) : null}
-                </div>
-              ) : null}
             </div>
 
-            <form className="get-started-modal__form" onSubmit={handleSubmit} noValidate>
+            <form
+              className="get-started-modal__form"
+              onSubmit={handleSubmit}
+              noValidate
+            >
               <div className="get-started-modal__field">
                 <input
                   type="text"
-                  name={LEAD_FORM.fields.name.name}
-                  placeholder={LEAD_FORM.fields.name.placeholder}
+                  name={AUTO_POPUP_FORM.fields.name.name}
+                  placeholder={AUTO_POPUP_FORM.fields.name.placeholder}
                   autoComplete="name"
                   required
                 />
               </div>
               <div className="get-started-modal__field">
                 <input
-                  type="email"
-                  name={LEAD_FORM.fields.email.name}
-                  placeholder={LEAD_FORM.fields.email.placeholder}
-                  autoComplete="email"
-                  required
-                />
-              </div>
-              <div className="get-started-modal__field">
-                <input
                   type="tel"
-                  name={LEAD_FORM.fields.phone.name}
-                  placeholder={LEAD_FORM.fields.phone.placeholder}
+                  name={AUTO_POPUP_FORM.fields.phone.name}
+                  placeholder={AUTO_POPUP_FORM.fields.phone.placeholder}
                   autoComplete="tel"
                   inputMode="tel"
                   minLength={10}
@@ -280,9 +248,24 @@ export function GetStartedModal({
                   onPaste={(event) => {
                     event.preventDefault();
                     const pasted = event.clipboardData.getData("text");
-                    const sanitized = pasted.replace(/\D/g, "");
-                    event.currentTarget.value = sanitized;
+                    event.currentTarget.value = pasted.replace(/\D/g, "");
                   }}
+                />
+              </div>
+              <div className="get-started-modal__field">
+                <input
+                  type="email"
+                  name={AUTO_POPUP_FORM.fields.email.name}
+                  placeholder={AUTO_POPUP_FORM.fields.email.placeholder}
+                  autoComplete="email"
+                  required
+                />
+              </div>
+              <div className="get-started-modal__field">
+                <textarea
+                  name={AUTO_POPUP_FORM.fields.message.name}
+                  placeholder={AUTO_POPUP_FORM.fields.message.placeholder}
+                  rows={3}
                 />
               </div>
 
@@ -297,7 +280,7 @@ export function GetStartedModal({
                 className="get-started-modal__submit"
                 disabled={isSubmitting}
               >
-                {LEAD_FORM.submitLabel}
+                {AUTO_POPUP_FORM.submitLabel}
                 <FaArrowRight className="h-4 w-4 shrink-0" aria-hidden />
               </button>
             </form>
