@@ -33,6 +33,7 @@ export function StreamlinedSolutionsSection() {
 
     const total = STREAMLINED_SLIDES.length;
     const ratio = (swiper.realIndex + 1) / total;
+    fill.style.transition = "none";
     fill.style.transform = `scaleX(${Math.min(1, ratio)})`;
   };
 
