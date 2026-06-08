@@ -26,7 +26,7 @@ export function GraphicDesignIntroSection() {
         return;
       }
 
-      gsap.set(targets, { autoAlpha: 0, y: 32 });
+      gsap.set(targets, { autoAlpha: 0, y: 48 });
 
       ScrollTrigger.create({
         trigger: section,
@@ -38,13 +38,15 @@ export function GraphicDesignIntroSection() {
           gsap.to(targets, {
             autoAlpha: 1,
             y: 0,
-            duration: 0.75,
+            duration: 1,
             stagger: 0.14,
             ease: "power2.out",
           });
         },
       });
     }, section);
+
+    requestAnimationFrame(() => ScrollTrigger.refresh());
 
     return () => ctx.revert();
   }, [reducedMotion]);
@@ -55,9 +57,9 @@ export function GraphicDesignIntroSection() {
       className="graphic-design-intro-section"
       aria-label="Connect with us today"
     >
-      <Container>
+      <Container className="graphic-design-intro-section__container">
         <div className="graphic-design-intro-section__grid">
-          <h2 data-gd-intro-reveal className="text-gd-intro-title m-0 font-normal">
+          <h2 data-gd-intro-reveal className="text-gd-intro-title font-normal">
             {GRAPHIC_DESIGN_INTRO.titleLines.map((line) => (
               <span key={line} className="block">
                 {line}
@@ -66,8 +68,8 @@ export function GraphicDesignIntroSection() {
           </h2>
 
           <div data-gd-intro-reveal className="graphic-design-intro-section__copy">
-            <p className="text-gd-intro-subtitle m-0">{GRAPHIC_DESIGN_INTRO.subtitle}</p>
-            <p className="text-gd-intro-desc m-0">{GRAPHIC_DESIGN_INTRO.description}</p>
+            <h3 className="text-gd-intro-subtitle">{GRAPHIC_DESIGN_INTRO.subtitle}</h3>
+            <p className="text-gd-intro-desc">{GRAPHIC_DESIGN_INTRO.description}</p>
           </div>
         </div>
       </Container>

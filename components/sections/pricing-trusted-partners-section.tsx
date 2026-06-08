@@ -1,9 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLayoutEffect, useRef } from "react";
 import { Container } from "@/components/layout/container";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import { PRICING_TRUSTED_PARTNERS } from "@/lib/data/pricing";
@@ -13,7 +12,6 @@ import { registerGsapPlugins } from "@/lib/gsap/register";
 export function PricingTrustedPartnersSection() {
   const reducedMotion = usePrefersReducedMotion();
   const sectionRef = useRef<HTMLElement>(null);
-  const hasRevealedBadgesRef = useRef(false);
 
   useLayoutEffect(() => {
     registerGsapPlugins();
@@ -21,11 +19,13 @@ export function PricingTrustedPartnersSection() {
     if (!section) return;
 
     const heading = section.querySelector<HTMLElement>("[data-scroll-heading]");
+    const grid = section.querySelector<HTMLElement>("[data-pricing-partners-grid]");
     const badges = gsap.utils.toArray<HTMLElement>(
       section.querySelectorAll("[data-pricing-partner-badge]")
     );
 
     let headingCleanup: (() => void) | undefined;
+    let badgesTimeline: gsap.core.Timeline | undefined;
 
     const ctx = gsap.context(() => {
       if (heading) {
@@ -34,39 +34,48 @@ export function PricingTrustedPartnersSection() {
             trigger: section,
             start: "top 88%",
             end: "top 38%",
-            scrub: 0.9,
+            scrub: true,
             staggerEach: 0.035,
           }) ?? undefined;
       }
 
+      if (!grid || badges.length === 0) return;
+
       if (reducedMotion) {
-        gsap.set(badges, { autoAlpha: 1, y: 0, scale: 1 });
+        gsap.set(badges, { autoAlpha: 1, yPercent: 0, clearProps: "transform" });
         return;
       }
 
-      gsap.set(badges, { autoAlpha: 0, y: 24, scale: 0.96 });
+      gsap.set(badges, { autoAlpha: 0, yPercent: 100, force3D: true });
 
-      ScrollTrigger.create({
-        trigger: section,
-        start: "top 78%",
-        once: true,
-        onEnter: () => {
-          if (hasRevealedBadgesRef.current || !badges.length) return;
-          hasRevealedBadgesRef.current = true;
-          gsap.to(badges, {
-            autoAlpha: 1,
-            y: 0,
-            scale: 1,
-            duration: 0.6,
-            stagger: 0.06,
-            ease: "power2.out",
-          });
+      badgesTimeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: "top 85%",
+          end: "bottom 75%",
+          scrub: true,
+          invalidateOnRefresh: true,
         },
+      });
+
+      badges.forEach((badge, index) => {
+        badgesTimeline!.to(
+          badge,
+          {
+            autoAlpha: 1,
+            yPercent: 0,
+            duration: 0.4,
+            ease: "none",
+          },
+          index * 0.3
+        );
       });
     }, section);
 
     return () => {
       headingCleanup?.();
+      badgesTimeline?.scrollTrigger?.kill();
+      badgesTimeline?.kill();
       ctx.revert();
     };
   }, [reducedMotion]);
@@ -89,17 +98,22 @@ export function PricingTrustedPartnersSection() {
             </span>
           ))}
         </h2>
+      </Container>
 
-        <ul className="pricing-partners-grid m-0 list-none p-0 mx-auto w-full">
+      <Container className="pricing-partners-section__grid-container">
+        <ul
+          data-pricing-partners-grid
+          className="pricing-partners-grid m-0 list-none p-0 w-[85%] m-auto"
+        >
           {PRICING_TRUSTED_PARTNERS.badges.map((badge) => (
-            <li key={badge.src} data-pricing-partner-badge>
+            <li key={badge.src} className="w-full" data-pricing-partner-badge>
               <Image
                 src={badge.src}
                 alt={badge.alt}
-                width={160}
-                height={120}
-                className="pricing-partners-grid__img h-auto"
-                sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 20vw"
+                width={badge.width}
+                height={badge.height}
+                className="pricing-partners-grid__img"
+                quality={100}
               />
             </li>
           ))}

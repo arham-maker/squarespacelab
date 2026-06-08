@@ -10,6 +10,59 @@ function getMotionScale(): number {
     : 1;
 }
 
+/** On-load hero intro — reference AOS fade-up on banner text block */
+export function initHomeHeroIntro(
+  bannerMedia: HTMLElement,
+  hero: HTMLElement,
+  reducedMotion: boolean
+): void {
+  const fgContent = hero.querySelector<HTMLElement>("[data-hero-fg]");
+
+  if (fgContent) {
+    if (reducedMotion) {
+      gsap.set(fgContent, { autoAlpha: 1, y: 0, clearProps: "transform" });
+    } else {
+      gsap.fromTo(
+        fgContent,
+        { autoAlpha: 0, y: 100, force3D: true },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 1.15,
+          ease: "power3.out",
+          delay: 0.2,
+          force3D: true,
+        }
+      );
+    }
+  }
+
+  if (reducedMotion) {
+    gsap.set(bannerMedia, { autoAlpha: 1, clearProps: "transform" });
+    return;
+  }
+
+  gsap.fromTo(
+    bannerMedia,
+    {
+      autoAlpha: 0,
+      y: 40,
+      scale: 1.12,
+      transformOrigin: "center center",
+      force3D: true,
+    },
+    {
+      autoAlpha: 1,
+      y: 0,
+      scale: 1.06,
+      duration: 1.35,
+      ease: "power3.out",
+      delay: 0.05,
+      force3D: true,
+    }
+  );
+}
+
 /** Parallax on the fixed home banner image while the page scrolls */
 export function initHomeBannerParallax(
   media: HTMLElement,
@@ -24,12 +77,6 @@ export function initHomeBannerParallax(
   const scale = getMotionScale();
   const yPercent = 22 * scale;
   const endScale = 1 + 0.14 * scale;
-
-  gsap.set(media, {
-    scale: 1.08,
-    transformOrigin: "center center",
-    force3D: true,
-  });
 
   gsap.to(media, {
     yPercent,
@@ -56,12 +103,13 @@ export function initHomePageParallax(
 ): void {
   const { bannerMedia, main, reducedMotion } = options;
 
-  initHomeBannerParallax(bannerMedia, main, reducedMotion);
-
   const hero = root.querySelector<HTMLElement>("[data-hero-section]");
   if (hero) {
+    initHomeHeroIntro(bannerMedia, hero, reducedMotion);
     createHeroParallax(hero, reducedMotion);
   }
+
+  initHomeBannerParallax(bannerMedia, main, reducedMotion);
 
   initParallaxElements(main, reducedMotion);
 }

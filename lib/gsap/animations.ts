@@ -254,7 +254,7 @@ export function createHeroParallax(
     });
   });
 
-  if (fgContent) {
+  if (fgContent && !section.hasAttribute("data-hero-section")) {
     parallaxY(fgContent, {
       speed: -0.06,
       trigger: section,

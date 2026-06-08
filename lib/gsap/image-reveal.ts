@@ -1,7 +1,7 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "./register";
 
-/** Clip-style image reveal (reference site `.reveal` + `img`). */
+/** Clip-style image reveal (reference site `.reveal` + `img`), scrubbed to scroll. */
 export function initImageReveal(
   scope: ParentNode,
   reducedMotion: boolean
@@ -27,33 +27,28 @@ export function initImageReveal(
     const image = container.querySelector<HTMLElement>("img");
     if (!image) return;
 
-    gsap.set(container, { autoAlpha: 0, overflow: "hidden" });
+    gsap.set(container, { overflow: "hidden" });
 
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: container,
         start: "top 88%",
-        toggleActions: "play none none none",
-        once: true,
+        end: "top 48%",
+        scrub: true,
+        invalidateOnRefresh: true,
       },
     });
 
-    tl.set(container, { autoAlpha: 1 })
-      .from(container, {
-        xPercent: -100,
-        duration: 1.5,
-        ease: "power2.out",
-      })
-      .from(
-        image,
-        {
-          xPercent: 100,
-          scale: 1.3,
-          duration: 1.5,
-          ease: "power2.out",
-        },
-        "<"
-      );
+    tl.fromTo(
+      container,
+      { autoAlpha: 0, xPercent: -100 },
+      { autoAlpha: 1, xPercent: 0, ease: "none", duration: 1 }
+    ).fromTo(
+      image,
+      { xPercent: 100, scale: 1.3 },
+      { xPercent: 0, scale: 1, ease: "none", duration: 1 },
+      "<"
+    );
 
     timelines.push(tl);
   });

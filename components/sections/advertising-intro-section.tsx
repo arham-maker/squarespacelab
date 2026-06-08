@@ -80,7 +80,7 @@ export function AdvertisingIntroSection() {
       <Container>
         <h2
           data-scroll-heading
-          className="text-ad-intro-heading m-0 font-normal"
+          className="text-ad-intro-heading font-normal"
         >
           {ADVERTISING_INTRO.titleLines.map((line) => (
             <span key={line} className="block" data-scroll-heading-line>
@@ -89,11 +89,11 @@ export function AdvertisingIntroSection() {
           ))}
         </h2>
 
-        <p data-ad-intro-reveal className="text-ad-intro-desc mb-10 m-0">
+        <p data-ad-intro-reveal className="text-ad-intro-desc">
           {ADVERTISING_INTRO.description}
         </p>
 
-        <ul data-ad-intro-reveal className="advertising-intro-section__list m-0 list-none p-0">
+        <ul data-ad-intro-reveal className="advertising-intro-section__list m-0 p-0">
           {ADVERTISING_INTRO.bullets.map((item) => (
             <li key={item} className="text-ad-intro-list-item">
               {item}

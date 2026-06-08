@@ -27,7 +27,7 @@ export function GraphicDesignServicesSection() {
         return;
       }
 
-      gsap.set(boxes, { autoAlpha: 0, y: 40 });
+      gsap.set(boxes, { autoAlpha: 0, y: 48 });
 
       ScrollTrigger.create({
         trigger: section,
@@ -39,13 +39,15 @@ export function GraphicDesignServicesSection() {
           gsap.to(boxes, {
             autoAlpha: 1,
             y: 0,
-            duration: 0.8,
-            stagger: 0.12,
+            duration: 1,
+            stagger: 0.14,
             ease: "power2.out",
           });
         },
       });
     }, section);
+
+    requestAnimationFrame(() => ScrollTrigger.refresh());
 
     return () => ctx.revert();
   }, [reducedMotion]);
@@ -70,7 +72,7 @@ export function GraphicDesignServicesSection() {
                 data-gd-service-box
                 className={`graphic-design-service-box ${variantClass}`}
               >
-                <h3 className="text-gd-service-title m-0">
+                <h4 className="text-gd-service-title">
                   {category.titleLines ? (
                     category.titleLines.map((line) => (
                       <span key={line} className="block">
@@ -80,7 +82,7 @@ export function GraphicDesignServicesSection() {
                   ) : (
                     category.title
                   )}
-                </h3>
+                </h4>
                 <ul
                   className={`graphic-design-service-box__list m-0 list-none p-0 ${
                     category.twoColumns ? "graphic-design-service-box__list--cols" : ""

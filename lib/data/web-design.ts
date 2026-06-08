@@ -15,7 +15,7 @@ export const WEB_DESIGN_INTRO = {
 
 export const WEB_DESIGN_SERVICES = {
   title: "Professional Websites",
-  subtitle: "What Is Included in Our Squarespace Services?",
+  subtitleLines: ["What Is Included in Our Squarespace", "Services?"] as const,
   description:
     "Our Squarespace services are designed to meet all your web design needs in one place. We offer custom website design, SEO-friendly content integration, mobile optimization, and seamless navigation. Every site includes responsive design, intuitive UX, and a secure setup. Plus, we provide ongoing support to keep your site updated and optimized. With our services, you'll receive a site that's ready to make an impact, whether you're launching for the first time or elevating an existing brand.",
   bullets: [

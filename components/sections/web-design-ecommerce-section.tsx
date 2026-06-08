@@ -9,6 +9,7 @@ import { Container } from "@/components/layout/container";
 import { CtaButton } from "@/components/ui/cta-button";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import { WEB_DESIGN_ECOMMERCE } from "@/lib/data/web-design";
+import { initImageReveal } from "@/lib/gsap/image-reveal";
 import { registerGsapPlugins } from "@/lib/gsap/register";
 
 export function WebDesignEcommerceSection() {
@@ -22,8 +23,11 @@ export function WebDesignEcommerceSection() {
     if (!section) return;
 
     const targets = section.querySelectorAll("[data-wd-ecommerce-reveal]");
+    let imageCleanup: (() => void) | undefined;
 
     const ctx = gsap.context(() => {
+      imageCleanup = initImageReveal(section, reducedMotion);
+
       if (reducedMotion) {
         gsap.set(targets, { autoAlpha: 1, y: 0 });
         return;
@@ -49,7 +53,10 @@ export function WebDesignEcommerceSection() {
       });
     }, section);
 
-    return () => ctx.revert();
+    return () => {
+      imageCleanup?.();
+      ctx.revert();
+    };
   }, [reducedMotion]);
 
   return (
@@ -81,15 +88,15 @@ export function WebDesignEcommerceSection() {
           </div>
 
           <figure
-            data-wd-ecommerce-reveal
-            className="web-design-ecommerce-section__figure m-0"
+            data-image-reveal
+            className="web-design-ecommerce-section__figure image-reveal m-0"
           >
             <Image
               src={WEB_DESIGN_ECOMMERCE.image.src}
               alt={WEB_DESIGN_ECOMMERCE.image.alt}
               width={720}
               height={540}
-              className="web-design-ecommerce-section__img"
+              className="web-design-ecommerce-section__img image-reveal__img"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </figure>

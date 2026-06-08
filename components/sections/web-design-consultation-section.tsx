@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useLayoutEffect, useRef } from "react";
-import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Container } from "@/components/layout/container";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
@@ -11,19 +10,18 @@ import {
   initSectionHeadingScroll,
   SECTION_HEADING_FADED,
 } from "@/lib/gsap/section-heading-scroll";
+import { initImageReveal } from "@/lib/gsap/image-reveal";
 import { registerGsapPlugins } from "@/lib/gsap/register";
 
 export function WebDesignConsultationSection() {
   const reducedMotion = usePrefersReducedMotion();
   const sectionRef = useRef<HTMLElement>(null);
-  const hasRevealedRef = useRef(false);
 
   useLayoutEffect(() => {
     registerGsapPlugins();
     const section = sectionRef.current;
     if (!section) return;
 
-    const image = section.querySelector("[data-wd-consultation-reveal]");
     const heading = section.querySelector<HTMLElement>("[data-scroll-heading]");
 
     const headingCleanup = heading
@@ -38,36 +36,13 @@ export function WebDesignConsultationSection() {
         })
       : undefined;
 
-    const ctx = gsap.context(() => {
-      if (reducedMotion) {
-        gsap.set(image, { autoAlpha: 1, y: 0 });
-        return;
-      }
-
-      gsap.set(image, { autoAlpha: 0, y: 32 });
-
-      ScrollTrigger.create({
-        trigger: section,
-        start: "top 82%",
-        once: true,
-        onEnter: () => {
-          if (hasRevealedRef.current) return;
-          hasRevealedRef.current = true;
-          gsap.to(image, {
-            autoAlpha: 1,
-            y: 0,
-            duration: 0.75,
-            ease: "power2.out",
-          });
-        },
-      });
-    }, section);
+    const imageCleanup = initImageReveal(section, reducedMotion);
 
     requestAnimationFrame(() => ScrollTrigger.refresh());
 
     return () => {
       headingCleanup?.();
-      ctx.revert();
+      imageCleanup();
     };
   }, [reducedMotion]);
 
@@ -96,15 +71,15 @@ export function WebDesignConsultationSection() {
           </div>
 
           <figure
-            data-wd-consultation-reveal
-            className="web-design-consultation-section__figure m-0"
+            data-image-reveal
+            className="web-design-consultation-section__figure image-reveal m-0"
           >
             <Image
               src={WEB_DESIGN_CONSULTATION.image.src}
               alt={WEB_DESIGN_CONSULTATION.image.alt}
               width={720}
               height={540}
-              className="web-design-consultation-section__img"
+              className="web-design-consultation-section__img image-reveal__img"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </figure>

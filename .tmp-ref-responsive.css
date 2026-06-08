@@ -1,0 +1,262 @@
+﻿@media (min-width: 1500px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+@media (min-width: 1800px) {
+  .container {
+    max-width: 1440px;
+  }
+}
+@media only screen and (max-width: 1920px) {
+}
+
+@media only screen and (max-width: 1600px) {
+}
+
+@media only screen and (max-width: 1440px) {
+  html{
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 1366px) {
+  html{
+    font-size: 16px;
+  }
+  h2 {
+    font-size: 11.125rem;
+  }
+}
+
+@media only screen and (max-width: 1199px) {
+  .logo img {
+    width: 18rem;
+}
+
+.menuWrap .menu {
+    gap: 1.6rem;
+}
+.bannertext p {
+  width: 34%;
+}
+h4 {
+  font-size: 3.625rem;
+}
+.listImages ul li {
+  font-size: 2.125rem;
+  padding: 2px 0;
+}
+h2 {
+  font-size: 9.125rem;
+}
+.growBox ul li p {
+  width: 100%;
+}
+.modernSec h5 br {
+  display: none;
+}
+
+.modernSec h5 {
+  font-size: 2.5rem;
+}
+.signUp h6 {
+  font-size: 6.5rem;
+}
+.copyRight ul {
+  gap: 3rem;
+}
+.footerLinks {
+  gap: 2rem;
+}
+}
+
+@media only screen and (max-width: 991px) {
+  .menuWrap .menu a{ padding: 8px 10px; margin-bottom: 6px; }
+  .main-header{padding: 2rem 0 1rem;}
+  .menuWrap .menu a{ padding: 16px 10px; }
+	.main-header{ position: relative;  }
+	.menu-Bar{ display: block; top: 50%; bottom: initial; transform: translateY(-50%); }
+	.menuWrap.open{ display:flex; left:0px }
+	.menuWrap{position:fixed;left:-210%;right:0;top:0;/* bottom:0; */margin:auto;background:var(--theme-color);height:100vh;display:flex;align-items:center;justify-content:center;flex-flow:column;transition:all 0.4s ease;z-index:3;width:100vw}
+	ul.menu li{ display:block }
+	ul.menu li a{ margin-bottom:10px;padding:0;display:block;text-align:center;margin-bottom:15px;padding-right:0px;margin-right:0px;color:#fff;font-size:15px;text-transform:capitalize}
+
+	.menuWrap .menu{ display: block; }
+	.menu li:hover a, .menu li.active a{ background: var(--black); }
+	.menu-Bar span{background: #000000;}
+
+	.menu li:hover > a, .menu li.active > a , .menu > li.menu-item-has-children > .sub-menu > li.current-menu-item > a{   background: var(--black) !important; }
+	.menu > li.menu-item-has-children > .sub-menu > li{ background: transparent !important; }
+  .bannertext h1 {
+    font-size: 6.25rem;
+}
+.bannertext p {
+  width: 44%;
+}
+.websiteSec h3 {
+  font-size: 1.25rem;
+}
+
+.websiteSec p {
+  width: 100%;
+  font-size: 12px;
+}
+h4 {
+  font-size: 2.625rem;
+}
+.listImages ul li {
+  font-size: 1.35rem;
+}
+
+.listImages ul li i {
+  font-size: 1.175rem;
+}
+h2 {
+  font-size: 6.125rem;
+}
+h2 {
+  font-size: 6.125rem;
+}
+.copyRight ul {
+  gap: 1rem;
+}
+footer h3 {
+  font-size: 1.1rem;
+}
+footer h3::before {
+  height: 2px;
+  width: 40px;}
+.headerBtn{     flex-flow: column; }
+.headerBtn .loginBtn{ color: var(--white); }
+
+.menu > li.dropitem > .dropdownHover{ position: relative; display: none; }
+.menu > li.dropitem > .dropdownHover > li{ width: 100%; transform: initial; opacity: 1; }
+.menuWrap.open{ overflow-y: scroll; }
+.menu > li.dropitem > .dropdownHover{ height: 300px; overflow-y: scroll; }
+.menu > li.dropitem:hover > .dropdownHover > li.dropitem{ background: transparent; }
+.menu.active > li.dropitem a{ background: transparent; padding: 10px 10px; }
+.menu.active > li.dropitem:hover a,
+.menu.active > li.dropitem.active a{ color: var(--white); }
+
+
+}
+
+@media only screen and (max-width: 767px) {
+  .bannertext h1 {
+    font-size: 5.25rem;
+}
+.main-Banner {
+  height: initial;
+  background-position: 20% !important;
+  padding-top: 10rem;
+}
+
+.bannertext {
+  margin: 0;
+}
+
+.portContnt h3 {
+  font-size: 1.25rem;
+}
+.webContnt {
+  position: unset;
+  margin: 2rem 0;
+}
+h2 {
+  font-size: 4.125rem;
+  margin-bottom: 1rem;
+}
+h4 {
+  font-size: 2.25rem;
+}
+.themeTwo {
+  font-size: 11px;
+}
+.growSec .row + .row {
+  margin: 2rem 0;
+}
+.signUp h6{ font-size: 3rem; }
+footer h3{ margin-top: 2rem; }
+.modernBox h4{ margin-bottom: 2rem; }
+.webContnt h3{ font-size: 2rem; }
+
+.growSec .col-md-5{ order: 2; }
+.growSec .col-md-6{ order: 1; }
+.container-fluid{ padding: 0 1rem; }
+.growSec{ text-align: center; }
+.growSec h3{ margin-top: 2rem; }
+.growBox ul{ flex-flow: column; }
+.growBox .inspoHead{ transform:initial !important; }
+
+.portfolioSlider .items, .portfolioSliders .items{ width: 100%; }
+
+.bannertext h1{ font-size: 3.65rem; }
+.parterLogo{ gap: 1rem; }
+
+.mmpopup{ flex-flow: wrap; }
+.mmpopup .imgpop{ width: 100%; }
+.mmpopup .imgpop img{ display: none; }
+.mmpopup .formPop{ width: 100%; padding: 1rem 1rem; }
+
+.innerBanner h6{ font-size: 1.5rem; margin-bottom: 1.5rem; }
+.innerBanner .bannertext h1{ margin-bottom: 1rem; }
+
+.bannertext p{ width: 100%; }
+.serviceOne h2, .heading{ font-size: 3rem; }
+.listStyle li{ font-size: 1.3rem; }
+.losoDesignSec figure{ margin-bottom: 1.5rem; }
+ul.tab-list{ flex-flow: column; }
+.templateSec { text-align: center; }
+section{ padding: 3rem 0; }
+p:last-child{ margin-bottom: 0; }
+.portfolioSlider .items img, .portfolioSliders .items img{ height: 380px; }
+.portfolioSliders .swiper-wrapper{ justify-content: initial !important; }
+.innerDark{ text-align: center; }
+.innerDark figure{ margin-top: 1.5rem; }
+.contentWeb h2{  font-size: 3rem; }
+.blackSec h2{ font-size: 3.5rem; }
+.blackSec h4,
+.blackSec h4{ font-size: 2rem; }
+
+.packageBox h3{ font-size: 2.5rem; }
+.packageBox h3 sub{ font-size: 1rem; }
+.serviceOne h3{ font-size: 2.2rem; }
+.templateSec h2{ font-size: 1.5rem; margin-bottom: 1rem; }
+.templateSec .listImages{ text-align: left; }
+
+.packageBody ul li{ font-size: 1rem; }
+.contentWeb h2{ font-size: 2.2rem; }
+
+.templateSec h6{ font-size: 1.6rem; }
+.graphicBox{ padding: 3rem 3rem; }
+.darkBlue p{ font-size: 1.2rem; }
+.contentWeb h4{ font-size: 1.5rem;  }
+.textSec h6{ font-size: 2rem; }
+
+.easySteps{ text-align: center; }
+.easySteps p{ margin-bottom: 1.5rem; }
+.connectFrom{ padding: 20px; }
+.connectFrom h3{ font-size: 2.2rem; }
+.contformDets .items{ margin-bottom: 1rem; height: initial; }
+
+.menu > li.dropitem > .dropdownHover{  height: 195px; }
+.templateSec p{ margin-bottom: 1.5rem; }
+.headerBtn{ margin-top: 1rem; }
+.bannertext h1{ font-size: 3rem; }
+.contactSec{ padding: 3rem 0; }
+
+.mmpopup .formPop h3, .mmpopup .formPop h4{ font-size: 1.8rem; }
+
+h2{ font-size: 3.125rem; }
+.blackSec h2{ font-size: 2.5rem; }
+.container-fluid{ padding: 0 1rem !important; }
+
+}
+
+@media only screen and (max-width: 575px) {
+
+  .serviceOne h2, .heading{   font-size: 2.2rem;  }
+
+}
+

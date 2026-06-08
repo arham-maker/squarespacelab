@@ -1,7 +1,7 @@
 export const SITE = {
   name: "SQUARESPACEDEV",
-  phone: "+1 (833) 292-3252",
-  phoneHref: "tel:+18332923252",
+  phone: "+1 (682) 267-0492",
+  phoneHref: "tel:+16822670492",
   email: "info@squarespacedev.com",
   emailHref: "mailto:info@squarespacedev.com",
   logoBlack: "/Square Space Dev Logo V3 Black.png",

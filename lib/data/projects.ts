@@ -21,7 +21,7 @@ export const PROJECT_ITEMS: ProjectItem[] = [
   },
   {
     id: "constructo",
-    title: "Constructo",
+    title: "Construction",
     category: "Constructions",
     image: "/portfolio/constructo.webp",
   },

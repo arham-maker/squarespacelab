@@ -7,7 +7,7 @@ export type ProjectsMarqueeTargets = {
 };
 
 /** Constant autoplay drift (px/s). */
-const AUTO_SPEED = 9;
+const AUTO_SPEED = 14;
 
 /** Scroll velocity → track motion scale (keep low for gentle response). */
 const SCROLL_VELOCITY_FACTOR = 0.0928;

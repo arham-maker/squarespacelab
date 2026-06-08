@@ -1,8 +1,13 @@
 "use client";
 
+import "swiper/css";
+import "swiper/css/pagination";
+
 import Image from "next/image";
 import { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import { Autoplay, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { Container } from "@/components/layout/container";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import { STREAMLINED, STREAMLINED_SLIDES, STREAMLINED_STEPS } from "@/lib/data/streamlined";
@@ -12,7 +17,6 @@ import {
   setFaqItemClosed,
 } from "@/lib/gsap/faq-accordion";
 import { initSectionHeadingScroll, SECTION_HEADING_FADED_DARK } from "@/lib/gsap/section-heading-scroll";
-import { initStreamlinedSlider } from "@/lib/gsap/streamlined-slider";
 import { registerGsapPlugins } from "@/lib/gsap/register";
 
 export function StreamlinedSolutionsSection() {
@@ -20,9 +24,6 @@ export function StreamlinedSolutionsSection() {
   const [openId, setOpenId] = useState<string | null>(null);
   const [closingId, setClosingId] = useState<string | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
-  const viewportRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const progressRef = useRef<HTMLSpanElement>(null);
   const accordionTimelineRef = useRef<gsap.core.Timeline | null>(null);
 
   const getAccordionParts = (id: string) => {
@@ -87,10 +88,7 @@ export function StreamlinedSolutionsSection() {
     registerGsapPlugins();
 
     const section = sectionRef.current;
-    const viewport = viewportRef.current;
-    const track = trackRef.current;
-    const progress = progressRef.current;
-    if (!section || !viewport || !track || !progress) return;
+    if (!section) return;
 
     STREAMLINED_STEPS.forEach((step) => {
       const parts = getAccordionParts(step.id);
@@ -114,14 +112,8 @@ export function StreamlinedSolutionsSection() {
         }) ?? undefined;
     }
 
-    const sliderCleanup = initStreamlinedSlider(
-      { viewport, track, progress },
-      reducedMotion
-    );
-
     return () => {
       headingCleanup?.();
-      sliderCleanup?.();
     };
   }, [reducedMotion]);
 
@@ -142,33 +134,54 @@ export function StreamlinedSolutionsSection() {
         </h2>
 
         <p className="text-streamlined-subtitle mb-4">{STREAMLINED.subtitle}</p>
+      </Container>
 
-        <div ref={viewportRef} className="streamlined-slider mt-2 overflow-hidden">
-          <div ref={trackRef} className="streamlined-slider__track">
-            {[0, 1].map((copy) => (
-              <div key={copy} data-streamlined-set className="streamlined-slider__set" aria-hidden={copy === 1}>
-                {STREAMLINED_SLIDES.map((slide) => (
-                  <article key={`${slide.id}-${copy}`} className="streamlined-card">
-                    <Image
-                      src={slide.image}
-                      alt={`${slide.title} business template`}
-                      width={473}
-                      height={516}
-                      className="streamlined-card__image"
-                      sizes="(max-width: 1024px) 70vw, 33vw"
-                    />
-                    <h3 className="streamlined-card__title">{slide.title}</h3>
-                  </article>
-                ))}
-              </div>
-            ))}
-          </div>
-        </div>
+      <div className="streamlined-slider-outer">
+        <Swiper
+          className="streamlined-slider mt-2"
+          modules={[Autoplay, Pagination]}
+          spaceBetween={0}
+          slidesPerView={1}
+          speed={1000}
+          loop={!reducedMotion}
+          watchOverflow
+          autoplay={
+            reducedMotion
+              ? false
+              : {
+                  delay: 2500,
+                  disableOnInteraction: false,
+                  pauseOnMouseEnter: false,
+                }
+          }
+          pagination={{
+            type: "progressbar",
+          }}
+          breakpoints={{
+            768: {
+              slidesPerView: "auto",
+            },
+          }}
+        >
+          {STREAMLINED_SLIDES.map((slide) => (
+            <SwiperSlide key={slide.id} className="streamlined-slider__slide">
+              <article className="streamlined-card">
+                <Image
+                  src={slide.image}
+                  alt={`${slide.title} business template`}
+                  width={593}
+                  height={445}
+                  className="streamlined-card__image"
+                  sizes="(max-width: 767px) 100vw, 593px"
+                />
+                <h3 className="streamlined-card__title">{slide.title}</h3>
+              </article>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
 
-        <div className="streamlined-progress" aria-hidden>
-          <span ref={progressRef} className="streamlined-progress__bar" />
-        </div>
-
+      <Container>
         <div className="mt-12 grid grid-cols-1 gap-8 lg:mt-16 lg:grid-cols-[1fr_1.1fr] lg:items-center lg:gap-10">
           <h5 className="text-streamlined-process-heading m-0 font-normal">
             How We Create Your Squarespace Websites

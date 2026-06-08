@@ -4,6 +4,7 @@ import Image from "next/image";
 import type { PricingPlan } from "@/lib/data/pricing";
 import { PRICING_PACKAGE_ICON } from "@/lib/data/pricing";
 import { SelectPackageButton } from "@/components/ui/select-package-button";
+import { usePricingCardWheelScroll } from "@/hooks/use-pricing-card-wheel-scroll";
 import { FaCheck } from "react-icons/fa";
 
 type PricingCardProps = {
@@ -17,6 +18,8 @@ export function PricingCard({
   packageIcon = PRICING_PACKAGE_ICON,
   category,
 }: PricingCardProps) {
+  const { bodyRef, featuresRef } = usePricingCardWheelScroll();
+
   return (
     <article className="pricing-card group">
       <div className="pricing-card__head">
@@ -38,9 +41,9 @@ export function PricingCard({
           </span>
         </p>
       </div>
-      <div className="pricing-card__body">
+      <div ref={bodyRef} className="pricing-card__body">
         <p className="pricing-card__desc">{plan.description}</p>
-        <ul className="pricing-card__features">
+        <ul ref={featuresRef} className="pricing-card__features">
           {plan.features.map((feature) => (
             <li
               key={feature}

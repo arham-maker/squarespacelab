@@ -10,6 +10,9 @@ import { getLenis } from "@/lib/lenis/init-lenis";
 export const WORK_PORTFOLIO_FANCYBOX_GROUP = "work-portfolio";
 export const WORK_PORTFOLIO_FANCYBOX_SELECTOR = `[data-fancybox="${WORK_PORTFOLIO_FANCYBOX_GROUP}"]`;
 
+const FIT_SCALE_TOLERANCE = 0.03;
+const fitScales = new WeakMap<PanzoomInstance, number>();
+
 function setImageDimensions(
   panzoom: PanzoomInstance,
   trigger?: HTMLElement
@@ -26,34 +29,57 @@ function setImageDimensions(
   }
 }
 
-/** Open tall portfolio mocks at ~92% viewport width instead of full-page fit (tiny strip). */
-function applyPortfolioWidthFit(
+function rememberFitScale(panzoom: PanzoomInstance) {
+  fitScales.set(panzoom, panzoom.getTransform(true).scale);
+}
+
+function isPortfolioFitView(panzoom: PanzoomInstance): boolean {
+  const fitScale = fitScales.get(panzoom);
+  const currentScale = panzoom.getTransform(true).scale;
+
+  if (fitScale === undefined) {
+    return currentScale <= 1 + FIT_SCALE_TOLERANCE;
+  }
+
+  return currentScale <= fitScale * (1 + FIT_SCALE_TOLERANCE);
+}
+
+function getPortfolioZoomInScale(panzoom: PanzoomInstance): number {
+  const container = panzoom.getContainer()?.getBoundingClientRect();
+  const wrapper = panzoom.getWrapper()?.getBoundingClientRect();
+
+  if (!container?.width || !wrapper?.width) {
+    const fitScale = fitScales.get(panzoom) ?? 1;
+    return fitScale * 2;
+  }
+
+  const targetWidth = container.width * 0.92;
+  const currentScale = panzoom.getTransform(true).scale;
+  const nextScale = currentScale * (targetWidth / wrapper.width);
+  const maxScale = panzoom.getScale("max");
+
+  return Math.min(nextScale, maxScale);
+}
+
+/** Toggle: click zooms in to readable width, click again fits whole mock. */
+function portfolioClickAction(
+  panzoom: PanzoomInstance
+): PanzoomAction | number {
+  return isPortfolioFitView(panzoom)
+    ? getPortfolioZoomInScale(panzoom)
+    : PanzoomAction.Reset;
+}
+
+/** Fit the entire portfolio mock in view on open (reference lightbox behavior). */
+function fitWholePortfolioImage(
   panzoom: PanzoomInstance,
   trigger?: HTMLElement
 ) {
-  const container = panzoom.getContainer()?.getBoundingClientRect();
-  if (!container?.width) return;
-
   setImageDimensions(panzoom, trigger);
+  panzoom.execute(PanzoomAction.Reset);
 
-  const run = () => {
-    const wrapper = panzoom.getWrapper()?.getBoundingClientRect();
-    if (!wrapper?.width) return;
-
-    const targetWidth = container.width * 0.92;
-    const scaleFactor = targetWidth / wrapper.width;
-    const currentScale = panzoom.getTransform(true).scale;
-    const nextScale = currentScale * scaleFactor;
-    const maxScale = panzoom.getScale("max");
-
-    panzoom.execute(PanzoomAction.ZoomTo, {
-      scale: Math.min(nextScale, maxScale),
-    });
-  };
-
-  // Measure after Panzoom lays out at default "fit whole image" scale.
   requestAnimationFrame(() => {
-    requestAnimationFrame(run);
+    rememberFitScale(panzoom);
   });
 }
 
@@ -68,19 +94,23 @@ function onPortfolioPanzoomReady(
   const trigger = slide.triggerEl as HTMLElement | undefined;
   const content = panzoom.getContent();
 
-  const apply = () => applyPortfolioWidthFit(panzoom, trigger);
+  const apply = () => fitWholePortfolioImage(panzoom, trigger);
 
   if (content instanceof HTMLImageElement && !content.complete) {
     content.addEventListener("load", apply, { once: true });
     return;
   }
 
-  apply();
+  requestAnimationFrame(apply);
 }
 
-export function getWorkPortfolioFancyboxOptions(): Partial<FancyboxOptions> {
+export function getWorkPortfolioFancyboxOptions(
+  options: { showCaption?: boolean } = {}
+): Partial<FancyboxOptions> {
+  const showCaption = options.showCaption !== false;
+
   return {
-    mainClass: "work-fancybox",
+    mainClass: showCaption ? "work-fancybox" : "work-fancybox work-fancybox--no-caption",
     dragToClose: false,
     zoomEffect: false,
     Carousel: {
@@ -97,11 +127,17 @@ export function getWorkPortfolioFancyboxOptions(): Partial<FancyboxOptions> {
       },
       Zoomable: {
         Panzoom: {
-          clickAction: PanzoomAction.IterateZoom,
+          clickAction: portfolioClickAction,
           maxScale: 8,
           panMode: "drag",
         },
       },
+      ...(showCaption
+        ? {}
+        : {
+            captionEl: () => null,
+            formatCaption: () => "",
+          }),
     },
     on: {
       ready: () => {
@@ -121,8 +157,11 @@ export function getWorkPortfolioFancyboxOptions(): Partial<FancyboxOptions> {
   };
 }
 
-export function bindWorkPortfolioFancybox(root: HTMLElement = document.body) {
-  Fancybox.bind(root, WORK_PORTFOLIO_FANCYBOX_SELECTOR, getWorkPortfolioFancyboxOptions());
+export function bindWorkPortfolioFancybox(
+  root: HTMLElement = document.body,
+  options: { showCaption?: boolean } = {}
+) {
+  Fancybox.bind(root, WORK_PORTFOLIO_FANCYBOX_SELECTOR, getWorkPortfolioFancyboxOptions(options));
 }
 
 export function unbindWorkPortfolioFancybox(root: HTMLElement = document.body) {

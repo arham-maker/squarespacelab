@@ -23,6 +23,7 @@ export function initLenisSmoothScroll(): () => void {
     syncTouch: false,
     touchMultiplier: 2,
     autoRaf: false,
+    allowNestedScroll: true,
   });
 
   lenisInstance = lenis;

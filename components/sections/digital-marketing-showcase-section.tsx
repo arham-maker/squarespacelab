@@ -12,21 +12,26 @@ import {
   DIGITAL_MARKETING_SHOWCASE,
 } from "@/lib/data/digital-marketing";
 import {
+  TEMPLATE_PREVIEW_HEIGHT,
+  TEMPLATE_PREVIEW_WIDTH,
+} from "@/lib/data/templates";
+import {
   initSectionHeadingScroll,
   SECTION_HEADING_FADED_DARK,
 } from "@/lib/gsap/section-heading-scroll";
 import { registerGsapPlugins } from "@/lib/gsap/register";
+import {
+  animateTemplatesShowcasePage,
+  initTemplatesShowcasePages,
+} from "@/lib/gsap/templates-showcase";
 
 export function DigitalMarketingShowcaseSection() {
   const reducedMotion = usePrefersReducedMotion();
   const [activeId, setActiveId] = useState(DIGITAL_MARKETING_SERVICES[0].id);
   const sectionRef = useRef<HTMLElement>(null);
-  const previewRef = useRef<HTMLDivElement>(null);
+  const bookRef = useRef<HTMLDivElement>(null);
   const hasRevealedSubtitleRef = useRef(false);
-
-  const activeService =
-    DIGITAL_MARKETING_SERVICES.find((item) => item.id === activeId) ??
-    DIGITAL_MARKETING_SERVICES[0];
+  const isFirstRender = useRef(true);
 
   useLayoutEffect(() => {
     registerGsapPlugins();
@@ -85,14 +90,15 @@ export function DigitalMarketingShowcaseSection() {
   }, [reducedMotion]);
 
   useLayoutEffect(() => {
-    const preview = previewRef.current;
-    if (!preview || reducedMotion) return;
+    const book = bookRef.current;
+    if (!book) return;
 
-    gsap.fromTo(
-      preview,
-      { autoAlpha: 0.35 },
-      { autoAlpha: 1, duration: 0.4, ease: "power2.out", overwrite: true }
-    );
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return initTemplatesShowcasePages(book, activeId, reducedMotion);
+    }
+
+    animateTemplatesShowcasePage(book, activeId, reducedMotion);
   }, [activeId, reducedMotion]);
 
   return (
@@ -122,7 +128,7 @@ export function DigitalMarketingShowcaseSection() {
 
         <nav
           data-dm-showcase-nav
-          className="templates-showcase relative mt-10 min-h-[280px] sm:mt-12 sm:min-h-[360px] lg:mt-16 lg:min-h-[480px]"
+          className="templates-showcase relative mt-10 sm:mt-12 lg:mt-16"
           aria-label="Related services"
         >
           <ul className="templates-showcase__list m-0 list-none p-0">
@@ -133,7 +139,7 @@ export function DigitalMarketingShowcaseSection() {
                 <li key={service.id} className="m-0">
                   <button
                     type="button"
-                    className={`templates-showcase__tab text-left py-4 ${isActive ? "is-active" : ""}`}
+                    className={`templates-showcase__tab text-left ${isActive ? "is-active" : ""}`}
                     aria-pressed={isActive}
                     onMouseEnter={() => setActiveId(service.id)}
                     onFocus={() => setActiveId(service.id)}
@@ -141,8 +147,8 @@ export function DigitalMarketingShowcaseSection() {
                   >
                     <span>{service.label}</span>
                     <FiArrowRight
-                      className="templates-showcase__arrow h-10 w-10 shrink-0"
-                      strokeWidth={2}
+                      className="templates-showcase__arrow shrink-0"
+                      strokeWidth={1.75}
                       aria-hidden
                     />
                   </button>
@@ -152,18 +158,28 @@ export function DigitalMarketingShowcaseSection() {
           </ul>
 
           <div
-            ref={previewRef}
-            className="templates-showcase__preview relative mt-10 w-full overflow-hidden bg-neutral-900 lg:absolute lg:top-0 lg:right-0 lg:mt-0 lg:h-full lg:w-[60%]"
+            ref={bookRef}
+            className="templates-showcase__book"
+            aria-live="polite"
           >
-            <Image
-              key={activeService.id}
-              src={activeService.image}
-              alt={activeService.alt}
-              fill
-              className="object-cover object-top"
-              sizes="(max-width: 1024px) 100vw, 60vw"
-              priority={activeService.id === DIGITAL_MARKETING_SERVICES[0].id}
-            />
+            {DIGITAL_MARKETING_SERVICES.map((service, index) => (
+              <div
+                key={service.id}
+                data-template-page={service.id}
+                className={`templates-showcase__page ${service.id === activeId ? "is-active" : ""}`}
+                aria-hidden={service.id !== activeId}
+              >
+                <Image
+                  src={service.image}
+                  alt={service.alt}
+                  width={TEMPLATE_PREVIEW_WIDTH}
+                  height={TEMPLATE_PREVIEW_HEIGHT}
+                  className="templates-showcase__image"
+                  sizes="(max-width: 1024px) 100vw, 60vw"
+                  priority={index === 0}
+                />
+              </div>
+            ))}
           </div>
         </nav>
       </Container>

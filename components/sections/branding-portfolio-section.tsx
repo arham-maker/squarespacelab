@@ -63,7 +63,7 @@ export function BrandingPortfolioSection() {
     const section = sectionRef.current;
     if (!section) return;
 
-    bindWorkPortfolioFancybox(section);
+    bindWorkPortfolioFancybox(section, { showCaption: false });
 
     return () => {
       unbindWorkPortfolioFancybox(section);
@@ -87,13 +87,12 @@ export function BrandingPortfolioSection() {
                 data-fancybox={WORK_PORTFOLIO_FANCYBOX_GROUP}
                 data-type="image"
                 data-src={item.image}
-                data-caption={item.alt}
                 data-thumb={item.image}
-                aria-label={`View ${item.alt}`}
+                aria-label={`View branding portfolio item ${item.id}`}
               >
                 <Image
                   src={item.image}
-                  alt={item.alt}
+                  alt=""
                   width={420}
                   height={420}
                   className="logo-design-portfolio-grid__img"

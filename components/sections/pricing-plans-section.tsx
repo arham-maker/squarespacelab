@@ -113,7 +113,7 @@ export function PricingPlansSection() {
                 type="button"
                 role="tab"
                 aria-selected={isActive}
-                className={`pricing-tabs__tab ${isActive ? "pricing-tabs__tab--active" : ""}`}
+                className={`pricing-tabs__tab cursor-pointer ${isActive ? "pricing-tabs__tab--active" : ""}`}
                 onClick={() => setActiveTab(tab.id)}
               >
                 {tab.label}

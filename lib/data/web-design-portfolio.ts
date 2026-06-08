@@ -54,13 +54,13 @@ export const WEB_DESIGN_PORTFOLIO_ITEMS: WebDesignPortfolioItem[] = [
   },
   {
     id: "constructo",
-    title: "Constructo",
+    title: "Construction",
     category: "construction",
     categoryLabel: "Constructions",
     image: "/portfolio/constructo.webp",
     width: 2880,
     height: 11862,
-    alt: "Constructo website design preview",
+    alt: "Construction website design preview",
   },
   {
     id: "5-trees",

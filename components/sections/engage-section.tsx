@@ -50,7 +50,7 @@ export function EngageSection() {
           <article key={block.id} className="engage-grow">
             <h4
               data-engage-reveal
-              className="text-engage-subheading m-0 font-normal"
+              className="text-engage-subheading m-0 mb-10 font-normal"
             >
               {block.subheadingLines.map((line) => (
                 <span key={line} className="block">

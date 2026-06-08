@@ -4,6 +4,7 @@ import Image from "next/image";
 import type { AdvertisingPlan } from "@/lib/data/advertising";
 import { ADVERTISING_PACKAGE_ICON } from "@/lib/data/advertising";
 import { SelectPackageButton } from "@/components/ui/select-package-button";
+import { usePricingCardWheelScroll } from "@/hooks/use-pricing-card-wheel-scroll";
 import { FaCheck } from "react-icons/fa";
 
 type AdvertisingPricingCardProps = {
@@ -17,6 +18,8 @@ export function AdvertisingPricingCard({
   packageIcon = ADVERTISING_PACKAGE_ICON,
   category,
 }: AdvertisingPricingCardProps) {
+  const { bodyRef, featuresRef } = usePricingCardWheelScroll();
+
   return (
     <article className="pricing-card group">
       <div className="pricing-card__head">
@@ -36,8 +39,8 @@ export function AdvertisingPricingCard({
           <span className="advertising-pricing-card__period">{plan.period}</span>
         </p>
       </div>
-      <div className="pricing-card__body">
-        <ul className="pricing-card__features">
+      <div ref={bodyRef} className="pricing-card__body">
+        <ul ref={featuresRef} className="pricing-card__features">
           {plan.features.map((feature) =>
             feature.kind === "heading" ? (
               <li key={feature.label} className="pricing-card__feature-heading">

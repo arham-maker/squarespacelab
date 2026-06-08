@@ -4,6 +4,10 @@ export type TemplateCategory = {
   image: string;
 };
 
+/** Reference template preview dimensions (squarespacemasters.com). */
+export const TEMPLATE_PREVIEW_WIDTH = 1057;
+export const TEMPLATE_PREVIEW_HEIGHT = 680;
+
 /** Template categories from https://www.squarespacemasters.com/ */
 export const TEMPLATE_CATEGORIES: TemplateCategory[] = [
   {

@@ -1,6 +1,13 @@
 const HOVER_SELECTOR =
   "a, button, img, .cursor-pointer, [data-cursor-card], input, textarea, select, label[for]";
 
+const HEADER_HOVER_SELECTOR =
+  "header .nav-link, header .services-nav__trigger";
+
+/** Links that expand the cursor to the large green ring. */
+const BIG_HOVER_SELECTOR =
+  "[aria-label='Mobile navigation'] a, [aria-label='Mobile navigation'] button[data-menu-item], .templates-showcase__tab";
+
 export function initMouseCursor(): () => void {
   const inner = document.querySelector<HTMLElement>(".cursor-inner");
 
@@ -21,15 +28,24 @@ export function initMouseCursor(): () => void {
     inner.style.transform = `translate(${x}px, ${y}px)`;
 
     const target = document.elementFromPoint(x, y);
-    const hoverTarget = target?.closest(HOVER_SELECTOR);
-    const cardTarget = target?.closest("[data-cursor-card]");
+    const skipCursor = target?.closest(
+      ".projects-marquee__viewport, .work-fancybox"
+    );
+    const inHeader = target?.closest("header");
+    const headerHoverTarget =
+      !skipCursor && target?.closest(HEADER_HOVER_SELECTOR);
+    const hoverTarget =
+      !skipCursor && !inHeader && target?.closest(HOVER_SELECTOR);
+    const bigHoverTarget =
+      !skipCursor && target?.closest(BIG_HOVER_SELECTOR);
 
+    inner.classList.toggle("cursor-header-hover", Boolean(headerHoverTarget));
     inner.classList.toggle("cursor-hover", Boolean(hoverTarget));
-    inner.classList.toggle("active", Boolean(cardTarget));
+    inner.classList.toggle("active", Boolean(bigHoverTarget));
   };
 
   const onMouseLeave = () => {
-    inner.classList.remove("cursor-hover", "active");
+    inner.classList.remove("cursor-hover", "cursor-header-hover", "active");
   };
 
   window.addEventListener("mousemove", onMouseMove, { passive: true });
@@ -49,7 +65,7 @@ export function initMouseCursor(): () => void {
     document.documentElement.removeEventListener("mouseleave", onMouseLeave);
     finePointer.removeEventListener("change", onPointerChange);
     document.body.classList.remove("has-mouse-cursor");
-    inner.classList.remove("cursor-hover", "active");
+    inner.classList.remove("cursor-hover", "cursor-header-hover", "active");
     inner.style.visibility = "hidden";
     inner.style.removeProperty("transform");
   };

@@ -29,13 +29,13 @@ export function GraphicDesignHeroSection() {
     >
       <Container>
         <div className="graphic-design-inner-banner__text">
-          <p data-gd-hero-reveal className="text-dm-hero-label m-0">
+          <h6 data-gd-hero-reveal className="text-dm-hero-label">
             {GRAPHIC_DESIGN_HERO.label}
-          </p>
-          <h1 data-gd-hero-reveal className="text-dm-hero-title m-0">
+          </h6>
+          <h1 data-gd-hero-reveal className="text-dm-hero-title">
             {GRAPHIC_DESIGN_HERO.title}
           </h1>
-          <p data-gd-hero-reveal className="text-dm-hero-desc graphic-design-hero-desc m-0">
+          <p data-gd-hero-reveal className="text-dm-hero-desc graphic-design-hero-desc">
             {GRAPHIC_DESIGN_HERO.description}
           </p>
           <div data-gd-hero-reveal className="graphic-design-inner-banner__cta">
