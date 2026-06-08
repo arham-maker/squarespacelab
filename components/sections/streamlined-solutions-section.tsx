@@ -27,13 +27,13 @@ export function StreamlinedSolutionsSection() {
   const progressFillRef = useRef<HTMLDivElement>(null);
   const accordionTimelineRef = useRef<gsap.core.Timeline | null>(null);
 
-  const updateProgress = (swiper: SwiperInstance, autoplayStep = 0) => {
+  const updateProgress = (swiper: SwiperInstance) => {
     const fill = progressFillRef.current;
     if (!fill) return;
 
     const total = STREAMLINED_SLIDES.length;
-    const ratio = (swiper.realIndex + autoplayStep) / total;
-    fill.style.transform = `scaleX(${Math.min(1, Math.max(0, ratio))})`;
+    const ratio = (swiper.realIndex + 1) / total;
+    fill.style.transform = `scaleX(${Math.min(1, ratio)})`;
   };
 
   const getAccordionParts = (id: string) => {
@@ -154,11 +154,8 @@ export function StreamlinedSolutionsSection() {
           slidesPerView={1}
           speed={1000}
           loop={!reducedMotion}
-          onSwiper={(swiper) => updateProgress(swiper)}
-          onSlideChange={(swiper) => updateProgress(swiper)}
-          onAutoplayTimeLeft={(swiper, _time, percentage) =>
-            updateProgress(swiper, 1 - percentage)
-          }
+          onSwiper={updateProgress}
+          onSlideChangeTransitionEnd={updateProgress}
           autoplay={
             reducedMotion
               ? false
