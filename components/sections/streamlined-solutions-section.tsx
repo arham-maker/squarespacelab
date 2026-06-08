@@ -1,12 +1,12 @@
 "use client";
 
 import "swiper/css";
-import "swiper/css/pagination";
 
 import Image from "next/image";
 import { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import { Autoplay, Pagination } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
+import type { Swiper as SwiperInstance } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Container } from "@/components/layout/container";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
@@ -24,7 +24,17 @@ export function StreamlinedSolutionsSection() {
   const [openId, setOpenId] = useState<string | null>(null);
   const [closingId, setClosingId] = useState<string | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
+  const progressFillRef = useRef<HTMLDivElement>(null);
   const accordionTimelineRef = useRef<gsap.core.Timeline | null>(null);
+
+  const updateProgress = (swiper: SwiperInstance, autoplayStep = 0) => {
+    const fill = progressFillRef.current;
+    if (!fill) return;
+
+    const total = STREAMLINED_SLIDES.length;
+    const ratio = (swiper.realIndex + autoplayStep) / total;
+    fill.style.transform = `scaleX(${Math.min(1, Math.max(0, ratio))})`;
+  };
 
   const getAccordionParts = (id: string) => {
     const section = sectionRef.current;
@@ -139,12 +149,16 @@ export function StreamlinedSolutionsSection() {
       <div className="streamlined-slider-outer">
         <Swiper
           className="streamlined-slider mt-2"
-          modules={[Autoplay, Pagination]}
+          modules={[Autoplay]}
           spaceBetween={0}
           slidesPerView={1}
           speed={1000}
           loop={!reducedMotion}
-          watchOverflow
+          onSwiper={(swiper) => updateProgress(swiper)}
+          onSlideChange={(swiper) => updateProgress(swiper)}
+          onAutoplayTimeLeft={(swiper, _time, percentage) =>
+            updateProgress(swiper, 1 - percentage)
+          }
           autoplay={
             reducedMotion
               ? false
@@ -154,12 +168,12 @@ export function StreamlinedSolutionsSection() {
                   pauseOnMouseEnter: false,
                 }
           }
-          pagination={{
-            type: "progressbar",
-          }}
           breakpoints={{
             768: {
-              slidesPerView: "auto",
+              slidesPerView: 2,
+            },
+            1024: {
+              slidesPerView: 2.5,
             },
           }}
         >
@@ -172,13 +186,16 @@ export function StreamlinedSolutionsSection() {
                   width={593}
                   height={445}
                   className="streamlined-card__image"
-                  sizes="(max-width: 767px) 100vw, 593px"
+                  sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
                 />
                 <h3 className="streamlined-card__title">{slide.title}</h3>
               </article>
             </SwiperSlide>
           ))}
         </Swiper>
+        <div className="streamlined-slider-progress" aria-hidden>
+          <div ref={progressFillRef} className="streamlined-slider-progress__fill" />
+        </div>
       </div>
 
       <Container>
