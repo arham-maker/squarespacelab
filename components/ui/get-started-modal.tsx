@@ -206,27 +206,6 @@ export function GetStartedModal({
               <p className="get-started-modal__title-highlight m-0">
                 {LEAD_FORM.titleHighlight}
               </p>
-              {selectedPackage ? (
-                <div className="get-started-modal__package m-0">
-                  <span className="get-started-modal__package-label">
-                    Selected package
-                  </span>
-                  <strong className="get-started-modal__package-name">
-                    {selectedPackage.name}
-                  </strong>
-                  <span className="get-started-modal__package-price">
-                    {selectedPackage.price}
-                    {selectedPackage.category
-                      ? ` · ${selectedPackage.category}`
-                      : ""}
-                  </span>
-                  {selectedPackage.details ? (
-                    <span className="get-started-modal__package-details">
-                      {selectedPackage.details}
-                    </span>
-                  ) : null}
-                </div>
-              ) : null}
             </div>
 
             <form className="get-started-modal__form" onSubmit={handleSubmit} noValidate>
