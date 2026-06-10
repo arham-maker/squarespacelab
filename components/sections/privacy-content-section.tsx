@@ -69,12 +69,12 @@ function PrivacyBlock({
 
       {block.contactLink ? (
         <p className="terms-content__text m-0">
-          If you have any questions or concerns about our privacy policies,
-          please reach out to us using our{" "}
+          If you have any confusion or concerns regarding our privacy policies,
+          you can contact us via our{" "}
           <Link href="/contact" className="terms-content__link">
-            contact form
+            contact us form
           </Link>
-          . We&apos;re here to help clarify any issues you may have.
+          .
         </p>
       ) : (
         block.paragraphs.map((paragraph) => (

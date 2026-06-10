@@ -2,9 +2,29 @@
 
 import { useEffect } from "react";
 
+type AosInstance = {
+  init: (options?: Record<string, unknown>) => void;
+  refresh: () => void;
+  refreshHard: () => void;
+};
+
+function revealVisibleAosElements(root: ParentNode) {
+  const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+
+  root.querySelectorAll<HTMLElement>("[data-aos]:not(.aos-animate)").forEach((el) => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < viewportHeight * 0.92 && rect.bottom > viewportHeight * 0.08) {
+      el.classList.add("aos-animate");
+    }
+  });
+}
+
 export function LpInit() {
   useEffect(() => {
     let cleaned = false;
+    let aosScrollTimer: number | undefined;
+    let aosFallbackObserver: IntersectionObserver | undefined;
+    let aosResizeObserver: ResizeObserver | undefined;
 
     async function init() {
       const [{ default: AOS }, { default: $ }] = await Promise.all([
@@ -12,7 +32,6 @@ export function LpInit() {
         import("jquery"),
       ]);
 
-      // Slick registers against the global jQuery instance (jQuery 3.x required).
       const win = window as Window & { jQuery?: typeof $; $?: typeof $ };
       win.jQuery = $;
       win.$ = $;
@@ -24,7 +43,71 @@ export function LpInit() {
 
       if (cleaned) return;
 
-      AOS.init({ once: true, duration: 1000 });
+      const aos = AOS as AosInstance;
+
+      aos.init({
+        once: true,
+        duration: 1000,
+        offset: 80,
+        anchorPlacement: "top-bottom",
+        debounceDelay: 50,
+        throttleDelay: 99,
+        disableMutationObserver: false,
+      });
+
+      const refreshAos = () => {
+        if (cleaned) return;
+        aos.refresh();
+        revealVisibleAosElements(document);
+      };
+
+      const refreshAosHard = () => {
+        if (cleaned) return;
+        aos.refreshHard();
+        revealVisibleAosElements(document);
+      };
+
+      requestAnimationFrame(refreshAosHard);
+
+      const onWindowLoad = () => refreshAosHard();
+      window.addEventListener("load", onWindowLoad);
+
+      const onAosScroll = () => {
+        if (cleaned) return;
+        window.clearTimeout(aosScrollTimer);
+        aosScrollTimer = window.setTimeout(refreshAos, 120);
+      };
+
+      $(window).on("scroll", onAosScroll);
+
+      aosFallbackObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const el = entry.target as HTMLElement;
+            if (!el.classList.contains("aos-animate")) {
+              el.classList.add("aos-animate");
+            }
+          });
+        },
+        {
+          root: null,
+          rootMargin: "0px 0px -8% 0px",
+          threshold: 0.08,
+        }
+      );
+
+      document.querySelectorAll(".lp-root [data-aos]").forEach((el) => {
+        aosFallbackObserver?.observe(el);
+      });
+
+      if ("ResizeObserver" in window) {
+        aosResizeObserver = new ResizeObserver(() => {
+          refreshAos();
+        });
+        const lpRoot = document.querySelector(".lp-root");
+        if (lpRoot) aosResizeObserver.observe(lpRoot);
+      }
 
       const $portfolio = $(".portfolio-slider");
       if ($portfolio.length && !$portfolio.hasClass("slick-initialized")) {
@@ -44,6 +127,7 @@ export function LpInit() {
             },
           ],
         });
+        refreshAosHard();
       }
 
       $(".accordion-list > li > .answer").hide();
@@ -58,6 +142,7 @@ export function LpInit() {
           $(".accordion-list > li.active").removeClass("active");
           $li.addClass("active").find(".answer").slideDown();
         }
+        refreshAos();
         return false;
       };
 
@@ -111,10 +196,15 @@ export function LpInit() {
       $(".menu-Bar").on("click", onMenuToggle);
 
       return () => {
+        window.removeEventListener("load", onWindowLoad);
+        window.clearTimeout(aosScrollTimer);
+        $(window).off("scroll", onAosScroll);
         $(window).off("scroll", onScroll);
         $(window).off("scroll", onCounterScroll);
         $(".accordion-list > li").off("click", onAccordionClick);
         $(".menu-Bar").off("click", onMenuToggle);
+        aosFallbackObserver?.disconnect();
+        aosResizeObserver?.disconnect();
         if ($portfolio.hasClass("slick-initialized")) {
           $portfolio.slick("unslick");
         }

@@ -33,7 +33,51 @@
   color: #ffffff;
 }
 
-/* Hide site-wide custom cursor on standalone LP */
+.lp-root header .menu {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.lp-root header .menu > li {
+  padding: 0;
+  margin: 0;
+  background-color: #000000;
+  border-radius: 8px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  }
+}
+
+.lp-root header .menu > li > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.lp-root header .menu > li > a:hover {
+  color: #ffffff;
+  opacity: 0.92;
+}
+
+/* Prevent blank sections when AOS misses a scroll trigger */
+@media (prefers-reduced-motion: reduce) {
+  .lp-root [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Hide custom mouse cursor on standalone LP */
 body:has(.lp-root) .mouse-cursor {
   display: none !important;
 }

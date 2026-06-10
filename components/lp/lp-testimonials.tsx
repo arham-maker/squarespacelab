@@ -27,17 +27,6 @@ export function LpTestimonialsSection() {
             <ul className="testimonial-wrapper">
               <li>
                 <div className="testi-slide">
-                  <div className="bottom">
-                    <div className="det">
-                      <span className="name">Steve Mix</span>
-                    </div>
-                    <LpImg path="client/f2.png" alt="" />
-                  </div>
-                  <div className="detail-text pad-10">
-                    <LpImg path="client/ss-fb-1.png" alt="" />
-                  </div>
-                </div>
-                <div className="testi-slide">
                   <div className="bottom b2">
                     <div className="det">
                       <span className="name">Mark J.</span>
@@ -119,19 +108,6 @@ export function LpTestimonialsSection() {
               </li>
               <li>
                 <div className="testi-slide">
-                  <div className="bottom b2">
-                    <div className="det">
-                      <span className="name">Squarespacedev</span>
-                    </div>
-                    <LpImg path="client/f8.png" alt="" />
-                  </div>
-                  <div className="detail-text pad-10">
-                    <LpImg path="client/ss-fb-2.png" alt="" />
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div className="testi-slide">
                   <div className="bottom">
                     <div className="det">
                       <span className="name">Justine Gab</span>
@@ -146,6 +122,8 @@ export function LpTestimonialsSection() {
                     <LpImg path="client/company-logo.png" alt="" />
                   </div>
                 </div>
+              </li>
+              <li>
                 <div className="testi-slide">
                   <div className="bottom b3">
                     <div className="det">

@@ -17,54 +17,49 @@ export const PRIVACY_SECTIONS: readonly PrivacyContentSection[] = [
     id: "statement",
     title: "Privacy Policy Statement",
     paragraphs: [
-      "At Squarespacedev, we prioritize your privacy and are dedicated to safeguarding your personal information. We collect only the essential data needed to process your order. Rest assured, we never share your information with anyone outside our company without your explicit consent. Your trust is important to us, and we take every measure to protect your privacy.",
+      "squarespace dev is highly committed to keeping client's personal information safe and secure and we collect only essential and inevitable information to process your order. We never share any of your information with any individual outside our company in any way until you agree to permit us for doing so.",
     ],
   },
   {
     id: "information-collection",
     title: "Information Collection",
     paragraphs: [
-      "At Squarespacedev, we gather client information through various channels, including email, phone, and our contact and order forms. Your information is safeguarded according to our privacy policy, and we never disclose, share, or sell it to third-party services.",
-      "Initially, we require basic personal details such as your name, company name, billing address, email address, secondary email, phone, and fax numbers, as well as your order details and place of residence. Some information is optional.",
-      "To initiate your project, we also request details in a creative brief. Additionally, we collect feedback on your experiences, including comments, complaints, and compliments about our products.",
-      "For technical purposes, we record data like your IP address, browser version, operating system, and the date and time of your visit. We use Google Analytics and similar tools to gather this data, which helps us create a tailored user experience.",
+      "We collect clients' information via Email, Phone and Contact Us and Order Form and it is protected as per privacy policy set by squarespace dev. Clients' information is never disclosed, shared or sold to any third-party services. Initially, the personal information we require is about clients' name, company's name, billing address, email address, secondary email, phone and fax numbers, order details and place of residence and some of which is optional. Along with this, we need information in creative brief in order to start working on your order. Additionally, collection of information includes opinions pertaining to complaints, appreciation and comments about the product. Technical information which is collected and recorded includes your IP address, browser version, operating system and the date and time when you visit. Google Analytics or some similar tool or service is also used for collecting this data. Our client brief collects necessary information about your project, so we deliver just what you require. We use Google Analytics and similar tools to collect your information, including your IP address, operating system, browser information, and the date & time of visiting our website. The data collected helps us in providing a customized user experience to you.",
     ],
   },
   {
     id: "usage",
     title: "Usage Of Collected Information",
     paragraphs: [
-      "The information we collect serves multiple important purposes. Firstly, it helps us understand your specific needs and preferences, ensuring we deliver the right product for you. Your billing information is essential for processing payments securely.",
-      "We use your email address to keep you updated on your order status, as well as to communicate comments and feedback. Additionally, we may send you updates about our website, promotional offers, new product launches, and industry news.",
-      "This collected information also aids in refining our marketing strategies and tracking our best-selling products. Rest assured, we do not sell your information to third-party marketers or agencies, prioritizing your privacy and trust.",
+      "First of all, the information we collect helps us to understand exactly what product you need and what special things would you require in it and secondly the billing information is inevitable for payment process. The email addresses are used for communication about order status, comments and opinions and delivery of the finalized product. Moreover, we may send emails of update on the website, promotional offers, launch of a new product/service and the latest news in the industry. This information also helps us to improve our marketing strategies and compile the record of the most selling products. Your payment details are used to process payments, while your email address helps us share new offers, industry insights, and other interesting information with you. Please note that we do not sell your information to third-party marketers or agencies.",
     ],
   },
   {
     id: "payments",
     title: "Privacy Of Payments",
     paragraphs: [
-      "We prioritize your payment privacy by offering multiple secure payment options. Our payment processor utilizes Secure Sockets Layer (SSL) technology, indicated by \"https://\" in the domain, to encrypt your billing information. This ensures that your payment details are protected throughout the transaction process. You can trust that your privacy is our top concern, and we take every measure to safeguard your financial information during every payment.",
+      "To make sure the practice of the best privacy for payments, we offer acceptance from multiple payment options. The payment processor where the clients put their billing information uses Secure Sockets Layer (SSL) which is indicated in the domain as \"https://\". Therefore, we assure that there is no issue at all with the privacy of payment process and billing information.",
     ],
   },
   {
     id: "confidentiality",
     title: "Confidentiality",
     paragraphs: [
-      "We take confidentiality seriously and understand its importance. Your personal information, including your name, billing address, email, and phone number, is treated with the utmost care. We use this information solely for effective communication regarding your order. All data is securely stored and accessible only to authorized team members, ensuring it remains protected from theft or hacking. Rest assured, your information will never be shared with third parties unless you give consent or we are legally obligated to do so.",
+      "Confidentiality is surely a serious concern and we are fully aware of the fact and this is why we never compromise over the confidentiality of our clients' information. We use your personal information in order to keep in touch with you so that we can have smooth communication about the order process. Therefore, your entire information like name, billing address, e-mail address, telephone number, fax, etc. is treated as confidential and saved at a secure location which is accessible by the designated members only ensuring that it stays safe and there is no threat of its being stolen or hacked. We reassure that your personal information will never be released to any third party in any circumstances until you allow or we are forced by law.",
     ],
   },
   {
     id: "amendments",
     title: "Amendments",
     paragraphs: [
-      "Squarespacedev may update its privacy policy to enhance security measures when necessary. Any changes will be communicated in advance, along with the effective date of the updated policy, ensuring you stay informed.",
+      "squarespace dev may amend its privacy policy for more strict security concerns if needed. However, the entire amendments about personal information security concerns will be declared with a prior notice of the effective date of amended or updated privacy policies.",
     ],
   },
   {
     id: "disclosure",
     title: "Conditions Of Information Disclosure",
     paragraphs: [
-      "Our primary goal is to protect your information. Disclosure will only occur if required by law for judicial proceedings, court orders, or other legal processes, ensuring compliance with legal obligations.",
+      "In the first place, it is our top priority to avoid the information disclosure. However, the information disclosure can only take place if we are to abide by the country law for judicial proceeding, court order, or any other legal procedure.",
     ],
   },
   {

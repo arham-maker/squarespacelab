@@ -1,14 +1,14 @@
 "use client";
 
-import Link from "next/link";
 import { useLayoutEffect, useRef } from "react";
 import { Container } from "@/components/layout/container";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
-import { SITE } from "@/lib/data/site";
 import {
   TERMS_CLAIM_FOLLOW_UP,
   TERMS_CLAIM_INTRO,
   TERMS_CLAIM_ITEMS,
+  TERMS_CLAIM_PHONE,
+  TERMS_CLAIM_PHONE_HREF,
   TERMS_PAGE_TITLE,
   TERMS_SECTIONS,
 } from "@/lib/data/terms";
@@ -38,7 +38,7 @@ export function TermsContentSection() {
             {TERMS_PAGE_TITLE}
           </h4>
 
-          {TERMS_SECTIONS.slice(0, 2).map((block) => (
+          {TERMS_SECTIONS.slice(0, 3).map((block) => (
             <TermsBlock key={block.id} block={block} />
           ))}
 
@@ -51,17 +51,17 @@ export function TermsContentSection() {
                   {item.type === "phone" && (
                     <>
                       {item.prefix}
-                      <a href={SITE.phoneHref} className="terms-content__link">
-                        {SITE.phone}
+                      <a href={TERMS_CLAIM_PHONE_HREF} className="terms-content__link">
+                        {TERMS_CLAIM_PHONE}
                       </a>
                     </>
                   )}
                   {item.type === "link" && (
                     <>
                       {item.prefix}
-                      <Link href={item.href} className="terms-content__link">
+                      <a href={item.href} className="terms-content__link">
                         {item.label}
-                      </Link>
+                      </a>
                       {item.id === "email" ? "." : null}
                     </>
                   )}
@@ -75,7 +75,7 @@ export function TermsContentSection() {
             ))}
           </article>
 
-          {TERMS_SECTIONS.slice(2).map((block) => (
+          {TERMS_SECTIONS.slice(3).map((block) => (
             <TermsBlock key={block.id} block={block} />
           ))}
         </div>
