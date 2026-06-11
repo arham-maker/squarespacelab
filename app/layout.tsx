@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { ConditionalMarqueeTopbar } from "@/components/layout/conditional-marquee-topbar";
 import { LeadFormProvider } from "@/components/providers/lead-form-provider";
 import { AutoPopupProvider } from "@/components/providers/auto-popup-provider";
+import { LiveChatAutoOpenProvider } from "@/components/providers/livechat-auto-open-provider";
 import { GsapProvider } from "@/components/providers/gsap-provider";
 import { SmoothScrollProvider } from "@/components/providers/smooth-scroll-provider";
 import { LiveChatWidget } from "@/components/livechat/livechat-widget";
@@ -40,13 +41,15 @@ export default function RootLayout({
         <ConditionalMarqueeTopbar />
         <GsapProvider>
         <LeadFormProvider>
-          <AutoPopupProvider>
-            <SmoothScrollProvider>
+          <LiveChatAutoOpenProvider>
+            <AutoPopupProvider>
+              <SmoothScrollProvider>
               {children}
               <MouseCursor />
               <LiveChatWidget />
-            </SmoothScrollProvider>
-          </AutoPopupProvider>
+              </SmoothScrollProvider>
+            </AutoPopupProvider>
+          </LiveChatAutoOpenProvider>
         </LeadFormProvider>
         </GsapProvider>
       </body>
