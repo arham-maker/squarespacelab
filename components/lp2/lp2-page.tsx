@@ -63,7 +63,6 @@ export function Lp2Page() {
                       <LpLiveChatButton
                         iconSrc="chat-icon.svg"
                         label="Live Chat"
-                        href={LP2_CONTACT.phoneHref}
                       />
                     </li>
                     <li>
@@ -169,8 +168,8 @@ export function Lp2Page() {
       </div>
 
       <Lp2PortfolioSection />
-      <Lp2TestimonialsSection />
       <Lp2PricingSection />
+      <Lp2TestimonialsSection />
 
       <section className="sec-4">
         <div className="container">
@@ -291,7 +290,6 @@ export function Lp2Page() {
                   <LpLiveChatButton
                     className="theme-btn bordered text-white"
                     iconSrc="chat.svg"
-                    href={LP2_CONTACT.phoneHref}
                   />
                 </div>
               </div>
@@ -326,7 +324,6 @@ export function Lp2Page() {
                   <LpLiveChatButton
                     className="theme-btn bordered"
                     iconSrc="chat-black.svg"
-                    href={LP2_CONTACT.phoneHref}
                   />
                 </div>
                 <div>
@@ -364,7 +361,6 @@ export function Lp2Page() {
                 <LpLiveChatButton
                   className="theme-btn bordered text-white"
                   iconSrc="chat.svg"
-                  href={LP2_CONTACT.phoneHref}
                 />
               </div>
             </div>

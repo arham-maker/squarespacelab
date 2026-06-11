@@ -2,7 +2,7 @@
 
 import type { ReactNode } from "react";
 import { useLeadForm } from "@/components/providers/lead-form-provider";
-import { SITE } from "@/lib/data/site";
+import { openLiveChat } from "@/lib/livechat";
 import type { LpPackage } from "@/lib/data/lp";
 import { lpImage } from "@/components/lp/lp-assets";
 
@@ -66,15 +66,21 @@ export function LpLiveChatButton({
   className = "theme-btn bordered",
   iconSrc,
   label = "Live Chat",
-  href = SITE.phoneHref,
 }: {
   className?: string;
   iconSrc?: string;
   label?: string;
-  href?: string;
 }) {
   return (
-    <a href={href} className={className} title={label}>
+    <a
+      href="javascript:;"
+      className={className}
+      title={label}
+      onClick={(e) => {
+        e.preventDefault();
+        openLiveChat();
+      }}
+    >
       {iconSrc ? <img src={lpImage(iconSrc)} alt="" /> : null}
       {label}
     </a>

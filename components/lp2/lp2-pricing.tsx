@@ -3,7 +3,6 @@
 import { useState } from "react";
 import type { LpPackage } from "@/lib/data/lp";
 import {
-  LP2_CONTACT,
   LP2_ECOMMERCE_PACKAGES,
   LP2_PROMOTIONAL_PACKAGES,
   LP2_VIDEO_PACKAGES,
@@ -47,7 +46,6 @@ function PromoPackageCard({ pkg }: { pkg: LpPackage }) {
             <LpLiveChatButton
               className="theme-btn bordered"
               label="Chat With Us"
-              href={LP2_CONTACT.phoneHref}
             />
           </div>
         </div>

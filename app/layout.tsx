@@ -6,6 +6,7 @@ import { LeadFormProvider } from "@/components/providers/lead-form-provider";
 import { AutoPopupProvider } from "@/components/providers/auto-popup-provider";
 import { GsapProvider } from "@/components/providers/gsap-provider";
 import { SmoothScrollProvider } from "@/components/providers/smooth-scroll-provider";
+import { LiveChatWidget } from "@/components/livechat/livechat-widget";
 import { MouseCursor } from "@/components/ui/mouse-cursor";
 import "./globals.css";
 
@@ -43,6 +44,7 @@ export default function RootLayout({
             <SmoothScrollProvider>
               {children}
               <MouseCursor />
+              <LiveChatWidget />
             </SmoothScrollProvider>
           </AutoPopupProvider>
         </LeadFormProvider>

@@ -1,7 +1,6 @@
 import { lpImage } from "@/components/lp/lp-assets";
 import { LP2_PORTFOLIO_ROW1, LP2_PORTFOLIO_ROW2 } from "@/lib/data/lp2";
 import { LpCtaButton, LpLiveChatButton } from "@/components/lp/lp-buttons";
-import { LP2_CONTACT } from "@/lib/data/lp2";
 
 const FANCYBOX_GROUP = "portfolio Design";
 
@@ -67,7 +66,6 @@ export function Lp2PortfolioSection() {
               <LpLiveChatButton
                 className="theme-btn bordered text-white"
                 iconSrc="chat.svg"
-                href={LP2_CONTACT.phoneHref}
               />
             </div>
           </div>
