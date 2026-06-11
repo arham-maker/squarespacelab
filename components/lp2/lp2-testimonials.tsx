@@ -35,7 +35,7 @@ export function Lp2TestimonialsSection() {
                   </div>
                   <div className="detail-text pad-10">
                     <img
-                      src={`${LP_ASSETS}/${encodeURIComponent("Frame 1 (1).png")}`}
+                      src={`${LP_ASSETS}/${encodeURIComponent("Frame 2 (1).png")}`}
                       alt=""
                       loading="lazy"
                     />
@@ -131,13 +131,13 @@ export function Lp2TestimonialsSection() {
                 <div className="testi-slide">
                   <div className="bottom b2">
                     <div className="det">
-                      <span className="name">squarespacedev</span>
+                      <span className="name">Squarespacedev</span>
                     </div>
                     <img src={LP_SSD_LOGO} alt="" className="lp-ssd-logo" loading="lazy" />
                   </div>
                   <div className="detail-text pad-10">
                     <img
-                      src={`${LP_ASSETS}/${encodeURIComponent("Frame 2 (1).png")}`}
+                      src={`${LP_ASSETS}/${encodeURIComponent("Frame 1 (1).png")}`}
                       alt=""
                       loading="lazy"
                     />

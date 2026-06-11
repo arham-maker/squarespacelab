@@ -215,27 +215,89 @@ body:has(.lp-root) {
   position: relative;
   overflow: hidden;
   isolation: isolate;
+  transition:
+    color 0.4s ease,
+    border-color 0.4s ease,
+    background-position 0.4s ease;
 }
 
-.lp-root .theme-btn::before,
-.lp-root .fld-btn button::before {
+.lp-root .theme-btn.bordered::before {
   content: "";
   position: absolute;
-  bottom: -80%;
-  left: 50%;
-  width: 160%;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: rgb(0 0 0 / 18%);
-  transform: translateX(-50%) scale(0);
-  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 0;
+  inset: 0;
+  background: #000000;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.4s ease;
+  z-index: -1;
   pointer-events: none;
 }
 
-.lp-root .theme-btn:hover::before,
-.lp-root .theme-btn:focus-visible::before,
-.lp-root .fld-btn button:hover:not(:disabled)::before,
-.lp-root .fld-btn button:focus-visible:not(:disabled)::before {
-  transform: translateX(-50%) scale(1.15);
+.lp-root .theme-btn.bordered:hover::before,
+.lp-root .theme-btn.bordered:focus-visible::before {
+  transform: scaleX(1);
+}
+
+.lp-root .theme-btn.bordered:hover,
+.lp-root .theme-btn.bordered:focus-visible {
+  color: #ffffff;
+}
+
+.lp-root .theme-btn:not(.bordered):not(.bg-black):not(.bg-orange) {
+  background-image: linear-gradient(90deg, #000000 50%, #ffffff 50%);
+  background-size: 200% 100%;
+  background-position: 100% 0;
+}
+
+.lp-root .theme-btn:not(.bordered):not(.bg-black):not(.bg-orange):hover,
+.lp-root .theme-btn:not(.bordered):not(.bg-black):not(.bg-orange):focus-visible {
+  background-position: 0% 0;
+  color: #ffffff;
+}
+
+.lp-root .fld-btn button {
+  background-image: linear-gradient(90deg, #e56d2e 50%, #ff8d4d 50%);
+  background-size: 200% 100%;
+  background-position: 100% 0;
+}
+
+.lp-root .fld-btn button:hover:not(:disabled),
+.lp-root .fld-btn button:focus-visible:not(:disabled) {
+  background-position: 0% 0;
+}
+
+.lp-root .theme-btn.bg-black {
+  background-image: linear-gradient(90deg, #1d1b2c 50%, #000000 50%);
+  background-size: 200% 100%;
+  background-position: 100% 0;
+}
+
+.lp-root .theme-btn.bg-black:hover,
+.lp-root .theme-btn.bg-black:focus-visible {
+  background-position: 0% 0;
+}
+
+.lp-root .theme-btn.bg-orange {
+  background-image: linear-gradient(90deg, #e56d2e 50%, #ff8d4d 50%);
+  background-size: 200% 100%;
+  background-position: 100% 0;
+}
+
+.lp-root .theme-btn.bg-orange:hover,
+.lp-root .theme-btn.bg-orange:focus-visible {
+  background-position: 0% 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lp-root .theme-btn.bordered::before {
+    transition: none;
+    transform: scaleX(1);
+  }
+
+  .lp-root .theme-btn:not(.bordered):not(.bg-black):not(.bg-orange),
+  .lp-root .theme-btn.bg-black,
+  .lp-root .theme-btn.bg-orange,
+  .lp-root .fld-btn button {
+    background-position: 0% 0;
+  }
 }

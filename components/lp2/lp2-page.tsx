@@ -350,10 +350,10 @@ export function Lp2Page() {
                 </h4>
                 <p className="text-white my-5">
                   Is your current website delivering the results you need?
-                  Here&apos;s how our squarespace devselopment services can
+                  Here&apos;s how our Squarespace development services can
                   improve your website&apos;s performance, engagement, and
                   overall effectiveness. See the difference we make in the
-                  numbers below!
+                  numbers.
                 </p>
               </div>
               <div className="btn-wrap">

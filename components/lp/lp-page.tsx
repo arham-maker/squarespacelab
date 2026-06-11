@@ -448,7 +448,7 @@ export function LpPage() {
                   Here&apos;s how our Squarespace development services can
                   improve your website&apos;s performance, engagement, and
                   overall effectiveness. See the difference we make in the
-                  numbers below!
+                  numbers.
                 </p>
               </div>
               <div className="btn-wrap">

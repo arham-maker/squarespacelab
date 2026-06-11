@@ -12,7 +12,7 @@ const wixMadeforDisplay = Wix_Madefor_Display({
 
 export const metadata: Metadata = {
   title:
-    "Custom Squarespace Website Design & Development Services | squarespacedev",
+    "Custom Squarespace Website Design & Development Services | Squarespacedev",
   description:
     "Find a professional Squarespace designer to build or redesign your website. Custom Squarespace website design by expert developers.",
 };

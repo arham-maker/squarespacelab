@@ -667,33 +667,54 @@ html.with-fancybox .mouse-cursor {
   }
 
   .btn-primary {
-    @apply bg-black text-white shadow-[0_2px_8px_rgba(0,0,0,0.12)] hover:bg-neutral-900 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)] hover:scale-[1.04] motion-reduce:transition-colors motion-reduce:hover:scale-100;
+    background-color: #000000;
+    background-image: linear-gradient(
+      90deg,
+      var(--color-dark-accent) 50%,
+      #000000 50%
+    );
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 12%);
+    transition:
+      background-position 0.4s ease,
+      box-shadow 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  .btn-primary:hover,
+  .btn-primary:focus-visible {
+    background-position: 0% 0;
+    box-shadow: 0 10px 28px rgb(0 0 0 / 35%);
+    transform: scale(1.04);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .btn-primary {
+      background-position: 0% 0;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      transform: none;
+    }
   }
 
   .btn-inverse {
     border-radius: 0;
     background-color: #ffffff;
+    background-image: linear-gradient(90deg, #e5e5e5 50%, #ffffff 50%);
+    background-size: 200% 100%;
+    background-position: 100% 0;
     color: #000000;
+    transition: background-position 0.4s ease;
   }
 
-  .btn-inverse::before {
-    content: "";
-    position: absolute;
-    bottom: -80%;
-    left: 50%;
-    width: 160%;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    background: #e5e5e5;
-    transform: translateX(-50%) scale(0);
-    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: -1;
-    pointer-events: none;
-  }
-
-  .btn-inverse:hover::before,
-  .btn-inverse:focus-visible::before {
-    transform: translateX(-50%) scale(1.15);
+  .btn-inverse:hover,
+  .btn-inverse:focus-visible {
+    background-position: 0% 0;
   }
 
   .text-faq-question {
@@ -769,14 +790,11 @@ html.with-fancybox .mouse-cursor {
   .btn-outline::before {
     content: "";
     position: absolute;
-    bottom: -80%;
-    left: 50%;
-    width: 160%;
-    aspect-ratio: 1;
-    border-radius: 50%;
+    inset: 0;
     background: #000000;
-    transform: translateX(-50%) scale(0);
-    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.4s ease;
     z-index: -1;
     pointer-events: none;
   }
@@ -790,7 +808,7 @@ html.with-fancybox .mouse-cursor {
 
   .btn-outline:hover::before,
   .btn-outline:focus-visible::before {
-    transform: translateX(-50%) scale(1.15);
+    transform: scaleX(1);
   }
 
   .btn-outline-light {
@@ -818,14 +836,11 @@ html.with-fancybox .mouse-cursor {
   .btn-outline-light::before {
     content: "";
     position: absolute;
-    bottom: -80%;
-    left: 50%;
-    width: 160%;
-    aspect-ratio: 1;
-    border-radius: 50%;
+    inset: 0;
     background: #000000;
-    transform: translateX(-50%) scale(0);
-    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.4s ease;
     z-index: -1;
     pointer-events: none;
   }
@@ -839,28 +854,19 @@ html.with-fancybox .mouse-cursor {
 
   .btn-outline-light:hover::before,
   .btn-outline-light:focus-visible::before {
-    transform: translateX(-50%) scale(1.15);
+    transform: scaleX(1);
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .btn-inverse::before,
+    .btn-inverse {
+      background-position: 0% 0;
+    }
+
     .btn-outline::before,
     .btn-outline-light::before,
     .pricing-card__btn::before {
       transition: none;
-      transform: translateX(-50%) scale(1.15);
-      opacity: 0;
-    }
-
-    .btn-inverse:hover::before,
-    .btn-inverse:focus-visible::before,
-    .btn-outline:hover::before,
-    .btn-outline:focus-visible::before,
-    .btn-outline-light:hover::before,
-    .btn-outline-light:focus-visible::before,
-    .pricing-card__btn:hover::before,
-    .pricing-card__btn:focus-visible::before {
-      opacity: 1;
+      transform: scaleX(1);
     }
   }
 
@@ -2664,6 +2670,13 @@ html.with-fancybox .mouse-cursor {
     overflow: hidden;
     isolation: isolate;
     background-color: var(--color-why-choose);
+    background-image: linear-gradient(
+      90deg,
+      #ffffff 50%,
+      var(--color-why-choose) 50%
+    );
+    background-size: 200% 100%;
+    background-position: 100% 0;
     color: var(--color-dark-accent);
     font-family: inherit;
     font-size: 1rem;
@@ -2671,27 +2684,14 @@ html.with-fancybox .mouse-cursor {
     line-height: 1.375;
     text-align: center;
     cursor: pointer;
-    transition: color 0.5s ease;
+    transition:
+      background-position 0.4s ease,
+      color 0.5s ease;
   }
 
-  .pricing-card__btn::before {
-    content: "";
-    position: absolute;
-    bottom: -80%;
-    left: 50%;
-    width: 160%;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    background: #ffffff;
-    transform: translateX(-50%) scale(0);
-    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: -1;
-    pointer-events: none;
-  }
-
-  .pricing-card__btn:hover::before,
-  .pricing-card__btn:focus-visible::before {
-    transform: translateX(-50%) scale(1.15);
+  .pricing-card__btn:hover,
+  .pricing-card__btn:focus-visible {
+    background-position: 0% 0;
   }
 
   .pricing-card:hover .pricing-card__btn {
@@ -5857,6 +5857,8 @@ html.with-fancybox .mouse-cursor {
     align-items: center;
     justify-content: center;
     gap: 0.625rem;
+    position: relative;
+    overflow: hidden;
     width: 100%;
     height: 52px;
     margin-top: 0.75rem;
@@ -5864,6 +5866,13 @@ html.with-fancybox .mouse-cursor {
     border: 0;
     border-radius: 0;
     background-color: #000000;
+    background-image: linear-gradient(
+      90deg,
+      var(--color-dark-accent) 50%,
+      #000000 50%
+    );
+    background-size: 200% 100%;
+    background-position: 100% 0;
     color: #ffffff;
     font-family: var(--font-inter), Inter, sans-serif;
     font-size: 1rem;
@@ -5872,11 +5881,12 @@ html.with-fancybox .mouse-cursor {
     letter-spacing: 0.02em;
     text-transform: uppercase;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: background-position 0.4s ease;
   }
 
-  .get-started-modal__submit:hover:not(:disabled) {
-    background-color: #1a1a1a;
+  .get-started-modal__submit:hover:not(:disabled),
+  .get-started-modal__submit:focus-visible:not(:disabled) {
+    background-position: 0% 0;
   }
 
   .get-started-modal__submit:disabled {
