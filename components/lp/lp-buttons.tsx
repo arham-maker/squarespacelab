@@ -74,7 +74,7 @@ export function LpLiveChatButton({
   return (
     <a
       href="javascript:;"
-      className={className}
+      className={["open-livechat", className].filter(Boolean).join(" ")}
       title={label}
       onClick={(e) => {
         e.preventDefault();

@@ -221,7 +221,7 @@ body:has(.lp-root) {
     background-position 0.4s ease;
 }
 
-.lp-root .theme-btn.bordered::before {
+.lp-root .theme-btn.bordered:not(.open-livechat)::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -233,14 +233,20 @@ body:has(.lp-root) {
   pointer-events: none;
 }
 
-.lp-root .theme-btn.bordered:hover::before,
-.lp-root .theme-btn.bordered:focus-visible::before {
+.lp-root .theme-btn.bordered:not(.open-livechat):hover::before,
+.lp-root .theme-btn.bordered:not(.open-livechat):focus-visible::before {
   transform: scaleX(1);
 }
 
-.lp-root .theme-btn.bordered:hover,
-.lp-root .theme-btn.bordered:focus-visible {
+.lp-root .theme-btn.bordered:not(.open-livechat):hover,
+.lp-root .theme-btn.bordered:not(.open-livechat):focus-visible {
   color: #ffffff;
+}
+
+.lp-root .open-livechat:hover,
+.lp-root .open-livechat:focus-visible {
+  background-color: transparent;
+  background-image: none;
 }
 
 .lp-root .theme-btn:not(.bordered):not(.bg-black):not(.bg-orange) {
@@ -313,7 +319,7 @@ body:has(.lp-root) {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .lp-root .theme-btn.bordered::before {
+  .lp-root .theme-btn.bordered:not(.open-livechat)::before {
     transition: none;
     transform: scaleX(1);
   }
