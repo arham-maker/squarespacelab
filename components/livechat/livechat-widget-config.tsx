@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { LIVECHAT_WIDGET } from "@/lib/data/livechat-widget";
+import { maximizeLiveChatOnAgentMessage } from "@/lib/livechat";
 
 export function LiveChatWidgetConfig() {
   useEffect(() => {
@@ -18,25 +19,32 @@ export function LiveChatWidgetConfig() {
       );
     };
 
-    const bindVisibilityListener = () => {
+    const onNewEvent = (...args: unknown[]) => {
+      maximizeLiveChatOnAgentMessage(args[0]);
+    };
+
+    const bindWidgetListeners = () => {
       const widget = window.LiveChatWidget;
       if (!widget) return;
 
       widget.on("visibility_changed", onVisibilityChanged);
+      widget.on("new_event", onNewEvent);
+
       return () => {
         widget.off("visibility_changed", onVisibilityChanged);
+        widget.off("new_event", onNewEvent);
         document.body.classList.remove("livechat-maximized");
       };
     };
 
     const widget = window.LiveChatWidget;
     if (widget) {
-      return bindVisibilityListener();
+      return bindWidgetListeners();
     }
 
     let cleanup: (() => void) | undefined;
     window.LiveChatWidget?.once("ready", () => {
-      cleanup = bindVisibilityListener();
+      cleanup = bindWidgetListeners();
     });
 
     return () => {

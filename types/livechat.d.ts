@@ -2,6 +2,17 @@ type LiveChatVisibilityChangedData = {
   visibility?: "maximized" | "minimized" | "hidden";
 };
 
+type LiveChatNewEventData = {
+  type?: string;
+  author?: {
+    type?: string;
+  };
+};
+
+type LiveChatWidgetState = {
+  visibility?: "maximized" | "minimized" | "hidden";
+};
+
 type LiveChatWidgetApi = {
   on: (event: string, callback: (...args: unknown[]) => void) => void;
   once: (event: string, callback: () => void) => void;
