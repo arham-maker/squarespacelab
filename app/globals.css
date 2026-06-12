@@ -6013,17 +6013,3 @@ html.with-fancybox .mouse-cursor {
     margin-top: 0;
   }
 }
-
-/* LiveChat maximized window height */
-body.livechat-maximized #chat-widget-container {
-  height: var(--livechat-maximized-height, 500px) !important;
-  max-height: min(
-    var(--livechat-maximized-height, 500px),
-    calc(100dvh - 24px)
-  ) !important;
-}
-
-body.livechat-maximized #chat-widget-container iframe {
-  height: 100% !important;
-  max-height: 100% !important;
-}
