@@ -224,7 +224,7 @@ export function Lp2Page() {
             >
               <div className="sec-heading">
                 <h2 className="text-white">
-                  Explore Our <br /> Squarespace Dev <br /> Services
+                  Explore Our <br /> Squarespace Lab <br /> Services
                 </h2>
               </div>
             </div>

@@ -17,14 +17,14 @@ export const PRIVACY_SECTIONS: readonly PrivacyContentSection[] = [
     id: "statement",
     title: "Privacy Policy Statement",
     paragraphs: [
-      "Squarespacedev is highly committed to keeping client's personal information safe and secure and we collect only essential and inevitable information to process your order. We never share any of your information with any individual outside our company in any way until you agree to permit us for doing so.",
+      "SquarespaceLab is highly committed to keeping client's personal information safe and secure and we collect only essential and inevitable information to process your order. We never share any of your information with any individual outside our company in any way until you agree to permit us for doing so.",
     ],
   },
   {
     id: "information-collection",
     title: "Information Collection",
     paragraphs: [
-      "We collect clients' information via Email, Phone and Contact Us and Order Form and it is protected as per privacy policy set by Squarespacedev. Clients' information is never disclosed, shared or sold to any third-party services. Initially, the personal information we require is about clients' name, company's name, billing address, email address, secondary email, phone and fax numbers, order details and place of residence and some of which is optional. Along with this, we need information in creative brief in order to start working on your order. Additionally, collection of information includes opinions pertaining to complaints, appreciation and comments about the product. Technical information which is collected and recorded includes your IP address, browser version, operating system and the date and time when you visit. Google Analytics or some similar tool or service is also used for collecting this data. Our client brief collects necessary information about your project, so we deliver just what you require. We use Google Analytics and similar tools to collect your information, including your IP address, operating system, browser information, and the date & time of visiting our website. The data collected helps us in providing a customized user experience to you.",
+      "We collect clients' information via Email, Phone and Contact Us and Order Form and it is protected as per privacy policy set by SquarespaceLab. Clients' information is never disclosed, shared or sold to any third-party services. Initially, the personal information we require is about clients' name, company's name, billing address, email address, secondary email, phone and fax numbers, order details and place of residence and some of which is optional. Along with this, we need information in creative brief in order to start working on your order. Additionally, collection of information includes opinions pertaining to complaints, appreciation and comments about the product. Technical information which is collected and recorded includes your IP address, browser version, operating system and the date and time when you visit. Google Analytics or some similar tool or service is also used for collecting this data. Our client brief collects necessary information about your project, so we deliver just what you require. We use Google Analytics and similar tools to collect your information, including your IP address, operating system, browser information, and the date & time of visiting our website. The data collected helps us in providing a customized user experience to you.",
     ],
   },
   {
@@ -52,7 +52,7 @@ export const PRIVACY_SECTIONS: readonly PrivacyContentSection[] = [
     id: "amendments",
     title: "Amendments",
     paragraphs: [
-      "Squarespacedev may amend its privacy policy for more strict security concerns if needed. However, the entire amendments about personal information security concerns will be declared with a prior notice of the effective date of amended or updated privacy policies.",
+      "SquarespaceLab may amend its privacy policy for more strict security concerns if needed. However, the entire amendments about personal information security concerns will be declared with a prior notice of the effective date of amended or updated privacy policies.",
     ],
   },
   {

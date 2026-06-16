@@ -142,7 +142,7 @@ export function LpPage() {
             </div>
           </div>
 
-          <div className="row align-items-center padding1" id="whysquarespacedev">
+          <div className="row align-items-center padding1" id="whysquarespacelab">
             <div
               className="col-lg-6"
               data-aos="fade-right"

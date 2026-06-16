@@ -3,8 +3,8 @@ import { FORM_RECIPIENT_EMAIL } from "@/lib/data/forms";
 import { SITE } from "@/lib/data/site";
 import type { FormSubmissionPayload } from "@/lib/forms/types";
 
-const LOGO_CID = "brand-logo@squarespacedev";
-const LOGO_FILENAME = "Square Space Dev Logo V3 Black.png";
+const LOGO_CID = "brand-logo@squarespacelab";
+const LOGO_FILENAME = "Square Space Lab Logo V3 Black.png";
 
 const FIELD_LABELS: Record<string, string> = {
   fullName: "Full Name",

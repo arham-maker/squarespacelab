@@ -9,7 +9,7 @@ const wixMadeforDisplay = Wix_Madefor_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Hire a Squarespace Website Designer | Squarespacedev",
+  title: "Hire a Squarespace Website Designer | SquarespaceLab",
   description:
     "Find a professional Squarespace designer to build or redesign your website. Custom Squarespace website design by expert developers.",
 };

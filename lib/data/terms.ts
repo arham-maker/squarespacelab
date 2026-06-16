@@ -8,10 +8,10 @@ export const TERMS_HERO = {
 export const TERMS_PAGE_TITLE = "Terms And Conditions";
 
 export const TERMS_REFUND_INTRO =
-  "Squarespacedev's refund policy will be nil if;";
+  "SquarespaceLab' refund policy will be nil if;";
 
 export const TERMS_REFUND_NOTE =
-  "Note: Squarespacedev holds all rights to reject any project or cancel the contract whenever it deems necessary. After the refund, you will not have any rights to use the designs for any purpose; they will be the sole property of Squarespacedev. The company will be the rightful owner of the designs.";
+  "Note: SquarespaceLab holds all rights to reject any project or cancel the contract whenever it deems necessary. After the refund, you will not have any rights to use the designs for any purpose; they will be the sole property of SquarespaceLab. The company will be the rightful owner of the designs.";
 
 export const TERMS_CLAIM_INTRO =
   "To claim your refund in accordance with our refund policy, follow the following steps: You can claim your refund by:";
@@ -21,7 +21,7 @@ export const TERMS_CLAIM_PHONE_HREF = SITE.phoneHref;
 
 export const TERMS_CLAIM_FOLLOW_UP = [
   "As soon as we receive your refund request, we will respond to it at our earliest, once the required analysis is completed, we will initiate the process.",
-  "After you have received your refund, you will not have any rights to any designs submitted by Squarespacedev, the information will be submitted the Copyright Acquisition of the Government Copyright Agencies to maintain legality.",
+  "After you have received your refund, you will not have any rights to any designs submitted by SquarespaceLab, the information will be submitted the Copyright Acquisition of the Government Copyright Agencies to maintain legality.",
 ] as const;
 
 export const TERMS_CLAIM_ITEMS = [
@@ -52,7 +52,7 @@ export const TERMS_SECTIONS: readonly TermsContentSection[] = [
     id: "legal-contract",
     title: "LEGAL CONTRACT BINDING",
     paragraphs: [
-      "When a client purchases a service from Squarespacedev, they agree to the Legal Contract Binding, which includes handling responses to legal notices related to Trademark Services, Patents, and Lawsuits. If a customer decides to close their business, they are responsible for submitting the required cancellation documents to remove their legal name from the business records. This safeguards the business owner from any legal liabilities tied to the infringing business name. If the customer fails to provide the cancellation documentation, Squarespacedev will not be held liable and assumes no responsibility for any legal damages incurred by the business owner due to the infringement issue.",
+      "When a client purchases a service from SquarespaceLab, they agree to the Legal Contract Binding, which includes handling responses to legal notices related to Trademark Services, Patents, and Lawsuits. If a customer decides to close their business, they are responsible for submitting the required cancellation documents to remove their legal name from the business records. This safeguards the business owner from any legal liabilities tied to the infringing business name. If the customer fails to provide the cancellation documentation, SquarespaceLab will not be held liable and assumes no responsibility for any legal damages incurred by the business owner due to the infringement issue.",
     ],
   },
   {
@@ -120,7 +120,7 @@ export const TERMS_SECTIONS: readonly TermsContentSection[] = [
     id: "records",
     title: "RECORD MAINTENANCE",
     paragraphs: [
-      "Squarespacedev keeps the records of finalized designs so that in case of any misplaced order, you will be provided the exact file. However, files extraction will be charged additionally.",
+      "SquarespaceLab keeps the records of finalized designs so that in case of any misplaced order, you will be provided the exact file. However, files extraction will be charged additionally.",
     ],
   },
   {
@@ -134,7 +134,7 @@ export const TERMS_SECTIONS: readonly TermsContentSection[] = [
     id: "communication",
     title: "COMMUNICATION POLICY",
     list: [
-      'YOU agree that Squarespacedev is not liable for any correspondence from email address (es) other than the ones followed by our own domain i.e. "..@squarespacedev.com " or/and any toll free number that is not mentioned on our website. Squarespacedev should not be held responsible for any damage(s) caused by such correspondence. We only take responsibility of any communication through email address (es) under our own domain name or/and via toll free number i.e. already mentioned on Squarespacedev\'s website.',
+      'YOU agree that SquarespaceLab is not liable for any correspondence from email address (es) other than the ones followed by our own domain i.e. "..@squarespacelab.com " or/and any toll free number that is not mentioned on our website. SquarespaceLab should not be held responsible for any damage(s) caused by such correspondence. We only take responsibility of any communication through email address (es) under our own domain name or/and via toll free number i.e. already mentioned on SquarespaceLab\'s website.',
       "We are not responsible for any damages caused due to other contact details not provided by us.",
       "Project activation charges will apply if client fails to respond over a period of 45 days.",
       "We take full responsibility of all the information provided through our official domains.",

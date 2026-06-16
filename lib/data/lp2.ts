@@ -6,7 +6,7 @@ export const LP2_CONTACT = {
   phoneHref: SITE.phoneHref,
   email: SITE.email,
   emailHref: SITE.emailHref,
-  brand: "Squarespacedev",
+  brand: "SquarespaceLab",
 } as const;
 
 export const LP2_PORTFOLIO_ROW1 = [
@@ -234,4 +234,4 @@ export const LP2_VIDEO_PACKAGES: Lp2VideoPackage[] = [
 ];
 
 export const LP2_DISCLAIMER =
-  'Squarespacedev is an independent company that provides design and development services for e-commerce solutions. We are not affiliated, associated, authorized, endorsed by, or in any way officially connected with Squarespace, or any of its subsidiaries or affiliates. The name "Squarespace" as well as related names, marks, emblems, and images are registered trademarks of their respective owners.';
+  'SquarespaceLab is an independent company that provides design and development services for e-commerce solutions. We are not affiliated, associated, authorized, endorsed by, or in any way officially connected with Squarespace, or any of its subsidiaries or affiliates. The name "Squarespace" as well as related names, marks, emblems, and images are registered trademarks of their respective owners.';

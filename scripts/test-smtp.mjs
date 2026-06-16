@@ -35,7 +35,7 @@ const pass = process.env.SMTP_PASSWORD;
 const port = Number(process.env.SMTP_PORT ?? "465");
 const secure = process.env.SMTP_SECURE === "true" || port === 465;
 const to =
-  process.env.FORM_RECIPIENT_EMAIL?.trim() || "support@squarespacedev.com";
+  process.env.FORM_RECIPIENT_EMAIL?.trim() || "support@squarespacelab.com";
 
 const transporter = nodemailer.createTransport({
   host,

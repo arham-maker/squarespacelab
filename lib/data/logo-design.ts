@@ -180,7 +180,7 @@ export const LOGO_DESIGN_PLANS: PricingPlan[] = [
 
 export const LOGO_DESIGN_TESTIMONIAL = {
   quote:
-    "Right from the beginning to the very end, my experience with Squarespacedev was incredible. They really listen to you and give you what YOU WANT. The team is ever helpful and supportive whenever I hit them up for any guidance or updates. They created a logo that perfectly embodies my business's personality and mission. I am 100% satisfied.",
+    "Right from the beginning to the very end, my experience with SquarespaceLab was incredible. They really listen to you and give you what YOU WANT. The team is ever helpful and supportive whenever I hit them up for any guidance or updates. They created a logo that perfectly embodies my business's personality and mission. I am 100% satisfied.",
   image: {
     src: "/logo-design/21.webp",
     alt: "Logo design client showcase",

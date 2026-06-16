@@ -88,7 +88,7 @@ async function sendViaSmtp(payload: FormSubmissionPayload): Promise<void> {
   try {
     const result = await transporter.sendMail({
       from: {
-        name: "Squarespacedev Website",
+        name: "SquarespaceLab Website",
         address: config.user,
       },
       sender: config.user,

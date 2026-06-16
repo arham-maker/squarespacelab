@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { TermsPage } from "@/components/pages/terms-page";
 
 export const metadata: Metadata = {
-  title: "Terms and Conditions | Squarespacedev",
+  title: "Terms and Conditions | SquarespaceLab",
   description:
-    "Read Squarespacedev terms and conditions, including revision, refund, delivery, and communication policies.",
+    "Read SquarespaceLab terms and conditions, including revision, refund, delivery, and communication policies.",
 };
 
 export default function TermsAndConditions() {

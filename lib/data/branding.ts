@@ -120,7 +120,7 @@ export const BRANDING_PORTFOLIO_ITEMS = Array.from({ length: 8 }, (_, index) => 
 export const BRANDING_STORY = {
   title: "Let Our Experts Craft Your Unique Brand Story—Unique, Engaging, and Memorable",
   description:
-    "Are you ready to take your brand to the next level? When you work with our team, it feels like you've got your very own graphic designer by your side. We specialize in creating cohesive graphics that look great across all mediums—print, digital, and in-store. Plus, our quick turnaround time of just 24 to 72 hours means you won't be waiting long for your designs. With Squarespacedev, your brand's unique personality can truly shine. Whether it's logos, business cards, brochures, or banners, we're here to bring your vision to life and make a real impact together.",
+    "Are you ready to take your brand to the next level? When you work with our team, it feels like you've got your very own graphic designer by your side. We specialize in creating cohesive graphics that look great across all mediums—print, digital, and in-store. Plus, our quick turnaround time of just 24 to 72 hours means you won't be waiting long for your designs. With SquarespaceLab, your brand's unique personality can truly shine. Whether it's logos, business cards, brochures, or banners, we're here to bring your vision to life and make a real impact together.",
   highlight: "Be the Brand That Leaves a Lasting Impression Everywhere!",
   image: {
     src: "/branding/25.webp",

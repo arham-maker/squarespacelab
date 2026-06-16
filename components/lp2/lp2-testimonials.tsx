@@ -131,7 +131,7 @@ export function Lp2TestimonialsSection() {
                 <div className="testi-slide">
                   <div className="bottom b2">
                     <div className="det">
-                      <span className="name">Squarespacedev</span>
+                      <span className="name">SquarespaceLab</span>
                     </div>
                     <img src={LP_SSD_LOGO} alt="" className="lp-ssd-logo" loading="lazy" />
                   </div>

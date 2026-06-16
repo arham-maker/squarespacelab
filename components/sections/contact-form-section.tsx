@@ -174,7 +174,7 @@ export function ContactFormSection() {
                   />
                   <label htmlFor="contact-consent-marketing">
                     I provide my consent to receive B2B marketing communications
-                    from Squarespacedev
+                    from SquarespaceLab
                   </label>
                 </li>
                 <li className="contact-checkbox">

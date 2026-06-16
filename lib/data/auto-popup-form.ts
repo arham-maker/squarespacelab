@@ -13,6 +13,6 @@ export const AUTO_POPUP_FORM = {
   submitLabel: LEAD_FORM.submitLabel,
   thankYouPath: LEAD_FORM.thankYouPath,
   delayMs: 30_000,
-  sessionStorageKey: "squarespacedev-auto-popup-seen",
+  sessionStorageKey: "squarespacelab-auto-popup-seen",
   excludedPaths: ["/lp", "/thankyou"],
 } as const;

@@ -1,5 +1,5 @@
 const MARQUEE_SEGMENTS = [
-  "Squarespacedev is an independent company that provides design and development services for e-commerce solutions.",
+  "SquarespaceLab is an independent company that provides design and development services for e-commerce solutions.",
   "We are not in any way officially connected with Squarespace Inc., or any of its subsidiaries or affiliates.",
   'The name "Squarespace" as well as related names, marks, emblems, and images are registered trademarks of their respective owners.',
 ] as const;

@@ -19,7 +19,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Professional Squarespace Web Design Services | Squarespacedev",
+  title: "Professional Squarespace Web Design Services | SquarespaceLab",
   description:
     "Custom Squarespace web design and e-commerce solutions. Expert designers, rapid turnaround, and free consultation.",
 };
