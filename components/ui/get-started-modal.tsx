@@ -205,6 +205,29 @@ export function GetStartedModal({
               <p className="get-started-modal__title-highlight m-0">
                 {LEAD_FORM.titleHighlight}
               </p>
+              {selectedPackage ? (
+                <div className="get-started-modal__package">
+                  <span className="get-started-modal__package-label">
+                    Selected Package
+                  </span>
+                  <span className="get-started-modal__package-name">
+                    {selectedPackage.name}
+                  </span>
+                  <span className="get-started-modal__package-price">
+                    {selectedPackage.price}
+                  </span>
+                  {selectedPackage.category ? (
+                    <span className="get-started-modal__package-category">
+                      {selectedPackage.category}
+                    </span>
+                  ) : null}
+                  {selectedPackage.details ? (
+                    <span className="get-started-modal__package-details">
+                      {selectedPackage.details}
+                    </span>
+                  ) : null}
+                </div>
+              ) : null}
             </div>
 
             <form className="get-started-modal__form" onSubmit={handleSubmit} noValidate>

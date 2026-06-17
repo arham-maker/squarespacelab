@@ -25,7 +25,7 @@ const LeadFormContext = createContext<LeadFormContextValue | null>(null);
 export function LeadFormProvider({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const isLp = pathname === "/lp" || pathname === "/lp2";
-  const lpVariant = pathname === "/lp" ? "lp2" : "lp";
+  const lpVariant = pathname === "/lp2" ? "lp2" : "lp";
   const [isOpen, setIsOpen] = useState(false);
   const [selectedPackage, setSelectedPackage] =
     useState<SelectedPackage | null>(null);
