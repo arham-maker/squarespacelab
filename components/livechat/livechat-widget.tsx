@@ -4,6 +4,10 @@ import { CRISP_WEBSITE_ID } from "@/lib/livechat";
 const CRISP_INIT = `
 window.$crisp = window.$crisp || [];
 window.$crisp.push(["config", "position:reverse", [false]]);
+window.$crisp.push(["on", "message:received", function(message) {
+  if (message && message.from && message.from !== "operator") return;
+  window.$crisp.push(["do", "chat:open"]);
+}]);
 window.CRISP_WEBSITE_ID = "${CRISP_WEBSITE_ID}";
 (function(){
   var d = document;
