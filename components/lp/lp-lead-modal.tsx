@@ -27,6 +27,7 @@ type LpLeadModalProps = {
   selectedPackage: SelectedPackage | null;
   onClose: () => void;
   variant?: "lp" | "lp2";
+  context?: "lp" | "pricing";
 };
 
 export function LpLeadModal({
@@ -34,6 +35,7 @@ export function LpLeadModal({
   selectedPackage,
   onClose,
   variant = "lp",
+  context = "lp",
 }: LpLeadModalProps) {
   const formConfig = variant === "lp2" ? LP2_LEAD_FORM : LP_LEAD_FORM;
   const isLp2 = variant === "lp2";
@@ -119,15 +121,18 @@ export function LpLeadModal({
     const formData = new FormData(event.currentTarget);
 
     try {
-      const messageField = isLp2
-        ? LP2_LEAD_FORM.fields.message.name
-        : LP_LEAD_FORM.fields.industry.name;
-
       const baseFields = {
         fullName: getFormString(formData, formConfig.fields.name.name),
         email: getFormString(formData, formConfig.fields.email.name),
         phone: getFormString(formData, formConfig.fields.phone.name),
-        businessIndustry: getFormString(formData, messageField),
+        ...(isLp2
+          ? {
+              businessIndustry: getFormString(
+                formData,
+                LP2_LEAD_FORM.fields.message.name
+              ),
+            }
+          : {}),
         consentMarketing: "Accepted via LP lead form",
         consentSms: "Accepted via LP lead form",
         consentTerms: "Accepted via LP lead form",
@@ -155,7 +160,14 @@ export function LpLeadModal({
   if (!mounted || !isOpen) return null;
 
   const modal = (
-    <div className="lp-lead-modal-root">
+    <div
+      className={[
+        "lp-lead-modal-root",
+        context === "pricing" ? "lp-lead-modal-root--pricing" : "",
+      ]
+        .filter(Boolean)
+        .join(" ")}
+    >
       <div
         ref={overlayRef}
         className="overlay active"
@@ -271,21 +283,15 @@ export function LpLeadModal({
                   />
                 </div>
 
-                <div className="fld-input">
-                  <textarea
-                    name={
-                      isLp2
-                        ? LP2_LEAD_FORM.fields.message.name
-                        : LP_LEAD_FORM.fields.industry.name
-                    }
-                    placeholder={
-                      isLp2
-                        ? LP2_LEAD_FORM.fields.message.placeholder
-                        : LP_LEAD_FORM.fields.industry.placeholder
-                    }
-                    rows={isLp2 ? 3 : 2}
-                  />
-                </div>
+                {isLp2 ? (
+                  <div className="fld-input">
+                    <textarea
+                      name={LP2_LEAD_FORM.fields.message.name}
+                      placeholder={LP2_LEAD_FORM.fields.message.placeholder}
+                      rows={3}
+                    />
+                  </div>
+                ) : null}
 
                 {submitError ? (
                   <p className="lp-lead-modal__error" role="alert">

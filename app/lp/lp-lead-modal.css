@@ -20,12 +20,12 @@
   right: auto;
   transform: translate(-50%, -50%);
   z-index: 9999999;
-  width: 975px;
-  max-width: 97%;
-  max-height: 90vh;
+  width: 975px !important;
+  max-width: 97vw !important;
+  max-height: 90vh !important;
   overflow-y: auto;
   margin: 0;
-  background: #fff;
+  background: #fff !important;
   box-shadow: 0 0 30px -9px rgb(0 0 0 / 43%);
   border-radius: 8px;
 }
@@ -33,16 +33,16 @@
 .lp-lead-modal-root .mmpopup {
   display: flex;
   align-items: stretch;
-  background: #000;
+  background: #000 !important;
   padding: 1rem;
   gap: 0;
-  min-height: 520px;
+  min-height: 520px !important;
 }
 
 .lp-lead-modal-root .popup-text {
   flex: 1 1 46%;
   max-width: 46%;
-  padding: 1rem;
+  padding: 1rem !important;
 }
 
 .lp-lead-modal-root .popup-image {
@@ -50,7 +50,7 @@
   display: block !important;
   overflow: hidden;
   min-height: 100%;
-  padding: 1rem;
+  padding: 1rem !important;
 }
 
 .lp-lead-modal-root .popup-image img {
@@ -86,6 +86,42 @@
   font-size: clamp(1.75rem, 3vw, 2.5rem);
 }
 
+.lp-lead-modal-root--pricing .centercont h3,
+.lp-lead-modal-root--pricing .centercont h3 span {
+  font-size: 32px;
+  line-height: 1.1;
+  margin-bottom: 0.8rem;
+}
+
+.lp-lead-modal-root--pricing .centercont h4 {
+  font-size: 35px;
+  line-height: 1;
+  margin-bottom: 1.35rem;
+}
+
+.lp-lead-modal-root--pricing .centercont h4 span {
+  font-size: 60px;
+  line-height: 1;
+}
+
+.lp-lead-modal-root--pricing .fld-input {
+  height: 82px !important;
+  margin-bottom: 20px !important;
+}
+
+.lp-lead-modal-root--pricing .fld-input input,
+.lp-lead-modal-root--pricing .fld-input textarea,
+.lp-lead-modal-root--pricing .fld-input select {
+  padding: 0 1.35rem;
+  font-size: 22px;
+}
+
+.lp-lead-modal-root--pricing .fld-btn button {
+  height: 73px !important;
+  font-size: 24px;
+  font-weight: 600;
+}
+
 .lp-lead-modal-root .lp-lead-modal__package {
   margin-bottom: 1rem;
   padding: 0.75rem 1rem;
@@ -103,8 +139,8 @@
 .lp-lead-modal-root .fld-input {
   width: 100%;
   max-width: 100%;
-  height: 66px;
-  margin-bottom: 1rem;
+  height: 66px !important;
+  margin-bottom: 1rem !important;
   border: 1px solid #d1d5db;
   border-radius: 5px;
   background: #fff;
@@ -140,7 +176,7 @@
   font-size: 18px;
   font-weight: 600;
   text-transform: none;
-  height: 59px;
+  height: 59px !important;
   cursor: pointer;
   border: 0;
   font-family: "Wix Madefor Display", sans-serif;
@@ -157,22 +193,27 @@
 }
 
 .lp-lead-modal-root .closeico {
-  width: 35px;
-  height: 35px;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 2;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: #fff;
-  border-radius: 100px;
+  border-radius: 999px;
   border: 0;
   cursor: pointer;
   padding: 0;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 18%);
 }
 
 .lp-lead-modal-root .closeico svg {
   display: block;
-  width: 14px;
-  height: 14px;
+  width: 18px;
+  height: 18px;
   color: #000;
 }
 

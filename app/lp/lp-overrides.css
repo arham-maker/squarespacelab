@@ -10,6 +10,10 @@
   height: auto;
 }
 
+.lp-root header .main-header {
+  padding-top: 0 !important;
+}
+
 .lp-root footer .logo {
   max-width: 700px;
   width: 100%;
@@ -25,12 +29,36 @@
   filter: none;
 }
 
+.lp-root footer .f-logos {
+  list-style: none;
+  padding: 0;
+}
+
+.lp-root footer .f-logos img {
+  display: block;
+  width: 100%;
+  max-width: 188px;
+  height: auto;
+  margin: 0 auto;
+}
+
 .lp-root .menu > li > a img {
-  filter: invert(1);
+  filter: none;
 }
 
 .lp-root .menu > li > a {
-  color: #ffffff;
+  color: #000000;
+}
+
+.lp-root header .menu > li > a,
+.lp-root header .menu > li > a:visited,
+.lp-root header .menu > li > a:hover,
+.lp-root header .menu > li > a:focus-visible {
+  color: #000000 !important;
+}
+
+.lp-root header .menu > li > a img {
+  filter: none !important;
 }
 
 .lp-root header .menu {
@@ -57,7 +85,7 @@
   align-items: center;
   gap: 8px;
   padding: 12px 18px;
-  color: #ffffff;
+  color: #000000;
   font-size: 18px;
   font-weight: 600;
   text-decoration: none;
@@ -247,6 +275,16 @@ body:has(.lp-root) {
 .lp-root .open-livechat:focus-visible {
   background-color: transparent;
   background-image: none;
+}
+
+.lp-root .mainBanner .banner-content .theme-btn:first-child {
+  border-left: 0 !important;
+}
+
+.lp-root .mainBanner .banner-content .theme-btn:first-child::before,
+.lp-root .mainBanner .banner-content .theme-btn:first-child::after {
+  display: none !important;
+  content: none !important;
 }
 
 .lp-root .theme-btn:not(.bordered):not(.bg-black):not(.bg-orange) {

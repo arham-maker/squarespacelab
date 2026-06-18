@@ -525,6 +525,24 @@ export function Lp2Page() {
               </div>
             </div>
           </div>
+          <div className="row justify-content-center">
+            <div className="col-lg-9">
+              <ul className="f-logos">
+                <li>
+                  <LpImg path="f-logo1.svg" alt="" />
+                </li>
+                <li>
+                  <LpImg path="f-logo2.svg" alt="" />
+                </li>
+                <li>
+                  <LpImg path="f-logo3.svg" alt="" />
+                </li>
+                <li>
+                  <LpImg path="f-logo4.svg" alt="" />
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </footer>
 

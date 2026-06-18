@@ -8,6 +8,32 @@ window.$crisp.push(["on", "message:received", function(message) {
   if (message && message.from && message.from !== "operator") return;
   window.$crisp.push(["do", "chat:open"]);
 }]);
+window.$crisp.push(["on", "session:loaded", function() {
+  var storageKey = "squarespacelab-crisp-welcome-sequence-shown";
+
+  try {
+    if (sessionStorage.getItem(storageKey) === "1") return;
+    sessionStorage.setItem(storageKey, "1");
+  } catch (error) {
+    // Continue without storage if the browser blocks sessionStorage.
+  }
+
+  var showMessage = function(message) {
+    window.$crisp.push(["do", "message:show", ["text", message]]);
+  };
+
+  window.setTimeout(function() {
+    showMessage("Hello there! Are you looking to create a custom Square Space website?");
+  }, 1000);
+
+  window.setTimeout(function() {
+    showMessage("I'm not a bot, feel free to discuss your business requirements with me 🙂");
+  }, 16000);
+
+  window.setTimeout(function() {
+    showMessage("May I know the nature of your business?\\n\\nSo I can show you some websites we have done for similar businesses");
+  }, 31000);
+}]);
 window.CRISP_WEBSITE_ID = "${CRISP_WEBSITE_ID}";
 (function(){
   var d = document;

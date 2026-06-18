@@ -24,7 +24,8 @@ const LeadFormContext = createContext<LeadFormContextValue | null>(null);
 
 export function LeadFormProvider({ children }: { children: ReactNode }) {
   const pathname = usePathname();
-  const isLp = pathname === "/lp" || pathname === "/lp2";
+  const usesLpModal =
+    pathname === "/lp" || pathname === "/lp2" || pathname === "/our-pricing";
   const lpVariant = pathname === "/lp2" ? "lp2" : "lp";
   const [isOpen, setIsOpen] = useState(false);
   const [selectedPackage, setSelectedPackage] =
@@ -48,12 +49,13 @@ export function LeadFormProvider({ children }: { children: ReactNode }) {
   return (
     <LeadFormContext.Provider value={value}>
       {children}
-      {isLp ? (
+      {usesLpModal ? (
         <LpLeadModal
           isOpen={isOpen}
           selectedPackage={selectedPackage}
           onClose={closeLeadForm}
           variant={lpVariant}
+          context={pathname === "/our-pricing" ? "pricing" : "lp"}
         />
       ) : (
         <GetStartedModal

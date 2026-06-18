@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Wix_Madefor_Display } from "next/font/google";
 import "./lp-overrides.css";
-import "./lp-lead-modal.css";
 import "../lp2/lp2-overrides.css";
 
 const wixMadeforDisplay = Wix_Madefor_Display({

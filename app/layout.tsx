@@ -11,6 +11,7 @@ import { LiveChatWidget } from "@/components/livechat/livechat-widget";
 import { LiveChatWidgetConfig } from "@/components/livechat/livechat-widget-config";
 import { MouseCursor } from "@/components/ui/mouse-cursor";
 import "./globals.css";
+import "./lp/lp-lead-modal.css";
 
 const inter = Inter({
   variable: "--font-inter",

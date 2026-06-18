@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Wix_Madefor_Display } from "next/font/google";
 import "../lp/lp-overrides.css";
-import "../lp/lp-lead-modal.css";
 
 const wixMadeforDisplay = Wix_Madefor_Display({
   subsets: ["latin"],
