@@ -59,14 +59,14 @@ export function HomePage() {
   return (
     <div ref={pageRef} className="flex min-h-full flex-1 flex-col">
       <div
-        className="pointer-events-none fixed inset-x-0 top-0 -z-10 h-[100dvh] w-full overflow-hidden lg:h-[110vh]"
+        className="pointer-events-none fixed inset-x-0 top-0 -z-10 h-dvh w-full overflow-hidden lg:h-[110vh]"
         aria-hidden
         data-home-banner
       >
         <div
           ref={bannerMediaRef}
           data-home-banner-media
-          className="absolute inset-x-0 top-[-8%] h-[116%] w-full will-change-transform"
+          className="absolute inset-x-0 top-0 h-full w-full"
         >
           <Image
             src="/home/home-banner.webp"
@@ -83,7 +83,7 @@ export function HomePage() {
         <main ref={mainRef} className="flex flex-1 flex-col">
           <div
             data-home-viewport
-            className="flex min-h-[100dvh] flex-col lg:h-[110vh] lg:max-h-[110vh] lg:min-h-[110vh]"
+            className="flex min-h-dvh flex-col lg:h-[110vh] lg:max-h-[110vh] lg:min-h-[110vh]"
           >
             <SiteHeader />
             <HeroSection />

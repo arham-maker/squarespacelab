@@ -3,7 +3,6 @@ import Script from "next/script";
 import { Inter } from "next/font/google";
 import { ConditionalMarqueeTopbar } from "@/components/layout/conditional-marquee-topbar";
 import { LeadFormProvider } from "@/components/providers/lead-form-provider";
-import { AutoPopupProvider } from "@/components/providers/auto-popup-provider";
 import { LiveChatAutoOpenProvider } from "@/components/providers/livechat-auto-open-provider";
 import { GsapProvider } from "@/components/providers/gsap-provider";
 import { SmoothScrollProvider } from "@/components/providers/smooth-scroll-provider";
@@ -44,14 +43,12 @@ export default function RootLayout({
         <GsapProvider>
         <LeadFormProvider>
           <LiveChatAutoOpenProvider>
-            <AutoPopupProvider>
-              <SmoothScrollProvider>
+            <SmoothScrollProvider>
               {children}
               <MouseCursor />
               <LiveChatWidget />
               <LiveChatWidgetConfig />
-              </SmoothScrollProvider>
-            </AutoPopupProvider>
+            </SmoothScrollProvider>
           </LiveChatAutoOpenProvider>
         </LeadFormProvider>
         </GsapProvider>

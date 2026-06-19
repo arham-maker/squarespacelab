@@ -1,9 +1,8 @@
-type CrispCommand = [string, ...unknown[]];
+type ZendeskWidgetApi = (channel: "messenger", action: "open") => void;
 
 declare global {
   interface Window {
-    $crisp?: CrispCommand[];
-    CRISP_WEBSITE_ID?: string;
+    zE?: ZendeskWidgetApi;
   }
 }
 
