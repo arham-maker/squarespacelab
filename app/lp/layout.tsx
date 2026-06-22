@@ -1,13 +1,66 @@
 import type { Metadata } from "next";
-import { Wix_Madefor_Display } from "next/font/google";
-import "./lp-overrides.css";
-import "../lp2/lp2-overrides.css";
+import Script from "next/script";
+import { LpInit } from "@/components/lp/lp-init";
+import { LiveChatWidget } from "@/components/livechat/livechat-widget";
+import { LpMirrorInteractions } from "./lp-mirror-interactions";
+import "./lp-mirror-fixes.css";
 
-const wixMadeforDisplay = Wix_Madefor_Display({
-  subsets: ["latin"],
-  display: "swap",
-  adjustFontFallback: true,
-});
+const SOURCE = "https://squarespacelab.com/lp";
+
+const LATE_ICON_FIXES = `
+  .lp-mirror .theme-btn i[class*="fa-arrow-right"] {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 40px !important;
+    height: 40px !important;
+    margin-left: 12px !important;
+    border-radius: 8px !important;
+    background: #ffffff !important;
+    color: transparent !important;
+    font-family: Arial, sans-serif !important;
+    font-size: 0 !important;
+    font-style: normal !important;
+    line-height: 1 !important;
+    vertical-align: middle !important;
+  }
+
+  .lp-mirror .theme-btn i[class*="fa-arrow-right"]::before {
+    content: "" !important;
+    display: block !important;
+    width: 18px !important;
+    height: 14px !important;
+    background: #000000 !important;
+    font-family: inherit !important;
+    font-size: 0 !important;
+    line-height: 1 !important;
+    clip-path: polygon(0 42%, 70% 42%, 48% 12%, 58% 0, 100% 50%, 58% 100%, 48% 88%, 70% 58%, 0 58%);
+  }
+
+  .lp-mirror .theme-btn .lp-css-arrow-icon {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 18px !important;
+    height: 14px !important;
+    margin-left: 10px !important;
+    color: currentColor !important;
+    font-family: inherit !important;
+    font-size: 0 !important;
+    font-style: normal !important;
+    line-height: 1 !important;
+    vertical-align: middle !important;
+  }
+
+  .lp-mirror .theme-btn .lp-css-arrow-icon::before {
+    content: "" !important;
+    display: block !important;
+    width: 18px !important;
+    height: 14px !important;
+    background: currentColor !important;
+    clip-path: polygon(0 42%, 70% 42%, 48% 12%, 58% 0, 100% 50%, 58% 100%, 48% 88%, 70% 58%, 0 58%);
+  }
+`;
 
 export const metadata: Metadata = {
   title:
@@ -18,15 +71,33 @@ export const metadata: Metadata = {
 
 export default function LpLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className={wixMadeforDisplay.className}>
-      <link rel="stylesheet" href="/lp/assets/css/layout.css" />
-      <link rel="stylesheet" href="/lp/assets/css/style.css" />
+    <div>
+      <link rel="stylesheet" href={`${SOURCE}/assets/css/layout.css`} />
+      <link rel="stylesheet" href={`${SOURCE}/assets/css/style.css`} />
       <link
         rel="preload"
         as="image"
-        href="/lp/assets/images/banner/banner-image.png"
+        href={`${SOURCE}/assets/images/banner/banner-image.png`}
       />
       {children}
+      <style dangerouslySetInnerHTML={{ __html: LATE_ICON_FIXES }} />
+      <LpInit designCardSliders fancyboxGroup="portfolio Design" />
+      <LpMirrorInteractions />
+      <LiveChatWidget />
+      <Script id="lp-livechat" strategy="afterInteractive">
+        {`
+          function setButtonURL() {
+            if (typeof zE === "function") {
+              zE('webWidget', 'open');
+              return;
+            }
+            if (typeof $zopim !== "undefined" && $zopim.livechat && $zopim.livechat.window) {
+              $zopim.livechat.window.show();
+            }
+          }
+          window.setButtonURL = setButtonURL;
+        `}
+      </Script>
     </div>
   );
 }

@@ -13,29 +13,30 @@
 }
 
 .lp-lead-modal-root .popupmain.lp-lead-modal--visible {
-  display: block;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  right: auto;
-  transform: translate(-50%, -50%);
-  z-index: 9999999;
+  display: block !important;
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  right: auto !important;
+  bottom: auto !important;
+  transform: translate3d(-50%, -50%, 0) !important;
+  z-index: 10000002 !important;
   width: 975px !important;
   max-width: 97vw !important;
   max-height: 90vh !important;
   overflow-y: auto;
-  margin: 0;
+  margin: 0 !important;
   background: #fff !important;
   box-shadow: 0 0 30px -9px rgb(0 0 0 / 43%);
   border-radius: 8px;
 }
 
 .lp-lead-modal-root .mmpopup {
-  display: flex;
-  align-items: stretch;
+  display: flex !important;
+  align-items: stretch !important;
   background: #000 !important;
-  padding: 1rem;
-  gap: 0;
+  padding: 1rem !important;
+  gap: 0 !important;
   min-height: 520px !important;
 }
 
@@ -221,6 +222,18 @@
   color: #ff8d4d;
   font-size: 14px;
   margin: 0 0 0.75rem;
+}
+
+@media (max-height: 620px) {
+  .lp-lead-modal-root .popupmain.lp-lead-modal--visible {
+    top: 16px !important;
+    transform: translate3d(-50%, 0, 0) !important;
+    max-height: calc(100dvh - 32px) !important;
+  }
+
+  .lp-lead-modal-root .mmpopup {
+    min-height: auto !important;
+  }
 }
 
 @media (max-width: 767px) {

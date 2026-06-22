@@ -11,7 +11,6 @@ import {
 import { createPortal } from "react-dom";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import { LP_LEAD_FORM } from "@/lib/data/lp-lead-form";
-import { LP2_LEAD_FORM } from "@/lib/data/lp2-lead-form";
 import {
   getFormString,
   submitForm,
@@ -26,7 +25,6 @@ type LpLeadModalProps = {
   isOpen: boolean;
   selectedPackage: SelectedPackage | null;
   onClose: () => void;
-  variant?: "lp" | "lp2";
   context?: "lp" | "pricing";
 };
 
@@ -34,11 +32,9 @@ export function LpLeadModal({
   isOpen,
   selectedPackage,
   onClose,
-  variant = "lp",
   context = "lp",
 }: LpLeadModalProps) {
-  const formConfig = variant === "lp2" ? LP2_LEAD_FORM : LP_LEAD_FORM;
-  const isLp2 = variant === "lp2";
+  const formConfig = LP_LEAD_FORM;
   const router = useRouter();
   const reducedMotion = usePrefersReducedMotion();
   const titleId = useId();
@@ -49,7 +45,8 @@ export function LpLeadModal({
   const [submitError, setSubmitError] = useState<string | null>(null);
 
   useEffect(() => {
-    setMounted(true);
+    const frame = window.requestAnimationFrame(() => setMounted(true));
+    return () => window.cancelAnimationFrame(frame);
   }, []);
 
   useEffect(() => {
@@ -125,14 +122,6 @@ export function LpLeadModal({
         fullName: getFormString(formData, formConfig.fields.name.name),
         email: getFormString(formData, formConfig.fields.email.name),
         phone: getFormString(formData, formConfig.fields.phone.name),
-        ...(isLp2
-          ? {
-              businessIndustry: getFormString(
-                formData,
-                LP2_LEAD_FORM.fields.message.name
-              ),
-            }
-          : {}),
         consentMarketing: "Accepted via LP lead form",
         consentSms: "Accepted via LP lead form",
         consentTerms: "Accepted via LP lead form",
@@ -206,46 +195,16 @@ export function LpLeadModal({
               className={`centercont ${selectedPackage ? "dynamic" : "static"}`}
               id={titleId}
             >
-              {isLp2 ? (
-                <>
-                  <h3>
-                    <span className="fs-36">
-                      {selectedPackage
-                        ? selectedPackage.name
-                        : LP2_LEAD_FORM.staticTitle}
-                    </span>
-                  </h3>
-                  {selectedPackage ? (
-                    <h4>
-                      In Just <span>{selectedPackage.price}</span>
-                    </h4>
-                  ) : (
-                    <p>{LP2_LEAD_FORM.staticLead}</p>
-                  )}
-                  {selectedPackage ? (
-                    <p>{LP2_LEAD_FORM.packageLead}</p>
-                  ) : null}
-                </>
-              ) : (
-                <>
-                  <h3>
-                    <span className="fs-36">
-                      {selectedPackage ? (
-                        selectedPackage.name
-                      ) : "title" in formConfig ? (
-                        formConfig.title
-                      ) : (
-                        ""
-                      )}
-                    </span>
-                  </h3>
-                  {selectedPackage ? (
-                    <h4>
-                      In Just <span>{selectedPackage.price}</span>
-                    </h4>
-                  ) : null}
-                </>
-              )}
+              <h3>
+                <span className="fs-36">
+                  {selectedPackage ? selectedPackage.name : formConfig.title}
+                </span>
+              </h3>
+              {selectedPackage ? (
+                <h4>
+                  In Just <span>{selectedPackage.price}</span>
+                </h4>
+              ) : null}
             </div>
 
             <div className="formpop">
@@ -282,16 +241,6 @@ export function LpLeadModal({
                     required
                   />
                 </div>
-
-                {isLp2 ? (
-                  <div className="fld-input">
-                    <textarea
-                      name={LP2_LEAD_FORM.fields.message.name}
-                      placeholder={LP2_LEAD_FORM.fields.message.placeholder}
-                      rows={3}
-                    />
-                  </div>
-                ) : null}
 
                 {submitError ? (
                   <p className="lp-lead-modal__error" role="alert">

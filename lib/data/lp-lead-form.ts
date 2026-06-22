@@ -10,7 +10,6 @@ export const LP_LEAD_FORM = {
     name: { placeholder: "Your Full Name*", name: "fullName" },
     email: { placeholder: "Email Address*", name: "email" },
     phone: { placeholder: "Phone Number*", name: "phone" },
-    industry: { placeholder: "Business Industry", name: "businessIndustry" },
   },
   submitLabel: "Get Started Now!",
   thankYouPath: "/thankyou",

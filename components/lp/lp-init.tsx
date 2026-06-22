@@ -55,7 +55,7 @@ export function LpInit({
 
       // Reveal above-the-fold hero before AOS applies hidden initial styles.
       document
-        .querySelectorAll<HTMLElement>(".lp2-root .mainBanner [data-aos]")
+        .querySelectorAll<HTMLElement>(".lp-landing-root .mainBanner [data-aos]")
         .forEach((el) => {
           el.classList.add("aos-animate");
         });
@@ -207,7 +207,7 @@ export function LpInit({
 
       let fancyboxCleanup: (() => void) | undefined;
       if (fancyboxGroup) {
-        const [{ Fancybox }, _] = await Promise.all([
+        const [{ Fancybox }] = await Promise.all([
           import("@fancyapps/ui"),
           import("@fancyapps/ui/dist/fancybox/fancybox.css"),
         ]);
