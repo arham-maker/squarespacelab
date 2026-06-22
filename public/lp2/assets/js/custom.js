@@ -109,7 +109,7 @@ $(document).ready(function () {
             headers:     { 'X-Api-Key': LEADORBIT_KEY },
             success: function () {
                 $btn.html('<span class="lp-btn-spinner"></span> Redirecting...');
-                window.location.href = 'thankyou.html';
+                window.location.href = '/thankyou';
             },
             error: function () {
                 $btn.prop('disabled', false).html('Get Started <i class="fas fa-arrow-right"></i>');

@@ -5541,6 +5541,8 @@ html.with-fancybox .mouse-cursor {
     background-color: #000000;
     color: #ffffff;
     width: 100%;
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
   }
 
   .marquee-topbar__viewport {
@@ -5561,7 +5563,7 @@ html.with-fancybox .mouse-cursor {
     align-items: center;
     gap: 2.5rem;
     padding-inline: 0.25rem;
-    padding-block: 0.3rem;
+    padding-block: 0;
   }
 
   .marquee-topbar__segment {
@@ -5571,7 +5573,7 @@ html.with-fancybox .mouse-cursor {
     font-family: var(--font-inter), sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: var(--text-body) !important;
+    font-size: 0.8125rem !important;
     line-height: var(--leading-nav);
     text-transform: uppercase;
   }

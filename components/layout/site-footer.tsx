@@ -7,9 +7,7 @@ import {
   FOOTER_QUICK_LINKS,
   FOOTER_SERVICES_LEFT,
   FOOTER_SERVICES_RIGHT,
-  FOOTER_SOCIAL_LINKS,
 } from "@/lib/data/footer";
-import { SocialIcon } from "@/components/ui/social-icons";
 import { SITE } from "@/lib/data/site";
 
 function FooterHeading({ children }: { children: React.ReactNode }) {
@@ -65,18 +63,6 @@ export function SiteFooter() {
             <p className="text-body mt-4 max-w-sm text-white sm:mt-5">
               {FOOTER_DESCRIPTION}
             </p>
-            <div className="mt-6 flex items-center gap-8">
-              {FOOTER_SOCIAL_LINKS.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  aria-label={social.label}
-                  className="inline-flex h-[25px] w-[25px] items-center justify-center text-[#cccccc] transition-opacity hover:text-white"
-                >
-                  <SocialIcon name={social.icon} />
-                </a>
-              ))}
-            </div>
           </div>
 
           <div className="lg:col-span-2">

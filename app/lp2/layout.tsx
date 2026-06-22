@@ -18,21 +18,11 @@ export default function Lp2Layout({ children }: { children: React.ReactNode }) {
       <Lp2LiveChatClicks />
       <Script src="/lp2/assets/js/jquery.js" strategy="afterInteractive" />
       <Script src="/lp2/assets/js/custom.js" strategy="afterInteractive" />
-      <Script
-        id="lp2-ze-snippet"
-        src="https://static.zdassets.com/ekr/snippet.js?key=7bd390f1-a972-410d-873b-1a1be1c32f80"
-        strategy="afterInteractive"
-      />
       <Script id="lp2-livechat" strategy="afterInteractive">
         {`
           function setButtonURL() {
-            if (typeof zE === "function") {
-              zE('webWidget', 'open');
-              return;
-            }
-            if (typeof $zopim !== "undefined" && $zopim.livechat && $zopim.livechat.window) {
-              $zopim.livechat.window.show();
-            }
+            window.$crisp = window.$crisp || [];
+            window.$crisp.push(["do", "chat:open"]);
           }
           window.setButtonURL = setButtonURL;
         `}

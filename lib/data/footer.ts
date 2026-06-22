@@ -24,10 +24,3 @@ export const FOOTER_SERVICES_RIGHT = [
   { label: "Advertising Services", href: "/advertising" },
   { label: "Your All-in-One", href: "/your-all-in-one" },
 ] as const;
-
-export const FOOTER_SOCIAL_LINKS = [
-  { label: "Facebook", href: "#", icon: "facebook" as const },
-  { label: "X", href: "#", icon: "x" as const },
-  { label: "LinkedIn", href: "#", icon: "linkedin" as const },
-  { label: "Instagram", href: "#", icon: "instagram" as const },
-] as const;

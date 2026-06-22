@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { LpInit } from "@/components/lp/lp-init";
-import { LiveChatWidget } from "@/components/livechat/livechat-widget";
 import { LpMirrorInteractions } from "./lp-mirror-interactions";
 import "./lp-mirror-fixes.css";
 
@@ -83,17 +82,11 @@ export default function LpLayout({ children }: { children: React.ReactNode }) {
       <style dangerouslySetInnerHTML={{ __html: LATE_ICON_FIXES }} />
       <LpInit designCardSliders fancyboxGroup="portfolio Design" />
       <LpMirrorInteractions />
-      <LiveChatWidget />
       <Script id="lp-livechat" strategy="afterInteractive">
         {`
           function setButtonURL() {
-            if (typeof zE === "function") {
-              zE('webWidget', 'open');
-              return;
-            }
-            if (typeof $zopim !== "undefined" && $zopim.livechat && $zopim.livechat.window) {
-              $zopim.livechat.window.show();
-            }
+            window.$crisp = window.$crisp || [];
+            window.$crisp.push(["do", "chat:open"]);
           }
           window.setButtonURL = setButtonURL;
         `}

@@ -1,18 +1,9 @@
-type ZendeskWidgetApi = (
-  channel: "messenger" | "webWidget",
-  action: "open"
-) => void;
+type CrispCommand = ["do", "chat:open"];
 
 declare global {
   interface Window {
-    zE?: ZendeskWidgetApi;
-    $zopim?: {
-      livechat?: {
-        window?: {
-          show?: () => void;
-        };
-      };
-    };
+    $crisp?: CrispCommand[];
+    CRISP_WEBSITE_ID?: string;
   }
 }
 
