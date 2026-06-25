@@ -11,19 +11,47 @@ import { useLeadForm } from "@/components/providers/lead-form-provider";
 import { LIVECHAT_AUTO_OPEN } from "@/lib/data/livechat-auto-open";
 import { openLiveChat } from "@/lib/livechat";
 
+const AUTO_OPEN_WINDOW_FLAG = "__squarespacelabLiveChatAutoOpened";
+
+declare global {
+  interface Window {
+    [AUTO_OPEN_WINDOW_FLAG]?: boolean;
+  }
+}
+
 function hasAutoOpenedLiveChat(): boolean {
+  if (typeof window !== "undefined" && window[AUTO_OPEN_WINDOW_FLAG]) {
+    return true;
+  }
+
   try {
-    return (
-      sessionStorage.getItem(LIVECHAT_AUTO_OPEN.sessionStorageKey) === "1"
-    );
+    if (sessionStorage.getItem(LIVECHAT_AUTO_OPEN.sessionStorageKey) === "1") {
+      return true;
+    }
+  } catch {
+    // Continue to localStorage/window flag checks if sessionStorage is blocked.
+  }
+
+  try {
+    return localStorage.getItem(LIVECHAT_AUTO_OPEN.sessionStorageKey) === "1";
   } catch {
     return false;
   }
 }
 
 function markLiveChatAutoOpened(): void {
+  if (typeof window !== "undefined") {
+    window[AUTO_OPEN_WINDOW_FLAG] = true;
+  }
+
   try {
     sessionStorage.setItem(LIVECHAT_AUTO_OPEN.sessionStorageKey, "1");
+  } catch {
+    // Ignore storage errors (private browsing, etc.)
+  }
+
+  try {
+    localStorage.setItem(LIVECHAT_AUTO_OPEN.sessionStorageKey, "1");
   } catch {
     // Ignore storage errors (private browsing, etc.)
   }

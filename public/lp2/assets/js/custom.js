@@ -45,10 +45,6 @@ $(document).ready(function () {
         $('#popstatic-form .lp-form-msg').text('').css('color', '');
     });
 
-    // Lead Form AJAX Submission
-    var LEADORBIT_URL = 'https://leadorbit.zyloscrm.com/api/leads/squarespace-pros/MCMPmKH9qmmfSfThqMZOnIkWMUlOEtZe';
-    var LEADORBIT_KEY = 'lak_w0YH8hdLYIL61TrorHuV14NQiHOr1loBnlkskEUi';
-
     function submitLeadForm($form) {
         var $msg = $form.find('.lp-form-msg');
         var $btn = $form.find('button[type="submit"]');
@@ -76,44 +72,43 @@ $(document).ready(function () {
             if (k) data[k] = $(this).val();
         });
 
-        var parts     = $.trim(name).split(/\s+/);
-        var firstName = parts[0] || '';
-        var lastName  = parts.slice(1).join(' ');
-
         var payload = {
-            first_name:          firstName,
-            last_name:           lastName,
-            email:               email,
-            phone:               phone,
-            message:             data['message'] || '',
-            website:             window.location.href,
-            consent:             true,
-            hidden_ip:           '',
-            hidden_page_url:     window.location.href,
-            hidden_utm_source:   data['utm_source'] || '',
-            hidden_utm_medium:   data['utm_medium'] || '',
-            hidden_utm_campaign: data['utm_campaign'] || '',
-            hidden_gclid:        data['gclid'] || '',
-            hidden_fbclid:       data['fbclid'] || ''
+            formType: data['package_name'] ? 'package' : 'get-started',
+            fields: {
+                name:             name,
+                email:            email,
+                phone:            phone,
+                message:          data['message'] || '',
+                pageUrl:          window.location.href,
+                form_type:        data['form_type'] || '',
+                package_name:     data['package_name'] || '',
+                package_cost:     data['package_cost'] || '',
+                package_html:     data['package_html'] || '',
+                utm_source:       data['utm_source'] || '',
+                utm_medium:       data['utm_medium'] || '',
+                utm_campaign:     data['utm_campaign'] || '',
+                gclid:            data['gclid'] || '',
+                fbclid:           data['fbclid'] || ''
+            }
         };
 
         $btn.prop('disabled', true).html('<span class="lp-btn-spinner"></span> Sending...');
         $msg.text('').css('color', '');
 
         $.ajax({
-            url:         LEADORBIT_URL,
+            url:         '/api/submit-form',
             type:        'POST',
             contentType: 'application/json',
             data:        JSON.stringify(payload),
             dataType:    'json',
-            headers:     { 'X-Api-Key': LEADORBIT_KEY },
             success: function () {
                 $btn.html('<span class="lp-btn-spinner"></span> Redirecting...');
                 window.location.href = '/thankyou';
             },
-            error: function () {
+            error: function (xhr) {
                 $btn.prop('disabled', false).html('Get Started <i class="fas fa-arrow-right"></i>');
-                $msg.text('Could not send. Please try again.').css('color', '#e53e3e');
+                var response = xhr.responseJSON || {};
+                $msg.text(response.error || 'Could not send. Please try again.').css('color', '#e53e3e');
             }
         });
     }

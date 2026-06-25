@@ -19,7 +19,7 @@ export default function LandingPageTwo() {
             <div className="header-wrapper">
                 <div className="row align-items-center">
                     <div className="col-md-8 col-lg-2 col-6 text-left">
-                        <a href="index.html" className="logo">
+                        <a href="/" className="logo">
                             <img src="/Square Space Lab Logo V3 White.png" alt="" />
                         </a>
                     </div>
@@ -3060,7 +3060,7 @@ export default function LandingPageTwo() {
         <div className="row justify-content-center">
             <div className="col-lg-10 borderbottom">
                 <div className="footer-sec pb-4">
-                    <a href="index.html" className="logo">
+                    <a href="/" className="logo">
                         <img src="/Square Space Lab Logo V3 White.png" alt="" />
                     </a>
                   
