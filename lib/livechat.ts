@@ -1,6 +1,11 @@
 export function openLiveChat() {
   if (typeof window === "undefined") return;
 
-  window.$crisp = window.$crisp || [];
-  window.$crisp.push(["do", "chat:open"]);
+  if (typeof window.zE !== "function") return;
+
+  try {
+    window.zE("messenger", "open");
+  } catch {
+    window.zE("webWidget", "open");
+  }
 }

@@ -85,8 +85,13 @@ export default function LpLayout({ children }: { children: React.ReactNode }) {
       <Script id="lp-livechat" strategy="afterInteractive">
         {`
           function setButtonURL() {
-            window.$crisp = window.$crisp || [];
-            window.$crisp.push(["do", "chat:open"]);
+            if (typeof zE === "function") {
+              try {
+                zE("messenger", "open");
+              } catch (error) {
+                zE("webWidget", "open");
+              }
+            }
           }
           window.setButtonURL = setButtonURL;
         `}

@@ -3,11 +3,8 @@ import Script from "next/script";
 import { Inter } from "next/font/google";
 import { ConditionalMarqueeTopbar } from "@/components/layout/conditional-marquee-topbar";
 import { LeadFormProvider } from "@/components/providers/lead-form-provider";
-import { LiveChatAutoOpenProvider } from "@/components/providers/livechat-auto-open-provider";
 import { GsapProvider } from "@/components/providers/gsap-provider";
 import { SmoothScrollProvider } from "@/components/providers/smooth-scroll-provider";
-import { LiveChatWidget } from "@/components/livechat/livechat-widget";
-import { LiveChatWidgetConfig } from "@/components/livechat/livechat-widget-config";
 import { MouseCursor } from "@/components/ui/mouse-cursor";
 import "./globals.css";
 import "./lp/lp-lead-modal.css";
@@ -31,6 +28,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
+      <head>
+        <Script
+          id="ze-snippet"
+          src="https://static.zdassets.com/ekr/snippet.js?key=923e51fa-97d5-49a2-9055-0fb23e466aba"
+          strategy="beforeInteractive"
+        />
+      </head>
       <body className="flex min-h-full flex-col font-sans">
         <Script
           id="bing-uet"
@@ -42,14 +46,10 @@ export default function RootLayout({
         <ConditionalMarqueeTopbar />
         <GsapProvider>
         <LeadFormProvider>
-          <LiveChatAutoOpenProvider>
-            <SmoothScrollProvider>
-              {children}
-              <MouseCursor />
-              <LiveChatWidget />
-              <LiveChatWidgetConfig />
-            </SmoothScrollProvider>
-          </LiveChatAutoOpenProvider>
+          <SmoothScrollProvider>
+            {children}
+            <MouseCursor />
+          </SmoothScrollProvider>
         </LeadFormProvider>
         </GsapProvider>
       </body>
