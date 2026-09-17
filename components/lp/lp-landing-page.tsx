@@ -90,21 +90,12 @@ export function LpLandingPage() {
                         <a href={link.href}>{link.label}</a>
                       </li>
                     ))}
-                    <li className="lp-nav-desktop-only">
+                    <li>
                       <LpLiveChatButton
                         className="theme-btn lp-btn-light"
                         iconSrc="chat-black.svg"
                         label="Live Chat"
                       />
-                    </li>
-                    <li className="lp-nav-mobile-only">
-                      <a
-                        href={LP_LANDING_CONTACT.phoneHref}
-                        className="theme-btn lp-btn-light lp-call-btn"
-                      >
-                        <img src={lpImage("call-icon.svg")} alt="" />
-                        Call Us
-                      </a>
                     </li>
                   </ul>
                 </div>
@@ -536,14 +527,8 @@ export function LpLandingPage() {
               <LpCtaButton className="lp-btn-light" icon>
                 Let&apos;s Get Started
               </LpCtaButton>
-              <a
-                href={LP_LANDING_CONTACT.phoneHref}
-                className="theme-btn bordered lp-btn-light-outline lp-nav-mobile-only"
-              >
-                Call Us
-              </a>
               <LpLiveChatButton
-                className="theme-btn bordered lp-btn-light-outline lp-nav-desktop-only"
+                className="theme-btn bordered lp-btn-light-outline"
                 iconSrc="chat-black.svg"
                 label="Live Chat"
               />

@@ -35,6 +35,9 @@ export default function LandingPageTwo() {
                                  <li>
                                     <a className="nav-links" href="#process">Process</a>
                                 </li>
+                                <li>
+                                    <a className="nav-links" href="#services">Services</a>
+                                </li>
                                 <li className="last">
                                     <a className="nav-links" href="#faqs">FAQ's</a>
                                 </li>
@@ -2674,7 +2677,7 @@ export default function LandingPageTwo() {
         </div>
     </section>
 
-    <section className="sec-3">
+    <section className="sec-3" id="services">
         <div className="container">
             <div className="row justify-content-center">
                 <div className="col-lg-9">

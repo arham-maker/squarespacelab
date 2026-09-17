@@ -5,6 +5,7 @@ import { ConditionalMarqueeTopbar } from "@/components/layout/conditional-marque
 import { LeadFormProvider } from "@/components/providers/lead-form-provider";
 import { GsapProvider } from "@/components/providers/gsap-provider";
 import { SmoothScrollProvider } from "@/components/providers/smooth-scroll-provider";
+import { LiveChatProvider } from "@/components/providers/livechat-provider";
 import "./globals.css";
 import "./lp/lp-lead-modal.css";
 
@@ -28,6 +29,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
       <head>
+        <Script id="ze-settings" strategy="beforeInteractive">
+          {`window.zESettings={webWidget:{zIndex:999999,offset:{horizontal:"20px",vertical:"20px"}}};`}
+        </Script>
         <Script
           id="ze-snippet"
           src="https://static.zdassets.com/ekr/snippet.js?key=923e51fa-97d5-49a2-9055-0fb23e466aba"
@@ -46,6 +50,7 @@ export default function RootLayout({
         <GsapProvider>
         <LeadFormProvider>
           <SmoothScrollProvider>
+            <LiveChatProvider />
             {children}
           </SmoothScrollProvider>
         </LeadFormProvider>

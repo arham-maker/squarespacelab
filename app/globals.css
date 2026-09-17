@@ -6427,3 +6427,49 @@ html.with-fancybox .mouse-cursor {
     margin-top: 0;
   }
 }
+
+/* Mobile Call Us FAB + Zendesk launcher spacing */
+.site-mobile-call-fab {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  .site-mobile-call-fab {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 2147483000;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    border-radius: 999px;
+    background: #0f3d3e;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
+    text-decoration: none;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  }
+
+  .site-mobile-call-fab:hover,
+  .site-mobile-call-fab:focus-visible {
+    color: #ffffff;
+    opacity: 0.95;
+  }
+
+  /* Keep Zendesk launcher out of the way if hide API is slow */
+  iframe[title*="Messaging"],
+  iframe[title*="messaging"],
+  iframe[title*="Close message"],
+  iframe[title="Button to launch messaging window"] {
+    bottom: 72px !important;
+  }
+
+  .lp-landing-root .lp-back-to-top {
+    left: 16px !important;
+    right: auto !important;
+    bottom: 22px !important;
+  }
+}

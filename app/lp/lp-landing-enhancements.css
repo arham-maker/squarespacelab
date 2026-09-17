@@ -53,6 +53,22 @@
   display: inline-flex;
 }
 
+/* Chat on desktop / Call Us on mobile */
+.lp-chat-mobile-only {
+  display: none !important;
+}
+
+.lp-chat-desktop-only {
+  display: inline-flex !important;
+  align-items: center;
+}
+
+.lp-call-btn img {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+}
+
 /* Light buttons */
 .lp-landing-root .theme-btn.lp-btn-light,
 .lp-landing-root a.theme-btn.lp-btn-light,
@@ -264,7 +280,8 @@
 /* Back to top */
 .lp-landing-root .lp-back-to-top {
   position: fixed;
-  right: 18px;
+  left: 18px;
+  right: auto;
   bottom: 22px;
   z-index: 999;
   display: inline-flex;
@@ -301,6 +318,15 @@
     display: inline-flex !important;
   }
 
+  .lp-chat-desktop-only {
+    display: none !important;
+  }
+
+  .lp-chat-mobile-only {
+    display: inline-flex !important;
+    align-items: center;
+  }
+
   .lp-landing-root header .menu {
     gap: 12px;
   }
@@ -317,8 +343,9 @@
   }
 
   .lp-landing-root .lp-back-to-top {
-    right: 12px;
-    bottom: 16px;
+    left: 16px;
+    right: auto;
+    bottom: 22px;
     padding: 10px 12px;
     font-size: 12px;
   }

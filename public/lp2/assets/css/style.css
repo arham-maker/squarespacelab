@@ -3957,3 +3957,37 @@ section.sec-8 {
 .trusted-rating span a {
     color: #fff !important
 }
+
+/* Chat on desktop / Call Us on mobile */
+.lp-chat-mobile-only {
+    display: none !important;
+}
+
+.lp-chat-desktop-only {
+    display: inline-flex !important;
+    align-items: center;
+}
+
+.lp-call-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+@media (max-width: 991px) {
+  .lp-chat-desktop-only {
+    display: none !important;
+  }
+
+  .lp-chat-mobile-only {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .lp-landing-root .lp-back-to-top {
+    left: 16px;
+    right: auto;
+    bottom: 22px;
+  }
+}

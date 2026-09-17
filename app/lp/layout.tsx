@@ -25,11 +25,22 @@ export default function LpLayout({ children }: { children: React.ReactNode }) {
       <Script id="lp-livechat" strategy="afterInteractive">
         {`
           function setButtonURL() {
+            if (typeof window.openLiveChat === "function") {
+              window.openLiveChat();
+              return;
+            }
+            if (typeof window.__squarespacelabOpenLiveChat === "function") {
+              window.__squarespacelabOpenLiveChat();
+              return;
+            }
             if (typeof zE === "function") {
               try {
-                zE("messenger", "open");
-              } catch (error) {
+                zE("webWidget", "show");
                 zE("webWidget", "open");
+              } catch (error) {
+                try {
+                  zE("messenger", "open");
+                } catch (e2) {}
               }
             }
           }

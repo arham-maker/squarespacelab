@@ -43,7 +43,7 @@ function killPort(targetPort) {
 killPort(port);
 
 const nextBin = path.join(root, "node_modules", "next", "dist", "bin", "next");
-const child = spawn(process.execPath, [nextBin, "dev"], {
+const child = spawn(process.execPath, [nextBin, "dev", "--webpack"], {
   cwd: root,
   stdio: "inherit",
   env: process.env,

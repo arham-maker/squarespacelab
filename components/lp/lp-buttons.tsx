@@ -5,6 +5,7 @@ import { useLeadForm } from "@/components/providers/lead-form-provider";
 import { openLiveChat } from "@/lib/livechat";
 import type { LpPackage } from "@/lib/data/lp";
 import { lpImage } from "@/components/lp/lp-assets";
+import { SITE } from "@/lib/data/site";
 
 type LpCtaProps = {
   className?: string;
@@ -66,23 +67,41 @@ export function LpLiveChatButton({
   className = "theme-btn bordered",
   iconSrc,
   label = "Live Chat",
+  callLabel = "Call Us",
 }: {
   className?: string;
   iconSrc?: string;
   label?: string;
+  callLabel?: string;
 }) {
+  const classes = className.trim();
+
   return (
-    <a
-      href="javascript:;"
-      className={["open-livechat", className].filter(Boolean).join(" ")}
-      title={label}
-      onClick={(e) => {
-        e.preventDefault();
-        openLiveChat();
-      }}
-    >
-      {iconSrc ? <img src={lpImage(iconSrc)} alt="" /> : null}
-      {label}
-    </a>
+    <>
+      <a
+        href="javascript:;"
+        className={["open-livechat", "lp-chat-desktop-only", classes]
+          .filter(Boolean)
+          .join(" ")}
+        title={label}
+        onClick={(e) => {
+          e.preventDefault();
+          openLiveChat();
+        }}
+      >
+        {iconSrc ? <img src={lpImage(iconSrc)} alt="" /> : null}
+        {label}
+      </a>
+      <a
+        href={SITE.phoneHref}
+        className={["lp-chat-mobile-only", "lp-call-btn", classes]
+          .filter(Boolean)
+          .join(" ")}
+        title={callLabel}
+      >
+        <img src={lpImage("call-icon.svg")} alt="" />
+        {callLabel}
+      </a>
+    </>
   );
 }

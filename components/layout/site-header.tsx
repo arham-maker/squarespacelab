@@ -76,10 +76,18 @@ export function SiteHeader({
             <CtaButton opensLeadForm>Get Started</CtaButton>
           </div>
 
-          <MobileMenuTrigger
-            isOpen={mobileOpen}
-            onClick={() => setMobileOpen((open) => !open)}
-          />
+          <div className="flex items-center gap-3 lg:hidden">
+            <a
+              href={SITE.phoneHref}
+              className="inline-flex items-center justify-center rounded-md border border-neutral-900 bg-white px-3 py-2 text-sm font-semibold text-neutral-900"
+            >
+              Call Us
+            </a>
+            <MobileMenuTrigger
+              isOpen={mobileOpen}
+              onClick={() => setMobileOpen((open) => !open)}
+            />
+          </div>
         </div>
       </Container>
 
