@@ -13,8 +13,8 @@ const LIVE_CHAT_LABELS = new Set([
   "check out our customer reviews",
 ]);
 
-let reopenTimer: ReturnType<typeof setTimeout> | undefined;
-let autoOpenTimer: ReturnType<typeof setTimeout> | undefined;
+let reopenTimer: number | undefined;
+let autoOpenTimer: number | undefined;
 let listenersReady = false;
 let ctaClicksBound = false;
 
@@ -59,7 +59,7 @@ function scheduleShowAfterMinimize() {
 
 function whenZeReady(callback: () => (() => void) | void): () => void {
   let cancelled = false;
-  let timer: ReturnType<typeof setTimeout> | undefined;
+  let timer: number | undefined;
   let cleanupFromCallback: (() => void) | undefined;
   let attempts = 0;
 
