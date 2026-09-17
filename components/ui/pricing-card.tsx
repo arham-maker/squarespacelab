@@ -1,11 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import type { PricingPlan } from "@/lib/data/pricing";
-import { PRICING_PACKAGE_ICON } from "@/lib/data/pricing";
 import { SelectPackageButton } from "@/components/ui/select-package-button";
 import { usePricingCardWheelScroll } from "@/hooks/use-pricing-card-wheel-scroll";
-import { FaCheck } from "react-icons/fa";
+import { openLiveChat } from "@/lib/livechat";
 
 type PricingCardProps = {
   plan: PricingPlan;
@@ -13,50 +11,26 @@ type PricingCardProps = {
   category?: string;
 };
 
-export function PricingCard({
-  plan,
-  packageIcon = PRICING_PACKAGE_ICON,
-  category,
-}: PricingCardProps) {
+export function PricingCard({ plan, category }: PricingCardProps) {
   const { bodyRef, featuresRef } = usePricingCardWheelScroll();
+  const amount = plan.price.replace("$", "");
 
   return (
-    <article className="pricing-card group">
-      <div className="pricing-card__head">
-        <h3 className="pricing-card__title">
-          <Image
-            src={packageIcon}
-            alt=""
-            width={40}
-            height={40}
-            className="pricing-card__icon"
-            aria-hidden
-          />
-          {plan.title}
-        </h3>
-        <p className="pricing-card__price">
-          {plan.price}{" "}
-          <span className="pricing-card__original">
+    <article className="pricing-pckg group">
+      <div className="pricing-pckg__upper">
+        <h3 className="pricing-pckg__title">{plan.title}</h3>
+        <p className="pricing-pckg__desc">{plan.description}</p>
+        <div className="pricing-pckg__price">
+          <span className="pricing-pckg__amount">
+            <small>$</small>
+            {amount}
+          </span>
+          <span className="pricing-pckg__compare">
             <del>{plan.originalPrice}</del> {plan.discount}
           </span>
-        </p>
-      </div>
-      <div ref={bodyRef} className="pricing-card__body">
-        <p className="pricing-card__desc">{plan.description}</p>
-        <ul ref={featuresRef} className="pricing-card__features">
-          {plan.features.map((feature) => (
-            <li
-              key={feature}
-              className={
-                feature.startsWith("Everything in") ? "pricing-card__feature-heading" : ""
-              }
-            >
-              <FaCheck className="pricing-card__check shrink-0" aria-hidden />
-              <span>{feature}</span>
-            </li>
-          ))}
-        </ul>
+        </div>
         <SelectPackageButton
+          className="pricing-pckg__select"
           selectedPackage={{
             name: plan.title,
             price: plan.price,
@@ -64,6 +38,31 @@ export function PricingCard({
             details: `${plan.originalPrice} → ${plan.discount}`,
           }}
         />
+      </div>
+
+      <div ref={bodyRef} className="pricing-pckg__bottom">
+        <span className="pricing-pckg__deliverables">Deliverables</span>
+        <ul ref={featuresRef} className="pricing-pckg__features">
+          {plan.features.map((feature) => (
+            <li
+              key={feature}
+              className={
+                feature.startsWith("Everything in")
+                  ? "pricing-pckg__feature-heading"
+                  : undefined
+              }
+            >
+              {feature}
+            </li>
+          ))}
+        </ul>
+        <button
+          type="button"
+          className="pricing-pckg__chat"
+          onClick={() => openLiveChat()}
+        >
+          Live Chat
+        </button>
       </div>
     </article>
   );

@@ -136,7 +136,7 @@ export function StreamlinedSolutionsSection() {
       aria-label="Streamlined Solutions for Your Business"
     >
       <Container>
-        <h2 data-scroll-heading className="text-why-choose-heading text-left font-normal lg:text-[206px]">
+        <h2 data-scroll-heading className="text-why-choose-heading text-left font-normal">
           {STREAMLINED.titleLines.map((line) => (
             <span key={line} className="block" data-scroll-heading-line>
               {line}

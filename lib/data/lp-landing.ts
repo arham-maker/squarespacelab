@@ -15,6 +15,28 @@ export const LP_LANDING_HERO = {
   lead: "Your website should feel like your brand, not a recycled template. Our Squarespace designers create custom websites that are easy to use, visually clear, and built around your business goals. Everything is designed with intention, from layout to content flow.",
 } as const;
 
+export const LP_LANDING_TOP_BANNER = {
+  lead: "The Squarespace Web Development Solution In Just",
+  price: "$199",
+  compareAt: "$995",
+  savings: "Save 80% off!",
+} as const;
+
+export const LP_LANDING_MID_BANNER = {
+  title: "Take the First Step Toward a Professional Website",
+  lead: "Start attracting the right audience with a professional Squarespace website. Get started with a team that knows Squarespace inside and out!",
+  stats: [
+    { value: "413", label: "Ongoing Projects" },
+    { value: "4.8/5", label: "Average Client Satisfaction" },
+    { value: "14239", label: "Projects Completed" },
+  ],
+} as const;
+
+export const LP_LANDING_BOTTOM_BANNER = {
+  title: "Ready to Launch Your Squarespace Website?",
+  lead: "Talk with a Squarespace designer today, get a clear plan, and move from idea to a polished live site with confidence.",
+} as const;
+
 export const LP_LANDING_INTRO = {
   title: "Find A Squarespace Designer For Your Business",
   lead: "We create tailored Squarespace websites that load quickly, scale smoothly, and align with what your business needs to grow.",
@@ -327,6 +349,34 @@ export const LP_LANDING_PROCESS = [
   {
     title: "Launch & Ongoing Support",
     text: "After final approvals, we launch your website with care. We also provide ongoing support and maintenance to ensure your site stays updated and performs at its best.",
+  },
+] as const;
+
+export const LP_LANDING_OFFERINGS = [
+  {
+    title: "Website Design",
+    href: "/web-design",
+    text: "Custom, conversion-focused websites designed to look polished, load fast, and grow with your brand.",
+  },
+  {
+    title: "Logo Design",
+    href: "/logo-design",
+    text: "Distinctive logo systems that capture your identity and stay clear across print, web, and social.",
+  },
+  {
+    title: "App Development",
+    href: "/contact",
+    text: "User-friendly app experiences planned, designed, and developed around your product goals.",
+  },
+  {
+    title: "Graphic Design",
+    href: "/graphic-design",
+    text: "Marketing visuals, brand assets, and creative deliverables that keep your messaging consistent.",
+  },
+  {
+    title: "Digital Marketing",
+    href: "/digital-marketing",
+    text: "SEO, campaigns, and growth strategies built to attract the right audience and drive results.",
   },
 ] as const;
 

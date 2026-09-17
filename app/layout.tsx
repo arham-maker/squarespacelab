@@ -5,7 +5,6 @@ import { ConditionalMarqueeTopbar } from "@/components/layout/conditional-marque
 import { LeadFormProvider } from "@/components/providers/lead-form-provider";
 import { GsapProvider } from "@/components/providers/gsap-provider";
 import { SmoothScrollProvider } from "@/components/providers/smooth-scroll-provider";
-import { MouseCursor } from "@/components/ui/mouse-cursor";
 import "./globals.css";
 import "./lp/lp-lead-modal.css";
 
@@ -48,7 +47,6 @@ export default function RootLayout({
         <LeadFormProvider>
           <SmoothScrollProvider>
             {children}
-            <MouseCursor />
           </SmoothScrollProvider>
         </LeadFormProvider>
         </GsapProvider>

@@ -1,6 +1,6 @@
 import { MEDIA_DESKTOP } from "@/lib/breakpoints";
 
-/** Match right-column track height to the left image so sticky text has scroll range. */
+/** Match text-column track height to the image so sticky text has scroll range. */
 function syncTrackHeight(
   mediaCol: HTMLElement,
   trackCol: HTMLElement

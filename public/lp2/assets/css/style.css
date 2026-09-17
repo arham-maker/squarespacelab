@@ -22,7 +22,7 @@
 }
 
 :root {
-    --primary: #EF0023;
+    --primary: #F7C43A;
     --bg-light: #ffdecc;
     --bg-gray: #f4f9ff;
     --black: #000000;
@@ -35,7 +35,7 @@
 }
 
 ::selection {
-    background: #ef0023;
+    background: #F7C43A;
     color: #fff;
     text-shadow: none
 }
@@ -57,7 +57,7 @@
 
 ::-webkit-scrollbar-thumb:vertical {
     border-radius: 10px;
-    background-color: #ef0023
+    background-color: #F7C43A
 }
 
 [class^=box-] {
@@ -722,7 +722,7 @@ section.sec-4 {
 
 .testi-wrapper .bottom {
     border-radius: 0 0 10px 10px;
-    background: #ef0023;
+    background: #F7C43A;
     padding: 15px 14px;
     display: flex;
     align-items: center;
@@ -794,7 +794,7 @@ section.cta-sec {
 
 .theme-btn.bordered2 {
     border-radius: 68px !important;
-    border: 1px solid #ef0023 !important;
+    border: 1px solid #F7C43A !important;
     background: 0 0 !important;
     color: var(--primary) !important;
     padding: 13px 20px !important
@@ -1160,7 +1160,7 @@ section {
     border: 1px solid #fff;
     border-radius: 14px;
     border-radius: 14px;
-    border: 1px solid #ef0023;
+    border: 1px solid #F7C43A;
     background: #fff
 }
 
@@ -1815,12 +1815,12 @@ span.stars {
     justify-content: space-between;
     gap: 10px;
     border-radius: 35px;
-    background: #c30000
+    background: #F7C43A
 }
 
 .pckg .upper {
     padding: 25px 25px 20px 25px;
-    background: #ef00231f;
+    background: #F7C43A1f;
     border-radius: 16px 16px 0 0
 }
 
@@ -1885,7 +1885,7 @@ span.stars {
 .off-price {
     border-radius: 35.636px;
     background: #fff;
-    color: #c30000;
+    color: #F7C43A;
     font-size: 16px;
     line-height: normal;
     padding: 5px 12px
@@ -1996,7 +1996,7 @@ ul.overview-nav li.active a {
     border-radius: 10px 10px 0 0;
     font-weight: 700;
     border-radius: 74px;
-    background: #ef0023
+    background: #F7C43A
 }
 
 section.sec-8 {

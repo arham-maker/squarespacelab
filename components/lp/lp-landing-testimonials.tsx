@@ -7,7 +7,7 @@ import {
 
 export function LpLandingTestimonialsSection() {
   return (
-    <section className="sec-3 fluid-padding">
+    <section className="sec-3 fluid-padding" id="testimonials">
       <div className="container-fluid">
         <div className="row align-items-center mb-lg-5">
           <div className="col-lg-6" data-aos="fade-right" data-aos-duration="1000">

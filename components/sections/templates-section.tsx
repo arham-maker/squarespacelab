@@ -6,6 +6,7 @@ import { FiArrowRight } from "react-icons/fi";
 import { Container } from "@/components/layout/container";
 import { CtaButton } from "@/components/ui/cta-button";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
+import { SITE } from "@/lib/data/site";
 import {
   TEMPLATE_CATEGORIES,
   TEMPLATE_PREVIEW_HEIGHT,
@@ -17,6 +18,7 @@ import {
   animateTemplatesShowcasePage,
   initTemplatesShowcasePages,
 } from "@/lib/gsap/templates-showcase";
+import { openLiveChat } from "@/lib/livechat";
 
 export function TemplatesSection() {
   const reducedMotion = usePrefersReducedMotion();
@@ -55,10 +57,29 @@ export function TemplatesSection() {
 
           <div className="flex flex-col items-start lg:max-w-[600px]">
             <p className="text-templates-intro">{TEMPLATES_INTRO.description}</p>
-            <CtaButton opensLeadForm className="btn btn-outline gap-3">
-              {TEMPLATES_INTRO.cta.label}
-              <FiArrowRight className="h-8 w-8 shrink-0" strokeWidth={2.5} aria-hidden />
-            </CtaButton>
+            <div className="templates-intro-actions">
+              <CtaButton opensLeadForm className="btn btn-outline gap-3">
+                {TEMPLATES_INTRO.cta.label}
+                <FiArrowRight
+                  className="h-8 w-8 shrink-0"
+                  strokeWidth={2.5}
+                  aria-hidden
+                />
+              </CtaButton>
+              <button
+                type="button"
+                className="btn btn-outline templates-intro-actions__live-chat"
+                onClick={() => openLiveChat()}
+              >
+                {TEMPLATES_INTRO.liveChat.label}
+              </button>
+              <a
+                href={SITE.phoneHref}
+                className="btn btn-outline templates-intro-actions__call-now"
+              >
+                {TEMPLATES_INTRO.callNow.label}
+              </a>
+            </div>
           </div>
         </div>
 

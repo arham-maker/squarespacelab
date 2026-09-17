@@ -4,12 +4,11 @@ import { useState } from "react";
 import {
   LP_LANDING_ECOMMERCE_PACKAGES,
   LP_LANDING_PROMOTIONAL_PACKAGES,
-  LP_LANDING_REDESIGN_PACKAGES,
   type LpLandingPackage,
 } from "@/lib/data/lp-landing";
 import { LpLiveChatButton, LpPackageButton } from "@/components/lp/lp-buttons";
 
-type PricingTab = "promotional" | "ecommerce" | "redesign";
+type PricingTab = "promotional" | "ecommerce";
 
 const PRICING_TABS = [
   {
@@ -23,12 +22,6 @@ const PRICING_TABS = [
     label: "E-commerce",
     category: "E-commerce Website",
     packages: LP_LANDING_ECOMMERCE_PACKAGES,
-  },
-  {
-    id: "redesign",
-    label: "Redesign",
-    category: "Website Redesign",
-    packages: LP_LANDING_REDESIGN_PACKAGES,
   },
 ] satisfies {
   id: PricingTab;

@@ -60,4 +60,6 @@ export const TEMPLATES_INTRO = {
   description:
     "Explore a wide range of Squarespace templates crafted to suit any purpose. Each template offers modern designs and customizable layouts, ensuring a unique online presence.",
   cta: { label: "Get Started", href: "#contact" },
+  liveChat: { label: "Live Chat" },
+  callNow: { label: "Call Now" },
 } as const;

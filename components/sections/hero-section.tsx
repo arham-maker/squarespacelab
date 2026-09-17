@@ -1,5 +1,9 @@
+"use client";
+
 import { Container } from "@/components/layout/container";
 import { CtaButton } from "@/components/ui/cta-button";
+import { SITE } from "@/lib/data/site";
+import { openLiveChat } from "@/lib/livechat";
 
 export function HeroSection() {
   return (
@@ -24,10 +28,23 @@ export function HeroSection() {
             Our experts provide customizable e-commerce solutions, ensuring a
             smooth shopping experience for your customers.
           </p>
-          <div className="home-hero__cta mt-6 sm:mt-0">
-            <CtaButton opensLeadForm className="w-full max-w-sm sm:w-auto">
+          <div className="home-hero__actions">
+            <CtaButton opensLeadForm className="home-hero__cta-btn">
               Get started
             </CtaButton>
+            <button
+              type="button"
+              className="btn btn-outline home-hero__live-chat"
+              onClick={() => openLiveChat()}
+            >
+              Live Chat
+            </button>
+            <a
+              href={SITE.phoneHref}
+              className="btn btn-outline home-hero__call-now"
+            >
+              Call Now
+            </a>
           </div>
         </div>
       </Container>

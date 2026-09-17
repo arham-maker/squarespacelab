@@ -64,28 +64,7 @@ export function OptionsSection() {
       aria-label="Squarespace platform options"
     >
       <Container>
-        <div className="grid grid-cols-1 gap-10 sm:gap-12 lg:grid-cols-2 lg:items-start lg:gap-0">
-          <div
-            ref={mediaRef}
-            data-options-media
-            className="overflow-hidden px-[15px] lg:flex lg:items-center lg:justify-center"
-          >
-            <figure
-              ref={imageRef}
-              data-options-image
-              className="m-0 w-full max-w-[703px] will-change-transform"
-            >
-              <Image
-                src="/home/options.webp"
-                alt="Modern workspace with Squarespace website design on screen"
-                width={703}
-                height={641}
-                className="mx-auto block h-auto w-full max-w-full object-contain lg:h-[641px] lg:w-[703px] lg:max-w-none"
-                sizes="(max-width: 1024px) 100vw, 703px"
-              />
-            </figure>
-          </div>
-
+        <div className="grid grid-cols-1 gap-10 sm:gap-12 lg:grid-cols-2 lg:items-start lg:gap-x-16 xl:gap-x-24">
           <div
             ref={trackRef}
             data-options-track
@@ -112,6 +91,27 @@ export function OptionsSection() {
                 </div>
               ))}
             </div>
+          </div>
+
+          <div
+            ref={mediaRef}
+            data-options-media
+            className="overflow-hidden px-[15px] lg:flex lg:items-center lg:justify-center"
+          >
+            <figure
+              ref={imageRef}
+              data-options-image
+              className="m-0 w-full max-w-[703px] will-change-transform"
+            >
+              <Image
+                src="/home/options.webp"
+                alt="Modern workspace with Squarespace website design on screen"
+                width={703}
+                height={641}
+                className="mx-auto block h-auto w-full max-w-full object-contain lg:h-[641px] lg:w-[703px] lg:max-w-none"
+                sizes="(max-width: 1024px) 100vw, 703px"
+              />
+            </figure>
           </div>
         </div>
       </Container>

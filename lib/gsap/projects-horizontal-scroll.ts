@@ -6,6 +6,12 @@ export type ProjectsMarqueeTargets = {
   track: HTMLElement;
 };
 
+export type ProjectsMarqueeControls = {
+  destroy: () => void;
+  next: () => void;
+  prev: () => void;
+};
+
 /** Constant autoplay drift (px/s). */
 const AUTO_SPEED = 14;
 
@@ -49,10 +55,20 @@ function wrapPosition(x: number, loopWidth: number): number {
   return x;
 }
 
+function getStepSize(track: HTMLElement): number {
+  const set = track.querySelector<HTMLElement>("[data-marquee-set]");
+  const card = set?.querySelector<HTMLElement>("article");
+  if (!card) return 420;
+
+  const gapRaw = set ? getComputedStyle(set).columnGap || getComputedStyle(set).gap : "24";
+  const gap = Number.parseFloat(gapRaw) || 24;
+  return card.getBoundingClientRect().width + gap;
+}
+
 export function initProjectsMarqueeScroll(
   { section, viewport, track }: ProjectsMarqueeTargets,
   reducedMotion: boolean
-): () => void {
+): ProjectsMarqueeControls {
   let scrollTrigger: ScrollTrigger | null = null;
   let resizeObserver: ResizeObserver | null = null;
   let retryTimer: number | undefined;
@@ -64,6 +80,8 @@ export function initProjectsMarqueeScroll(
   let positionX = 0;
   let rawScrollVelocity = 0;
   let smoothScrollRate = 0;
+  let nudgeRemaining = 0;
+  let pauseAutoUntil = 0;
 
   const deactivate = () => {
     cancelAnimationFrame(rafId);
@@ -82,6 +100,10 @@ export function initProjectsMarqueeScroll(
     return false;
   };
 
+  const applyTransform = () => {
+    track.style.transform = `translate3d(${positionX.toFixed(2)}px, 0, 0)`;
+  };
+
   const frame = (time: number) => {
     rafId = requestAnimationFrame(frame);
 
@@ -98,11 +120,17 @@ export function initProjectsMarqueeScroll(
     const targetScrollRate = rawScrollVelocity * SCROLL_VELOCITY_FACTOR;
     smoothScrollRate += (targetScrollRate - smoothScrollRate) * SCROLL_LERP;
 
-    positionX -= AUTO_SPEED * delta;
+    if (nudgeRemaining !== 0) {
+      const step = Math.sign(nudgeRemaining) * Math.min(Math.abs(nudgeRemaining), 1800 * delta);
+      positionX += step;
+      nudgeRemaining -= step;
+    } else if (time >= pauseAutoUntil) {
+      positionX -= AUTO_SPEED * delta;
+    }
+
     positionX += smoothScrollRate * delta;
     positionX = wrapPosition(positionX, loopWidth);
-
-    track.style.transform = `translate3d(${positionX.toFixed(2)}px, 0, 0)`;
+    applyTransform();
   };
 
   const startLoop = () => {
@@ -131,14 +159,42 @@ export function initProjectsMarqueeScroll(
     }
   };
 
+  const stepBy = (direction: 1 | -1) => {
+    const step = getStepSize(track) * direction;
+
+    if (reducedMotion || viewport.classList.contains("projects-marquee__viewport--scroll")) {
+      viewport.scrollBy({ left: step, behavior: "smooth" });
+      return;
+    }
+
+    // next = content moves left (negative x), prev = opposite
+    nudgeRemaining -= step;
+    pauseAutoUntil = performance.now() + 1600;
+  };
+
+  const destroy = () => {
+    scrollTrigger?.kill();
+    resizeObserver?.disconnect();
+    window.removeEventListener("load", onLoad);
+    clearTimeout(retryTimer);
+    clearTimeout(resizeTimer);
+    deactivate();
+  };
+
+  const onLoad = () => tryActivate();
+
   if (reducedMotion) {
     deactivate();
     viewport.classList.add("projects-marquee__viewport--scroll");
-    return () => {
-      deactivate();
-      clearTimeout(retryTimer);
-      clearTimeout(resizeTimer);
-      scrollTrigger?.kill();
+    return {
+      destroy: () => {
+        deactivate();
+        clearTimeout(retryTimer);
+        clearTimeout(resizeTimer);
+        scrollTrigger?.kill();
+      },
+      next: () => stepBy(1),
+      prev: () => stepBy(-1),
     };
   }
 
@@ -170,15 +226,11 @@ export function initProjectsMarqueeScroll(
     resizeObserver?.observe(set);
   });
 
-  const onLoad = () => tryActivate();
   window.addEventListener("load", onLoad);
 
-  return () => {
-    scrollTrigger?.kill();
-    resizeObserver?.disconnect();
-    window.removeEventListener("load", onLoad);
-    clearTimeout(retryTimer);
-    clearTimeout(resizeTimer);
-    deactivate();
+  return {
+    destroy,
+    next: () => stepBy(1),
+    prev: () => stepBy(-1),
   };
 }

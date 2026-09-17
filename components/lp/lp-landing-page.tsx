@@ -7,21 +7,36 @@ import { LpCtaButton, LpLiveChatButton } from "@/components/lp/lp-buttons";
 import { LpPicture, LpImg } from "@/components/lp/lp-picture";
 import { LpLandingPortfolioSection } from "@/components/lp/lp-landing-portfolio-section";
 import { LpLandingPricingSection } from "@/components/lp/lp-landing-pricing";
+import { LpLandingOfferingsSection } from "@/components/lp/lp-landing-offerings-section";
+import { LpLandingTestimonialsSection } from "@/components/lp/lp-landing-testimonials";
+import { LpBackToTop } from "@/components/lp/lp-back-to-top";
 import { lpImage } from "@/components/lp/lp-assets";
 import { LP_PORTFOLIO_SLIDES } from "@/lib/data/lp";
 import {
   LP_LANDING_ADVANTAGES,
+  LP_LANDING_BOTTOM_BANNER,
   LP_LANDING_CONTACT,
   LP_LANDING_DISCLAIMER,
   LP_LANDING_FAQ,
   LP_LANDING_HERO,
   LP_LANDING_INTRO,
+  LP_LANDING_MID_BANNER,
   LP_LANDING_PROCESS,
   LP_LANDING_SERVICES,
+  LP_LANDING_TOP_BANNER,
 } from "@/lib/data/lp-landing";
 import { SITE } from "@/lib/data/site";
 
 const TRUSTED_ICONS = [7, 8, 9, 10, 11] as const;
+
+const NAV_LINKS = [
+  { href: "#process", label: "Process" },
+  { href: "#pricing", label: "Pricing" },
+  { href: "#portfolio", label: "Portfolio" },
+  { href: "#services", label: "Services" },
+  { href: "#testimonials", label: "Testimonials" },
+  { href: "#faq", label: "FAQs" },
+] as const;
 
 export function LpLandingPage() {
   const year = new Date().getFullYear();
@@ -29,6 +44,17 @@ export function LpLandingPage() {
   return (
     <div className="lp-root lp-landing-root">
       <LpInit designCardSliders fancyboxGroup="portfolio Design" />
+
+      <div className="lp-top-banner">
+        <div className="container">
+          <p>
+            {LP_LANDING_TOP_BANNER.lead}{" "}
+            <strong>{LP_LANDING_TOP_BANNER.price}</strong>{" "}
+            <del>{LP_LANDING_TOP_BANNER.compareAt}</del>{" "}
+            <span>{LP_LANDING_TOP_BANNER.savings}</span>
+          </p>
+        </div>
+      </div>
 
       <div
         className="mainBanner"
@@ -45,7 +71,7 @@ export function LpLandingPage() {
                 <span />
               </div>
               <div className="row align-items-center">
-                <div className="col-md-5 col-lg-5 text-left">
+                <div className="col-md-4 col-lg-3 text-left">
                   <Link href="/" className="logo" style={{ maxWidth: 500 }}>
                     <Image
                       src={SITE.logoBlack}
@@ -57,22 +83,28 @@ export function LpLandingPage() {
                     />
                   </Link>
                 </div>
-                <div className="col-lg-7 col-md-7 text-end">
+                <div className="col-lg-9 col-md-8 text-end">
                   <ul className="menu">
-                    <li>
-                      <a href="#portfolio">Portfolio</a>
+                    {NAV_LINKS.map((link) => (
+                      <li key={link.href}>
+                        <a href={link.href}>{link.label}</a>
+                      </li>
+                    ))}
+                    <li className="lp-nav-desktop-only">
+                      <LpLiveChatButton
+                        className="theme-btn lp-btn-light"
+                        iconSrc="chat-black.svg"
+                        label="Live Chat"
+                      />
                     </li>
-                    <li>
-                      <a href="#pricing">Pricing</a>
-                    </li>
-                    <li>
-                      <a href="#process">Process</a>
-                    </li>
-                    <li>
-                      <a href="#faq">FAQ&apos;s</a>
-                    </li>
-                    <li>
-                      <LpCtaButton>Request A Quote</LpCtaButton>
+                    <li className="lp-nav-mobile-only">
+                      <a
+                        href={LP_LANDING_CONTACT.phoneHref}
+                        className="theme-btn lp-btn-light lp-call-btn"
+                      >
+                        <img src={lpImage("call-icon.svg")} alt="" />
+                        Call Us
+                      </a>
                     </li>
                   </ul>
                 </div>
@@ -86,16 +118,21 @@ export function LpLandingPage() {
             <div className="row align-items-center">
               <div className="col-lg-5 col-md-8 lp-landing-hero-copy">
                 <span className="lp-hero-eyebrow">{LP_LANDING_HERO.eyebrow}</span>
-                <h1 className="banner-heading">
-                  {LP_LANDING_HERO.title}
-                </h1>
+                <h1 className="banner-heading">{LP_LANDING_HERO.title}</h1>
                 <p className="banner-text">{LP_LANDING_HERO.lead}</p>
+                <ul className="lp-check-list">
+                  {LP_LANDING_INTRO.bullets.map((bullet) => (
+                    <li key={bullet}>{bullet}</li>
+                  ))}
+                </ul>
                 <div className="btn-wrap">
-                  <LpCtaButton icon>Hire a Squarespace Designer Today</LpCtaButton>
+                  <LpCtaButton className="lp-btn-light" icon>
+                    Let&apos;s Get Started
+                  </LpCtaButton>
                   <LpLiveChatButton
-                    className="theme-btn bordered"
+                    className="theme-btn bordered lp-btn-light-outline"
                     iconSrc="chat-black.svg"
-                    label="Consult An Expert"
+                    label="Live Chat"
                   />
                 </div>
               </div>
@@ -141,11 +178,13 @@ export function LpLandingPage() {
                 ))}
               </ul>
               <div className="btn-wrap">
-                <LpCtaButton icon>Hire a Squarespace Designer Today</LpCtaButton>
+                <LpCtaButton className="lp-btn-light" icon>
+                  Let&apos;s Get Started
+                </LpCtaButton>
                 <LpLiveChatButton
-                  className="theme-btn bordered"
+                  className="theme-btn bordered lp-btn-light-outline"
                   iconSrc="chat-black.svg"
-                  label="Free consultation"
+                  label="Live Chat"
                 />
               </div>
               <div className="images-wrap wrap2">
@@ -181,6 +220,42 @@ export function LpLandingPage() {
       </div>
 
       <LpLandingPortfolioSection />
+
+      <section className="lp-mid-banner">
+        <div className="container">
+          <div className="row align-items-center gy-4">
+            <div className="col-lg-7">
+              <div className="sec-heading">
+                <h2>{LP_LANDING_MID_BANNER.title}</h2>
+                <p>{LP_LANDING_MID_BANNER.lead}</p>
+              </div>
+              <div className="btn-wrap">
+                <LpCtaButton className="lp-btn-light" icon>
+                  Let&apos;s Get Started
+                </LpCtaButton>
+                <LpLiveChatButton
+                  className="theme-btn bordered lp-btn-light-outline"
+                  iconSrc="chat-black.svg"
+                  label="Live Chat"
+                />
+              </div>
+            </div>
+            <div className="col-lg-5">
+              <ul className="lp-stat-list">
+                {LP_LANDING_MID_BANNER.stats.map((stat) => (
+                  <li key={stat.label}>
+                    <strong>{stat.value}</strong>
+                    <span>{stat.label}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <LpLandingOfferingsSection />
+
       <LpLandingPricingSection />
 
       <section className="sec-4" id="process">
@@ -192,11 +267,11 @@ export function LpLandingPage() {
               data-aos-duration="1000"
             >
               <div className="sec-heading">
-                <h2>A Clear, Structured Process That Keeps You Informed</h2>
+                <h2>How We Work</h2>
                 <p>
-                  We follow a transparent workflow that keeps you updated at
-                  every stage. You&apos;ll always know where your project stands,
-                  while we fine-tune every detail to match your requirements.
+                  A clear, structured process that keeps you informed at every
+                  stage. You&apos;ll always know where your project stands while
+                  we fine-tune every detail to match your requirements.
                 </p>
               </div>
               <div data-aos="fade-right" data-aos-duration="1000">
@@ -211,7 +286,7 @@ export function LpLandingPage() {
                 ))}
               </div>
               <div className="btn-wrap">
-                <LpCtaButton className="bg-black text-white" icon>
+                <LpCtaButton className="lp-btn-light" icon>
                   Schedule Your Free Consultation
                 </LpCtaButton>
               </div>
@@ -227,7 +302,7 @@ export function LpLandingPage() {
         </div>
       </section>
 
-      <section className="sec-5">
+      <section className="sec-5" id="squarespace-services">
         <div className="container">
           <div className="row align-items-center mb-lg-5">
             <div
@@ -236,9 +311,7 @@ export function LpLandingPage() {
               data-aos-duration="1000"
             >
               <div className="sec-heading">
-                <h2 className="text-white">
-                  Get Customized Squarespace Website Design &amp; Development
-                </h2>
+                <h2 className="text-white">Explore Our Services</h2>
               </div>
             </div>
             <div
@@ -248,8 +321,9 @@ export function LpLandingPage() {
             >
               <div className="sec-heading">
                 <p className="text-white">
-                  We design and develop custom Squarespace websites that are
-                  easy to use, visually refined, and built to convert.
+                  Discover our range of Squarespace services designed to support
+                  your business at every step—from setup and optimization to
+                  ongoing maintenance.
                 </p>
               </div>
             </div>
@@ -269,7 +343,7 @@ export function LpLandingPage() {
             ))}
             <div className="col-lg-12">
               <div className="btn-wrap justify-content-center">
-                <LpCtaButton className="bg-orange" icon>
+                <LpCtaButton className="lp-btn-light" icon>
                   Schedule Your Free Consultation
                 </LpCtaButton>
               </div>
@@ -293,13 +367,13 @@ export function LpLandingPage() {
                   </p>
                 </div>
                 <div className="btn-wrap">
-                  <LpCtaButton className="bg-orange" icon>
+                  <LpCtaButton className="lp-btn-light" icon>
                     Hire Squarespace Website Designer
                   </LpCtaButton>
                   <LpLiveChatButton
                     className="theme-btn bordered text-white"
                     iconSrc="chat.svg"
-                    label="Text Us for Instant Answers"
+                    label="Live Chat"
                   />
                 </div>
               </div>
@@ -313,6 +387,8 @@ export function LpLandingPage() {
           </div>
         </div>
       </section>
+
+      <LpLandingTestimonialsSection />
 
       <section className="sec-6">
         <div className="container">
@@ -333,13 +409,13 @@ export function LpLandingPage() {
                   </p>
                 </div>
                 <div className="btn-wrap justify-content-center">
-                  <LpCtaButton className="bg-black text-white" icon>
+                  <LpCtaButton className="lp-btn-light" icon>
                     Hire Squarespace Website Designer
                   </LpCtaButton>
                   <LpLiveChatButton
-                    className="theme-btn bordered"
+                    className="theme-btn bordered lp-btn-light-outline"
                     iconSrc="chat-black.svg"
-                    label="Text Us for Instant Answers"
+                    label="Live Chat"
                   />
                 </div>
                 <div>
@@ -361,7 +437,7 @@ export function LpLandingPage() {
               data-aos-duration="1000"
             >
               <div className="sec-heading">
-                <h2>Everything You Need to Know About Our Squarespace Services</h2>
+                <h2>Frequently Asked Questions</h2>
                 <p>
                   Get answers to common questions about our process, pricing,
                   and how our Squarespace designers ensure your website stands
@@ -435,17 +511,46 @@ export function LpLandingPage() {
                 ))}
               </div>
               <div className="btn-wrap justify-content-center mt-4">
-                <LpCtaButton icon>Squarespace Designer Near Me</LpCtaButton>
+                <LpCtaButton className="lp-btn-light" icon>
+                  Squarespace Designer Near Me
+                </LpCtaButton>
                 <LpLiveChatButton
-                  className="theme-btn bordered"
+                  className="theme-btn bordered lp-btn-light-outline"
                   iconSrc="chat-black.svg"
-                  label="Get in Touch"
+                  label="Live Chat"
                 />
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      <section className="lp-bottom-banner">
+        <div className="container">
+          <div className="lp-bottom-banner__inner">
+            <div className="sec-heading">
+              <h2>{LP_LANDING_BOTTOM_BANNER.title}</h2>
+              <p>{LP_LANDING_BOTTOM_BANNER.lead}</p>
+            </div>
+            <div className="btn-wrap justify-content-center">
+              <LpCtaButton className="lp-btn-light" icon>
+                Let&apos;s Get Started
+              </LpCtaButton>
+              <a
+                href={LP_LANDING_CONTACT.phoneHref}
+                className="theme-btn bordered lp-btn-light-outline lp-nav-mobile-only"
+              >
+                Call Us
+              </a>
+              <LpLiveChatButton
+                className="theme-btn bordered lp-btn-light-outline lp-nav-desktop-only"
+                iconSrc="chat-black.svg"
+                label="Live Chat"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
 
       <footer>
         <div className="container">
@@ -525,6 +630,8 @@ export function LpLandingPage() {
           </div>
         </div>
       </div>
+
+      <LpBackToTop />
     </div>
   );
 }

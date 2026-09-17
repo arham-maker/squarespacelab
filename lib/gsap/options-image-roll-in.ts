@@ -13,9 +13,9 @@ export function initOptionsImageRollIn(
   }
 
   gsap.set(image, {
-    xPercent: -105,
+    xPercent: 105,
     autoAlpha: 0,
-    rotation: -7,
+    rotation: 7,
     transformOrigin: "center center",
     force3D: true,
   });
