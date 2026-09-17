@@ -37,11 +37,7 @@ function loadScript(src: string) {
 
 declare global {
   interface Window {
-    setButtonURL?: () => void;
     AOS?: { init: (opts: Record<string, unknown>) => void };
-    openLiveChat?: () => void;
-    __squarespacelabOpenLiveChat?: () => void;
-    zE?: (...args: unknown[]) => void;
   }
 }
 
