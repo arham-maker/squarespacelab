@@ -28,6 +28,7 @@ import {
   LpCtaButton,
   LpPackageButton,
 } from "@/components/lp/lp-buttons";
+import { useLeadForm } from "@/components/providers/lead-form-provider";
 
 const WIX = "/lp2w/assets/images";
 const LP = "/lp/assets/images";
@@ -224,6 +225,7 @@ function PackageCard({
 
 function HeaderChatOrCall() {
   const isMobile = useIsMobile();
+  const { openLeadForm } = useLeadForm();
 
   if (isMobile) {
     return (
@@ -236,13 +238,14 @@ function HeaderChatOrCall() {
   return (
     <a
       href="javascript:;"
-      title="Live Chat"
+      className="lp-header-get-started"
+      title="Get Started"
       onClick={(e) => {
         e.preventDefault();
-        window.setButtonURL?.();
+        openLeadForm();
       }}
     >
-      <i className="fa-regular fa-comment" /> Chat Now
+      Get Started <i className="fa-regular fa-arrow-right" />
     </a>
   );
 }
@@ -264,7 +267,7 @@ function useIsMobile(breakpoint = 991) {
 function LiveChatLink({
   className,
   darkIcon,
-  label = "Text Us for Instant Answers",
+  label = "Chat Now",
   callLabel = "Call Us",
   hideIcon = false,
 }: {
@@ -535,49 +538,56 @@ export function Lp2WixPage() {
         </div>
       </div>
 
-      <section className="sec-intro">
+      <section className="sec-intro lp2w-intro">
         <div className="container">
-          <div className="row align-items-center">
+          <div className="row align-items-center gy-5">
             <div
               className="col-lg-6"
               data-aos="fade-right"
               data-aos-duration="1000"
             >
-              <div className="sec-heading">
-                <h2>{LP_LANDING_INTRO.title}</h2>
-                <p>{LP_LANDING_INTRO.lead}</p>
-              </div>
-              <ul className="lp2w-check-list">
-                {LP_LANDING_INTRO.bullets.map((bullet) => (
-                  <li key={bullet}>
-                    {CHECK_SVG}
-                    {bullet}
-                  </li>
-                ))}
-              </ul>
-              <div className="btn-wrap">
-                <LpCtaButton className="btn" icon>
-                  Let&apos;s Get Started
-                </LpCtaButton>
-                <LiveChatLink
-                  className="theme-btn bordered noborder"
-                  darkIcon
-                />
+              <div className="lp2w-intro-copy">
+                <span className="lp2w-intro-eyebrow">Squarespace Design Studio</span>
+                <div className="sec-heading lp2w-intro-heading">
+                  <h2>{LP_LANDING_INTRO.title}</h2>
+                  <p>{LP_LANDING_INTRO.lead}</p>
+                </div>
+                <ul className="lp2w-check-list">
+                  {LP_LANDING_INTRO.bullets.map((bullet) => (
+                    <li key={bullet}>
+                      <span className="lp2w-check-icon" aria-hidden>
+                        {CHECK_SVG}
+                      </span>
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="btn-wrap lp2w-intro-actions">
+                  <LpCtaButton className="btn" icon>
+                    Let&apos;s Get Started
+                  </LpCtaButton>
+                  <LiveChatLink
+                    className="theme-btn bordered noborder"
+                    darkIcon
+                  />
+                </div>
               </div>
             </div>
             <div
               className="col-lg-6"
-              data-aos="zoom-in"
+              data-aos="fade-left"
               data-aos-duration="1000"
             >
               <div className="lp2w-intro-visual">
-                <img
-                  src={`${LP}/sec1-img_1x.webp`}
-                  alt="Squarespace design partnership"
-                  className="img-fluid lp2w-hand-img"
-                  width={376}
-                  height={378}
-                />
+                <div className="lp2w-intro-visual__frame">
+                  <img
+                    src={`${LP}/sec1-img_1x.webp`}
+                    alt="Squarespace design partnership"
+                    className="img-fluid lp2w-hand-img"
+                    width={376}
+                    height={378}
+                  />
+                </div>
               </div>
             </div>
           </div>
