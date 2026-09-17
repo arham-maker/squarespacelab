@@ -759,3 +759,32 @@ li.lp-chat-desktop-only {
   }
 }
 
+
+/* AOS: never leave sections blank if scroll trigger misses */
+.lp-landing-root .mainBanner [data-aos],
+.lp-landing-root header [data-aos] {
+  opacity: 1 !important;
+  transform: none !important;
+  pointer-events: auto !important;
+}
+
+.lp-landing-root [data-aos].aos-animate {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lp-landing-root [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* Mobile / short viewports: keep content visible even if AOS stalls */
+@media (max-width: 991px) {
+  .lp-landing-root [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

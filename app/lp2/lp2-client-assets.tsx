@@ -35,10 +35,32 @@ function loadScript(src: string) {
   });
 }
 
+type AosApi = {
+  init: (opts: Record<string, unknown>) => void;
+  refresh?: () => void;
+  refreshHard?: () => void;
+};
+
 declare global {
   interface Window {
-    AOS?: { init: (opts: Record<string, unknown>) => void };
+    AOS?: AosApi;
   }
+}
+
+function revealVisibleAosElements() {
+  const viewportHeight =
+    window.innerHeight || document.documentElement.clientHeight;
+
+  document
+    .querySelectorAll<HTMLElement>(
+      ".lp-landing-root [data-aos]:not(.aos-animate)"
+    )
+    .forEach((el) => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < viewportHeight * 0.95 && rect.bottom > 0) {
+        el.classList.add("aos-animate");
+      }
+    });
 }
 
 /** Loads Wix-shell CSS/JS outside the React render tree (avoids script-tag warnings). */
@@ -49,6 +71,9 @@ export function Lp2ClientAssets() {
     loadStylesheet("https://unpkg.com/aos@2.3.1/dist/aos.css");
 
     let cancelled = false;
+    let aosScrollTimer: number | undefined;
+    let aosFallbackObserver: IntersectionObserver | undefined;
+    let aosSafetyTimer: number | undefined;
 
     (async () => {
       try {
@@ -82,25 +107,97 @@ export function Lp2ClientAssets() {
           }
         };
 
-        window.AOS?.init({
-          duration: 500,
-          easing: "ease-in-out",
+        // Hero should never wait on scroll animation.
+        document
+          .querySelectorAll<HTMLElement>(
+            ".lp-landing-root .mainBanner [data-aos], .lp-landing-root header [data-aos]"
+          )
+          .forEach((el) => el.classList.add("aos-animate"));
+
+        const aos = window.AOS;
+        aos?.init({
+          duration: 700,
+          easing: "ease-out-cubic",
           once: true,
-          anchorPlacement: "bottom-bottom",
-          disable: "mobile",
+          offset: 60,
+          anchorPlacement: "top-bottom",
+          debounceDelay: 50,
+          throttleDelay: 99,
+          disable: false,
         });
+
+        const refreshAos = () => {
+          if (cancelled) return;
+          aos?.refresh?.();
+          revealVisibleAosElements();
+        };
+
+        const refreshAosHard = () => {
+          if (cancelled) return;
+          aos?.refreshHard?.();
+          revealVisibleAosElements();
+        };
+
+        requestAnimationFrame(refreshAosHard);
+        window.addEventListener("load", refreshAosHard);
+
+        const onScroll = () => {
+          window.clearTimeout(aosScrollTimer);
+          aosScrollTimer = window.setTimeout(refreshAos, 100);
+        };
+        window.addEventListener("scroll", onScroll, { passive: true });
+
+        aosFallbackObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              (entry.target as HTMLElement).classList.add("aos-animate");
+            });
+          },
+          {
+            root: null,
+            rootMargin: "0px 0px -6% 0px",
+            threshold: 0.05,
+          }
+        );
+
+        document
+          .querySelectorAll(".lp-landing-root [data-aos]")
+          .forEach((el) => aosFallbackObserver?.observe(el));
+
+        // Final safety: if anything is still hidden after layout settles, show it.
+        aosSafetyTimer = window.setTimeout(() => {
+          document
+            .querySelectorAll<HTMLElement>(
+              ".lp-landing-root [data-aos]:not(.aos-animate)"
+            )
+            .forEach((el) => {
+              const rect = el.getBoundingClientRect();
+              if (rect.top < window.innerHeight * 1.2) {
+                el.classList.add("aos-animate");
+              }
+            });
+          refreshAos();
+        }, 1800);
 
         const init = (
           window as Window & { initLp2wSliders?: () => void }
         ).initLp2wSliders;
         init?.();
+        window.setTimeout(refreshAosHard, 400);
       } catch {
-        /* assets optional on soft-nav failure */
+        // If AOS fails to load, force content visible.
+        document
+          .querySelectorAll<HTMLElement>(".lp-landing-root [data-aos]")
+          .forEach((el) => el.classList.add("aos-animate"));
       }
     })();
 
     return () => {
       cancelled = true;
+      window.clearTimeout(aosScrollTimer);
+      window.clearTimeout(aosSafetyTimer);
+      aosFallbackObserver?.disconnect();
     };
   }, []);
 
