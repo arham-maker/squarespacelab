@@ -1,45 +1,36 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import "./lp-lead-modal.css";
-import "./lp-variant-overrides.css";
-import "./lp-landing-enhancements.css";
+import { LpLiveChatClicks } from "./lp-live-chat-clicks";
 
 export const metadata: Metadata = {
   title:
-    "Custom Squarespace Website Design & Development Services | SquarespaceLab",
+    "Struggling to Find a Squarespace Designer? Hire a Pro for a Stunning Site!",
   description:
-    "Hire a Squarespace website designer in the USA for custom design, ecommerce, memberships, SEO, support, and conversion-focused Squarespace development.",
+    "Hire a Squarespace website designer in the USA for custom design, redesign, ecommerce, memberships, SEO, support, and conversion-focused Squarespace development.",
 };
 
 export default function LpLayout({ children }: { children: React.ReactNode }) {
   return (
     <div>
-      <link rel="stylesheet" href="/lp/assets/css/layout.css" />
-      <link rel="stylesheet" href="/lp/assets/css/style.css" />
-      <link
-        rel="preload"
-        as="image"
-        href="/lp/assets/images/banner/banner-image.png"
-      />
+      <link rel="stylesheet" href="/lp2/assets/css/layout.css" />
+      <link rel="stylesheet" href="/lp2/assets/css/style.css" />
       {children}
+      <LpLiveChatClicks />
+      <Script src="/lp2/assets/js/jquery.js" strategy="afterInteractive" />
+      <Script src="/lp2/assets/js/custom.js" strategy="afterInteractive" />
       <Script id="lp-livechat" strategy="afterInteractive">
         {`
           function setButtonURL() {
-            if (typeof window.openLiveChat === "function") {
-              window.openLiveChat();
-              return;
-            }
             if (typeof window.__squarespacelabOpenLiveChat === "function") {
               window.__squarespacelabOpenLiveChat();
               return;
             }
             if (typeof zE === "function") {
               try {
-                zE("webWidget", "show");
-                zE("webWidget", "open");
+                zE("messenger", "open");
               } catch (error) {
                 try {
-                  zE("messenger", "open");
+                  zE("webWidget", "open");
                 } catch (e2) {}
               }
             }

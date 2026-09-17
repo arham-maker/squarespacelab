@@ -201,33 +201,36 @@ export function GetStartedModal({
 
           <div className="get-started-modal__form-wrap">
             <div className="get-started-modal__heading" id={titleId}>
-              <h3 className="get-started-modal__title m-0">{LEAD_FORM.title}</h3>
-              <p className="get-started-modal__title-highlight m-0">
-                {LEAD_FORM.titleHighlight}
-              </p>
               {selectedPackage ? (
-                <div className="get-started-modal__package">
-                  <span className="get-started-modal__package-label">
-                    Selected Package
-                  </span>
-                  <span className="get-started-modal__package-name">
+                <>
+                  <h3 className="get-started-modal__title m-0">
                     {selectedPackage.name}
-                  </span>
-                  <span className="get-started-modal__package-price">
-                    {selectedPackage.price}
-                  </span>
-                  {selectedPackage.category ? (
-                    <span className="get-started-modal__package-category">
-                      {selectedPackage.category}
+                  </h3>
+                  <p className="get-started-modal__price-line m-0">
+                    <span className="get-started-modal__price-lead">
+                      {LEAD_FORM.priceLead}
+                    </span>{" "}
+                    <span className="get-started-modal__price-value">
+                      {selectedPackage.price}
                     </span>
-                  ) : null}
-                  {selectedPackage.details ? (
-                    <span className="get-started-modal__package-details">
-                      {selectedPackage.details}
-                    </span>
-                  ) : null}
-                </div>
-              ) : null}
+                  </p>
+                  <p className="get-started-modal__subtitle m-0">
+                    {selectedPackage.category || LEAD_FORM.subtitle}
+                  </p>
+                </>
+              ) : (
+                <>
+                  <h3 className="get-started-modal__title m-0">
+                    {LEAD_FORM.title}
+                  </h3>
+                  <p className="get-started-modal__title-highlight m-0">
+                    {LEAD_FORM.titleHighlight}
+                  </p>
+                  <p className="get-started-modal__subtitle m-0">
+                    {LEAD_FORM.subtitle}
+                  </p>
+                </>
+              )}
             </div>
 
             <form className="get-started-modal__form" onSubmit={handleSubmit} noValidate>
@@ -298,7 +301,10 @@ export function GetStartedModal({
                 className="get-started-modal__submit"
                 disabled={isSubmitting}
               >
-                {LEAD_FORM.submitLabel}
+                <span>{LEAD_FORM.submitLabel}</span>
+                <span className="get-started-modal__submit-arrow" aria-hidden>
+                  →
+                </span>
               </button>
             </form>
           </div>

@@ -1,48 +1,31 @@
 import type { Metadata } from "next";
-import Script from "next/script";
+import "../lp0/lp-lead-modal.css";
+import "../get-started-modal.css";
+import "./lp2-overrides.css";
 import { Lp2LiveChatClicks } from "./lp2-live-chat-clicks";
+import { Lp2ClientAssets } from "./lp2-client-assets";
 
 export const metadata: Metadata = {
   title:
-    "Struggling to Find a Squarespace Designer? Hire a Pro for a Stunning Site!",
+    "Custom Squarespace Website Design & Development Services | SquarespaceLab",
   description:
-    "Hire a Squarespace website designer in the USA for custom design, redesign, ecommerce, memberships, SEO, support, and conversion-focused Squarespace development.",
+    "Hire a Squarespace website designer in the USA for custom design, ecommerce, memberships, SEO, support, and conversion-focused Squarespace development.",
 };
 
 export default function Lp2Layout({ children }: { children: React.ReactNode }) {
   return (
     <div>
-      <link rel="stylesheet" href="/lp2/assets/css/layout.css" />
-      <link rel="stylesheet" href="/lp2/assets/css/style.css" />
+      {/* Critical CSS linked for first paint; JS loaded via Lp2ClientAssets */}
+      <link rel="stylesheet" href="/lp2w/assets/css/layout.css" />
+      <link rel="stylesheet" href="/lp2w/assets/css/style.css" />
+      <link
+        rel="preload"
+        as="image"
+        href="/lp2w/assets/images/banner/main-banner.webp"
+      />
       {children}
       <Lp2LiveChatClicks />
-      <Script src="/lp2/assets/js/jquery.js" strategy="afterInteractive" />
-      <Script src="/lp2/assets/js/custom.js" strategy="afterInteractive" />
-      <Script id="lp2-livechat" strategy="afterInteractive">
-        {`
-          function setButtonURL() {
-            if (typeof window.openLiveChat === "function") {
-              window.openLiveChat();
-              return;
-            }
-            if (typeof window.__squarespacelabOpenLiveChat === "function") {
-              window.__squarespacelabOpenLiveChat();
-              return;
-            }
-            if (typeof zE === "function") {
-              try {
-                zE("webWidget", "show");
-                zE("webWidget", "open");
-              } catch (error) {
-                try {
-                  zE("messenger", "open");
-                } catch (e2) {}
-              }
-            }
-          }
-          window.setButtonURL = setButtonURL;
-        `}
-      </Script>
+      <Lp2ClientAssets />
     </div>
   );
 }

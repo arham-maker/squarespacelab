@@ -25,6 +25,8 @@ const LeadFormContext = createContext<LeadFormContextValue | null>(null);
 export function LeadFormProvider({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const usesLpModal = pathname === "/lp" || pathname === "/our-pricing";
+  // /lp2 uses GetStartedModal (modern package popup). Wix CSS on /lp2 is
+  // unlayered and must not win over modal styles — see app/get-started-modal.css.
   const [isOpen, setIsOpen] = useState(false);
   const [selectedPackage, setSelectedPackage] =
     useState<SelectedPackage | null>(null);

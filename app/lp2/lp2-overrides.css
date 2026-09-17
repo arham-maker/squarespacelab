@@ -1,0 +1,572 @@
+/* Chat on desktop / Call Us on mobile */
+.lp-chat-mobile-only {
+  display: none !important;
+}
+
+.lp-chat-desktop-only {
+  display: inline-flex !important;
+  align-items: center;
+}
+
+li.lp-chat-mobile-only {
+  display: none !important;
+}
+
+li.lp-chat-desktop-only {
+  display: inline-flex !important;
+}
+
+.lp-call-btn img {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+}
+
+@media (max-width: 991px) {
+  .lp-chat-desktop-only,
+  li.lp-chat-desktop-only {
+    display: none !important;
+  }
+
+  .lp-chat-mobile-only {
+    display: inline-flex !important;
+    align-items: center;
+  }
+
+  li.lp-chat-mobile-only {
+    display: list-item !important;
+  }
+
+  .lp-landing-root header ul.menu > li.lp-chat-desktop-only {
+    display: none !important;
+  }
+
+  .lp-landing-root header ul.menu > li.lp-chat-mobile-only {
+    display: flex !important;
+  }
+
+  .lp-landing-root header .menuWrap {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 0;
+  }
+
+  .lp-landing-root header ul.menu.menu-nav,
+  .lp-landing-root header ul.menu.menu-ctas {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Hide floating Zendesk / live chat launcher on mobile */
+  iframe#launcher,
+  iframe[title*="Messaging"],
+  iframe[title*="Close message"],
+  div[data-product="web_widget"],
+  .zEWidget-launcher,
+  #launcher {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+}
+
+/* Keep SquarespaceLab logos readable in Wix layout header/footer */
+.lp-landing-root header .logo img {
+  max-height: 48px;
+  width: auto;
+}
+
+/* Header: single row like WixProfs (desktop) */
+@media (min-width: 992px) {
+  .lp-landing-root header .main-header .row {
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  .lp-landing-root header .menuWrap {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    left: auto !important;
+  }
+
+  .lp-landing-root header ul.menu {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    gap: 0;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none;
+    white-space: nowrap;
+    font-size: 0;
+  }
+
+  .lp-landing-root header ul.menu.menu-nav {
+    flex: 1 1 auto;
+    justify-content: center !important;
+  }
+
+  .lp-landing-root header ul.menu.menu-ctas {
+    flex: 0 0 auto;
+    justify-content: flex-end !important;
+    margin-left: auto !important;
+  }
+
+  .lp-landing-root header ul.menu > li {
+    display: inline-flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    padding: 0 0 0 22px !important;
+    margin: 0 !important;
+    flex-shrink: 0;
+    border: 0 !important;
+  }
+
+  .lp-landing-root header ul.menu.menu-nav > li:first-child {
+    padding-left: 0 !important;
+  }
+
+  .lp-landing-root header ul.menu.menu-ctas > li:first-child {
+    padding-left: 22px !important;
+  }
+
+  .lp-landing-root header ul.menu > li > a {
+    display: inline-flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 6px;
+    white-space: nowrap;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    color: #fff !important;
+    line-height: 1.2 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: auto !important;
+    text-align: left !important;
+  }
+
+  .lp-landing-root header ul.menu > li > a i {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    margin: 0 !important;
+    flex-shrink: 0;
+    color: #f7c43a !important;
+    font-size: 1em;
+    line-height: 1;
+  }
+
+  .lp-landing-root header ul.menu > li.menu-cta > a {
+    font-size: 15px !important;
+  }
+
+  .lp-landing-root header ul.menu > li.lp-chat-mobile-only {
+    display: none !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .lp-landing-root header ul.menu > li {
+    padding-left: 26px !important;
+  }
+
+  .lp-landing-root header ul.menu > li > a {
+    font-size: 17px !important;
+  }
+}
+
+@media (max-width: 1199px) and (min-width: 992px) {
+  .lp-landing-root header ul.menu > li {
+    padding-left: 14px !important;
+  }
+
+  .lp-landing-root header ul.menu > li > a {
+    font-size: 13px !important;
+  }
+}
+
+.lp-landing-root footer .logo img {
+  max-height: 52px;
+  width: auto;
+}
+
+/* Package card buttons — match WixProfs white CTA + bordered Chat With Us */
+.lp-landing-root .pckg .btn-wrap {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+}
+
+.lp-landing-root .pckg .btn-wrap .theme-btn,
+.lp-landing-root .pckg .btn-wrap a.theme-btn {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 100% !important;
+  max-width: 100%;
+  font-weight: 700 !important;
+  font-size: 20px !important;
+  line-height: 1.2 !important;
+  padding: 22px 20px !important;
+  border-radius: 90px !important;
+  background: #fff !important;
+  color: #0b0b0b !important;
+  border: 1px solid #fff !important;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25) !important;
+  white-space: nowrap;
+  text-align: center;
+  gap: 0;
+}
+
+.lp-landing-root .pckg .btn-wrap .theme-btn.bordered,
+.lp-landing-root .pckg .btn-wrap a.theme-btn.bordered {
+  background: transparent !important;
+  border: 1.84px solid #000 !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12) !important;
+  color: #0b0b0b !important;
+  font-size: 20px !important;
+  padding: 20px 20px !important;
+}
+
+.lp-landing-root .pckg.popular .btn-wrap .theme-btn:not(.bordered),
+.lp-landing-root .pckg:hover .btn-wrap .theme-btn:not(.bordered) {
+  background: #f7c43a !important;
+  border-color: #f7c43a !important;
+  color: #0b0b0b !important;
+}
+
+.lp-landing-root .pckg.popular .btn-wrap .theme-btn.bordered,
+.lp-landing-root .pckg:hover .btn-wrap .theme-btn.bordered {
+  background: #000 !important;
+  border-color: #f7c43a !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}
+
+/* LP0 content blocks fitted into WixProfs layout */
+.lp2w-check-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+}
+
+.lp2w-check-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 12px;
+  font-size: 16px;
+  color: #0b0b0b;
+}
+
+.sec-intro {
+  padding: 70px 0 40px;
+}
+
+.lp2w-intro-visual {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.lp2w-hand-img {
+  display: block;
+  max-width: min(100%, 420px);
+  width: 100%;
+  height: auto;
+  margin-left: auto;
+}
+
+@media (max-width: 991px) {
+  .lp2w-intro-visual {
+    justify-content: center;
+    margin-top: 2rem;
+  }
+
+  .lp2w-hand-img {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.lp2w-step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  margin-right: 10px;
+  color: #f7c43a;
+  font-weight: 700;
+}
+
+.lp2w-offerings {
+  padding: 70px 0;
+  background: #fafafa;
+}
+
+.lp2w-offering-card {
+  display: block;
+  height: 100%;
+  padding: 28px 24px;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.lp2w-offering-card:hover {
+  border-color: #f7c43a;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  color: inherit;
+}
+
+.lp2w-offering-card span {
+  display: block;
+  color: #f7c43a;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.lp2w-offering-card h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.lp2w-offering-card p {
+  margin: 0;
+  color: #666;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.lp2w-consult {
+  max-width: 820px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.lp2w-consult h2,
+.sec-6 .lp2w-consult p {
+  color: #fff !important;
+}
+
+.sec-6 .btn-wrap .theme-btn.bordered.text-white,
+.sec-6 .btn-wrap .theme-btn.bordered.text-white * {
+  color: #fff !important;
+  fill: #fff !important;
+}
+
+.sec-6 .btn-wrap .theme-btn.bordered.text-white svg path {
+  fill: #fff !important;
+}
+
+.lp2w-bottom-banner {
+  padding: 70px 0;
+  background: #0b0b0b;
+}
+
+.lp2w-bottom-banner .sec-heading p {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.pckg .upper > p {
+  font-size: 14px;
+  line-height: 1.45;
+  color: #666;
+  margin: 0 0 12px;
+}
+
+.sec-6 .rating p {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 720px;
+  margin: 0 auto 2rem;
+  font-size: 28px;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.sec-6 .rating p span {
+  display: block;
+  font-size: 16px;
+  font-weight: 400;
+  color: #666;
+  line-height: 1.5;
+}
+
+.advantages {
+  justify-content: center;
+}
+
+.lp-landing-root .advantages .adv-card {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 0.85rem;
+}
+
+.lp-landing-root .advantages .adv-card img {
+  display: block;
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  flex-shrink: 0;
+  margin: 0 !important;
+  align-self: center;
+}
+
+.lp-landing-root .advantages .adv-card h3 {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1.25 !important;
+  display: flex;
+  align-items: center;
+}
+
+/* Counter cards: keep all 3 stats (incl. 14239 Projects Completed) on white cards */
+.sec-counter #counter {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sec-counter #counter li:last-child {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.sec-counter #counter li .counter > div {
+  color: #000;
+}
+
+.sec-counter #counter li .counter span.text {
+  color: #000;
+}
+
+@media (max-width: 767px) {
+  .sec-counter #counter {
+    grid-template-columns: 1fr;
+  }
+
+  .sec-counter #counter li:last-child {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+
+/* Keep CTA + Live Chat on one line; stop arrow / "Live Chat" wrapping */
+.lp-landing-root .btn-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+
+.lp-landing-root .btn-wrap .theme-btn,
+.lp-landing-root .btn-wrap .theme-btn.bordered,
+.lp-landing-root .btn-wrap a.lp-chat-desktop-only {
+  display: inline-flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: auto !important;
+  max-width: 100%;
+  white-space: nowrap;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* Call Us: mobile only — never show on desktop */
+.lp-landing-root .btn-wrap a.lp-chat-mobile-only,
+.lp-landing-root a.lp-chat-mobile-only,
+.lp-landing-root li.lp-chat-mobile-only {
+  display: none !important;
+}
+
+@media (max-width: 991px) {
+  .lp-landing-root .btn-wrap a.lp-chat-mobile-only,
+  .lp-landing-root a.lp-chat-mobile-only {
+    display: inline-flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    width: auto !important;
+    max-width: 100%;
+    white-space: nowrap;
+  }
+
+  .lp-landing-root li.lp-chat-mobile-only {
+    display: flex !important;
+  }
+}
+
+.lp-landing-root .btn-wrap .theme-btn i,
+.lp-landing-root .btn-wrap .theme-btn svg,
+.lp-landing-root .btn-wrap .theme-btn img {
+  flex-shrink: 0;
+  display: inline-block;
+  margin: 0 !important;
+  align-self: center;
+}
+
+.lp-landing-root .btn-wrap .theme-btn.bordered {
+  font-size: 18px;
+}
+
+.lp-landing-root .sec-2 .btn-wrap .theme-btn.bordered.text-white,
+.lp-landing-root .sec-2 .btn-wrap .theme-btn.bordered.text-white * {
+  color: #fff !important;
+  fill: #fff !important;
+}
+
+.lp-landing-root .sec-2 .btn-wrap .theme-btn.bordered.text-white svg path {
+  fill: #fff !important;
+}
+
+/* Desktop: never show Call Us (defense in depth; JS also swaps controls) */
+@media (min-width: 992px) {
+  html body .lp-landing-root a.lp-chat-mobile-only,
+  html body .lp-landing-root li.lp-chat-mobile-only,
+  html body .lp-landing-root .lp-call-btn.lp-chat-mobile-only,
+  html body .lp-landing-root a[title="Call Us"].lp-chat-mobile-only {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+  }
+}
+

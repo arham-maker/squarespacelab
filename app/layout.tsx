@@ -7,7 +7,8 @@ import { GsapProvider } from "@/components/providers/gsap-provider";
 import { SmoothScrollProvider } from "@/components/providers/smooth-scroll-provider";
 import { LiveChatProvider } from "@/components/providers/livechat-provider";
 import "./globals.css";
-import "./lp/lp-lead-modal.css";
+import "./lp0/lp-lead-modal.css";
+import "./get-started-modal.css";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -28,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
-      <head>
+      <body className="flex min-h-full flex-col font-sans">
         <Script id="ze-settings" strategy="beforeInteractive">
           {`window.zESettings={webWidget:{zIndex:999999,offset:{horizontal:"20px",vertical:"20px"}}};`}
         </Script>
@@ -37,8 +38,6 @@ export default function RootLayout({
           src="https://static.zdassets.com/ekr/snippet.js?key=923e51fa-97d5-49a2-9055-0fb23e466aba"
           strategy="beforeInteractive"
         />
-      </head>
-      <body className="flex min-h-full flex-col font-sans">
         <Script
           id="bing-uet"
           strategy="afterInteractive"
@@ -48,12 +47,12 @@ export default function RootLayout({
         />
         <ConditionalMarqueeTopbar />
         <GsapProvider>
-        <LeadFormProvider>
-          <SmoothScrollProvider>
-            <LiveChatProvider />
-            {children}
-          </SmoothScrollProvider>
-        </LeadFormProvider>
+          <LeadFormProvider>
+            <SmoothScrollProvider>
+              <LiveChatProvider />
+              {children}
+            </SmoothScrollProvider>
+          </LeadFormProvider>
         </GsapProvider>
       </body>
     </html>

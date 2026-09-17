@@ -177,16 +177,19 @@ body:has(.lp-root) {
   top: auto !important;
   margin: 0 !important;
   max-height: none !important;
-  overflow: visible !important;
-  border-radius: 0 !important;
+  overflow: hidden !important;
+  border-radius: 18px !important;
 }
 
 .get-started-modal__title {
-  font-size: clamp(2rem, 5vw, 2.5rem) !important;
+  font-size: clamp(1.85rem, 4vw, 2.35rem) !important;
   font-weight: 700 !important;
 }
 
 .get-started-modal__title-highlight,
+.get-started-modal__price-lead,
+.get-started-modal__price-value,
+.get-started-modal__subtitle,
 .get-started-modal__field input,
 .get-started-modal__checkbox,
 .get-started-modal__checkbox label,
@@ -195,46 +198,81 @@ body:has(.lp-root) {
   font-family: "Wix Madefor Display", sans-serif !important;
 }
 
+.get-started-modal__form {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1rem !important;
+}
+
+.get-started-modal__field {
+  margin: 0 !important;
+}
+
 .get-started-modal__field input {
   display: block !important;
   width: 100% !important;
-  height: 50px !important;
-  padding: 10px !important;
-  border: 1px solid #e6e6e6 !important;
-  border-radius: 5px !important;
+  height: 56px !important;
+  padding: 1rem 1.15rem !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 8px !important;
   background: #ffffff !important;
-  color: #000000 !important;
+  color: #111111 !important;
   letter-spacing: normal !important;
 }
 
 .get-started-modal__close {
   display: flex !important;
   position: absolute !important;
+  top: 16px !important;
+  right: 16px !important;
   background: #ececec !important;
   border-radius: 50% !important;
+  color: #4a9ae8 !important;
 }
 
 .get-started-modal__form-wrap {
-  padding: 2rem !important;
+  padding: 40px 50px !important;
   background: #ffffff !important;
 }
 
-.get-started-modal__media {
-  position: relative !important;
-  display: flex !important;
-  overflow: hidden !important;
-  align-self: stretch !important;
-  min-height: 280px !important;
+.get-started-modal__heading {
+  margin: 0 0 40px !important;
 }
 
-.get-started-modal__img {
-  object-fit: cover !important;
-  object-position: center !important;
+.get-started-modal__title-highlight {
+  font-weight: 500 !important;
+  color: #111111 !important;
+}
+
+.get-started-modal__price-lead {
+  color: #2f80ed !important;
+}
+
+.get-started-modal__price-value {
+  font-size: clamp(2.25rem, 5vw, 3.25rem) !important;
+  font-weight: 800 !important;
+  color: #111827 !important;
+}
+
+.get-started-modal__submit {
+  margin-top: 0.25rem !important;
+  border-radius: 8px !important;
+  height: 56px !important;
+  background: #111111 !important;
+  background-image: none !important;
+  color: #ffffff !important;
+  text-transform: none !important;
+  letter-spacing: 0.01em !important;
+  font-weight: 600 !important;
 }
 
 @media (min-width: 768px) {
   .get-started-modal__form-wrap {
-    padding: 3.5rem 2rem !important;
+    padding: 40px 50px !important;
+  }
+
+  .get-started-modal__heading {
+    margin: 0 0 40px !important;
   }
 }
 

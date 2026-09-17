@@ -1,0 +1,262 @@
+/* Unlayered so /lp2 Wix CSS cannot override @layer components rules */
+
+.get-started-modal {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 10000001 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 1.25rem !important;
+  box-sizing: border-box !important;
+}
+
+.get-started-modal *,
+.get-started-modal *::before,
+.get-started-modal *::after {
+  box-sizing: border-box !important;
+}
+
+.get-started-modal__overlay {
+  position: absolute !important;
+  inset: 0 !important;
+  background-color: rgb(15 23 42 / 45%) !important;
+  backdrop-filter: blur(6px);
+}
+
+.get-started-modal__dialog {
+  position: relative !important;
+  z-index: 1 !important;
+  width: min(100%, 980px) !important;
+  max-width: 97vw !important;
+  overflow: hidden !important;
+  border-radius: 18px !important;
+  background: #ffffff !important;
+  box-shadow: 0 28px 80px rgb(0 0 0 / 22%) !important;
+  margin: 0 !important;
+  transform: none !important;
+  top: auto !important;
+}
+
+.get-started-modal__close {
+  position: absolute !important;
+  top: 16px !important;
+  right: 16px !important;
+  z-index: 5 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 36px !important;
+  height: 36px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 50% !important;
+  background: #ececec !important;
+  color: #4a9ae8 !important;
+  cursor: pointer !important;
+}
+
+.get-started-modal__close-icon {
+  display: block !important;
+  width: 14px !important;
+  height: 14px !important;
+}
+
+.get-started-modal__inner {
+  display: flex !important;
+  flex-direction: column !important;
+  background: #ffffff !important;
+  min-height: 0 !important;
+}
+
+.get-started-modal__media {
+  position: relative !important;
+  width: 100% !important;
+  flex: 0 0 auto !important;
+  display: block !important;
+  overflow: hidden !important;
+  min-height: 240px !important;
+  background: #1d6fd8 !important;
+}
+
+.get-started-modal__img {
+  position: absolute !important;
+  inset: 0 !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+.get-started-modal__form-wrap {
+  width: 100% !important;
+  padding: 40px 50px !important;
+  background: #ffffff !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+}
+
+.get-started-modal__heading {
+  margin: 0 0 40px !important;
+  padding: 0 !important;
+}
+
+.get-started-modal__title {
+  margin: 0 !important;
+  font-size: clamp(1.9rem, 4vw, 2.4rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.15 !important;
+  color: #111111 !important;
+}
+
+.get-started-modal__title-highlight {
+  margin: 0.4rem 0 0 !important;
+  font-size: clamp(1.25rem, 3vw, 1.55rem) !important;
+  font-weight: 500 !important;
+  line-height: 1.2 !important;
+  color: #111111 !important;
+}
+
+.get-started-modal__price-line {
+  margin: 0.55rem 0 0 !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: baseline !important;
+  gap: 0.4rem !important;
+  line-height: 1 !important;
+}
+
+.get-started-modal__price-lead {
+  font-size: clamp(1.15rem, 2.4vw, 1.45rem) !important;
+  font-weight: 600 !important;
+  color: #2f80ed !important;
+}
+
+.get-started-modal__price-value {
+  font-size: clamp(2.25rem, 5vw, 3.25rem) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.03em !important;
+  color: #111827 !important;
+}
+
+.get-started-modal__subtitle {
+  margin: 0.75rem 0 0 !important;
+  font-size: 0.95rem !important;
+  line-height: 1.45 !important;
+  font-weight: 400 !important;
+  color: #6b7280 !important;
+}
+
+.get-started-modal__form {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1rem !important;
+  margin: 0 !important;
+  width: 100% !important;
+}
+
+.get-started-modal__field {
+  margin: 0 !important;
+  width: 100% !important;
+}
+
+.get-started-modal__field input,
+.get-started-modal__field textarea {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 56px !important;
+  margin: 0 !important;
+  padding: 1rem 1.15rem !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 8px !important;
+  background: #ffffff !important;
+  color: #111111 !important;
+  font-size: 1rem !important;
+  line-height: 1.25 !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+  letter-spacing: normal !important;
+}
+
+.get-started-modal__field textarea {
+  height: auto !important;
+  min-height: 90px !important;
+  resize: vertical !important;
+}
+
+.get-started-modal__field input::placeholder,
+.get-started-modal__field textarea::placeholder {
+  color: #9ca3af !important;
+}
+
+.get-started-modal__error {
+  margin: 0 !important;
+  font-size: 0.875rem !important;
+  color: #b91c1c !important;
+}
+
+.get-started-modal__submit {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.55rem !important;
+  width: 100% !important;
+  height: 56px !important;
+  margin: 0.25rem 0 0 !important;
+  padding: 0 1.5rem !important;
+  border: 0 !important;
+  border-radius: 8px !important;
+  background: #111111 !important;
+  background-image: none !important;
+  color: #ffffff !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  line-height: 1 !important;
+  letter-spacing: 0.01em !important;
+  text-transform: none !important;
+  cursor: pointer !important;
+}
+
+.get-started-modal__submit-arrow {
+  font-size: 1.15em !important;
+  line-height: 1 !important;
+}
+
+@media (min-width: 768px) {
+  .get-started-modal__inner {
+    flex-direction: row !important;
+    align-items: stretch !important;
+    min-height: 540px !important;
+  }
+
+  .get-started-modal__media {
+    width: 48% !important;
+    flex: 0 0 48% !important;
+    align-self: stretch !important;
+    min-height: 0 !important;
+  }
+
+  .get-started-modal__form-wrap {
+    width: 52% !important;
+    flex: 1 1 52% !important;
+    padding: 40px 50px !important;
+  }
+
+  .get-started-modal__heading {
+    margin: 0 0 40px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .get-started-modal__form-wrap {
+    padding: 32px 24px !important;
+  }
+
+  .get-started-modal__heading {
+    margin: 0 0 28px !important;
+  }
+}

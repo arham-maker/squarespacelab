@@ -1,0 +1,299 @@
+/* LP popup — matches squarespacemasters.com/lp mmpopup layout.
+   Uses high-specificity + !important so lp2w/Wix form CSS cannot break it. */
+
+.lp-lead-modal-root .overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999998;
+  background-color: rgb(197 197 197 / 32%);
+  backdrop-filter: blur(10px);
+}
+
+.lp-lead-modal-root .overlay.active {
+  display: block;
+}
+
+.lp-lead-modal-root .popupmain.lp-lead-modal--visible {
+  display: block !important;
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  right: auto !important;
+  bottom: auto !important;
+  transform: translate3d(-50%, -50%, 0) !important;
+  z-index: 10000002 !important;
+  width: 975px !important;
+  max-width: 97vw !important;
+  max-height: 90vh !important;
+  overflow-y: auto;
+  margin: 0 !important;
+  background: #fff !important;
+  box-shadow: 0 0 30px -9px rgb(0 0 0 / 43%);
+  border-radius: 8px;
+}
+
+.lp-lead-modal-root .mmpopup {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: stretch !important;
+  background: #0b0b0b !important;
+  padding: 1.25rem !important;
+  gap: 0 !important;
+  min-height: 520px !important;
+  text-align: left !important;
+}
+
+.lp-lead-modal-root .popup-text {
+  flex: 1 1 46% !important;
+  max-width: 46% !important;
+  width: auto !important;
+  padding: 1.5rem 1.25rem 1.25rem !important;
+  box-sizing: border-box !important;
+}
+
+.lp-lead-modal-root .popup-image {
+  flex: 1 1 54% !important;
+  display: block !important;
+  overflow: hidden;
+  min-height: 100%;
+  padding: 1rem !important;
+  box-sizing: border-box !important;
+  order: 0;
+}
+
+.lp-lead-modal-root .popup-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 340px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.lp-lead-modal-root .centercont {
+  margin: 0 0 1.5rem !important;
+  padding: 0 2.5rem 0 0 !important;
+}
+
+.lp-lead-modal-root .centercont h3,
+.lp-lead-modal-root .centercont h3 span,
+.lp-lead-modal-root .centercont h3 span.fs-36 {
+  display: block !important;
+  font-weight: 700 !important;
+  font-size: clamp(1.35rem, 2.2vw, 1.85rem) !important;
+  line-height: 1.3 !important;
+  color: #fff !important;
+  text-align: left !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.lp-lead-modal-root .centercont h3 {
+  margin: 0 0 0.35rem !important;
+}
+
+.lp-lead-modal-root .centercont h4 {
+  font-size: 1.15rem !important;
+  color: #fff !important;
+  text-align: left !important;
+  margin: 0.75rem 0 0 !important;
+  font-weight: 400 !important;
+  line-height: 1.3 !important;
+}
+
+.lp-lead-modal-root .centercont h4 span {
+  font-weight: 700 !important;
+  color: #f7c43a !important;
+  font-size: clamp(1.5rem, 2.5vw, 2.25rem) !important;
+}
+
+.lp-lead-modal-root--pricing .centercont h3,
+.lp-lead-modal-root--pricing .centercont h3 span {
+  font-size: 28px !important;
+  line-height: 1.2 !important;
+}
+
+.lp-lead-modal-root--pricing .centercont h4 {
+  font-size: 22px !important;
+  margin-top: 0.75rem !important;
+}
+
+.lp-lead-modal-root--pricing .centercont h4 span {
+  font-size: 40px !important;
+  line-height: 1.1 !important;
+}
+
+.lp-lead-modal-root .lp-lead-modal__package {
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  background: rgb(255 255 255 / 8%);
+  color: #fff;
+  font-size: 0.875rem;
+  line-height: 1.45;
+}
+
+.lp-lead-modal-root .formpop {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+}
+
+.lp-lead-modal-root .formpop form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.lp-lead-modal-root .fld-input {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 56px !important;
+  margin: 0 0 0.85rem !important;
+  border: 1px solid #d1d5db !important;
+  border-radius: 6px !important;
+  background: #fff !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+}
+
+.lp-lead-modal-root--pricing .fld-input {
+  height: 64px !important;
+  margin-bottom: 1rem !important;
+}
+
+.lp-lead-modal-root .fld-input input,
+.lp-lead-modal-root .fld-input textarea,
+.lp-lead-modal-root .fld-input select {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 100% !important;
+  padding: 0 1rem !important;
+  font-size: 16px !important;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  background: #fff !important;
+  color: #0b0b0b !important;
+  font-family: Inter, system-ui, sans-serif !important;
+  letter-spacing: normal !important;
+  box-sizing: border-box !important;
+}
+
+.lp-lead-modal-root .fld-input input::placeholder {
+  color: #737373 !important;
+  font-weight: 400 !important;
+}
+
+.lp-lead-modal-root .fld-input textarea {
+  padding: 0.75rem 1rem !important;
+  resize: vertical;
+  min-height: 56px;
+}
+
+.lp-lead-modal-root--pricing .fld-input input,
+.lp-lead-modal-root--pricing .fld-input textarea,
+.lp-lead-modal-root--pricing .fld-input select {
+  padding: 0 1.25rem !important;
+  font-size: 18px !important;
+}
+
+.lp-lead-modal-root .fld-btn {
+  margin-top: 0.25rem;
+}
+
+.lp-lead-modal-root .fld-btn button {
+  border-radius: 6px !important;
+  background-color: #f7c43a !important;
+  width: 100% !important;
+  color: #0b0b0b !important;
+  font-size: 17px !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  height: 54px !important;
+  cursor: pointer;
+  border: 0 !important;
+  font-family: Inter, system-ui, sans-serif !important;
+  letter-spacing: normal !important;
+  transition: background-color 0.25s ease, filter 0.25s ease;
+}
+
+.lp-lead-modal-root .fld-btn button:hover:not(:disabled) {
+  filter: brightness(0.95);
+}
+
+.lp-lead-modal-root .fld-btn button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.lp-lead-modal-root--pricing .fld-btn button {
+  height: 60px !important;
+  font-size: 20px !important;
+}
+
+.lp-lead-modal-root .closeico {
+  position: absolute !important;
+  top: 12px !important;
+  right: 12px !important;
+  z-index: 5 !important;
+  width: 36px !important;
+  height: 36px !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  background: #fff !important;
+  border-radius: 999px !important;
+  border: 0 !important;
+  cursor: pointer;
+  padding: 0 !important;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 18%);
+}
+
+.lp-lead-modal-root .closeico svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+  color: #0b0b0b;
+}
+
+.lp-lead-modal-root .lp-lead-modal__error {
+  color: #f7c43a;
+  font-size: 14px;
+  margin: 0 0 0.75rem;
+}
+
+@media (max-height: 620px) {
+  .lp-lead-modal-root .popupmain.lp-lead-modal--visible {
+    top: 16px !important;
+    transform: translate3d(-50%, 0, 0) !important;
+    max-height: calc(100dvh - 32px) !important;
+  }
+
+  .lp-lead-modal-root .mmpopup {
+    min-height: auto !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .lp-lead-modal-root .popup-image {
+    display: none !important;
+  }
+
+  .lp-lead-modal-root .popup-text {
+    max-width: 100% !important;
+    flex: 1 1 100% !important;
+    padding: 2.5rem 1.25rem 1.25rem !important;
+  }
+
+  .lp-lead-modal-root .mmpopup {
+    min-height: auto !important;
+    padding: 0.75rem !important;
+  }
+
+  .lp-lead-modal-root .centercont {
+    padding-right: 2rem !important;
+    margin-bottom: 1.25rem !important;
+  }
+}
