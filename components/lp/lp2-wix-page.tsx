@@ -264,7 +264,7 @@ function useIsMobile(breakpoint = 991) {
 function LiveChatLink({
   className,
   darkIcon,
-  label = "Live Chat",
+  label = "Text Us for Instant Answers",
   callLabel = "Call Us",
   hideIcon = false,
 }: {
@@ -275,13 +275,26 @@ function LiveChatLink({
   hideIcon?: boolean;
 }) {
   const classes = className.trim();
-  const isMobile = useIsMobile();
 
-  if (isMobile) {
-    return (
+  return (
+    <>
+      <a
+        href="javascript:;"
+        className={`open-livechat lp-chat-desktop-only ${classes}`.trim()}
+        title={label}
+        onClick={(e) => {
+          e.preventDefault();
+          if (typeof window.setButtonURL === "function") {
+            window.setButtonURL();
+          }
+        }}
+      >
+        {!hideIcon ? (darkIcon ? CHAT_SVG_DARK : CHAT_SVG_WHITE) : null}
+        {label}
+      </a>
       <a
         href={SITE.phoneHref}
-        className={`lp-call-btn ${classes}`.trim()}
+        className={`lp-call-btn lp-chat-mobile-only ${classes}`.trim()}
         title={callLabel}
       >
         {!hideIcon ? (
@@ -289,24 +302,7 @@ function LiveChatLink({
         ) : null}
         {callLabel}
       </a>
-    );
-  }
-
-  return (
-    <a
-      href="javascript:;"
-      className={`open-livechat ${classes}`.trim()}
-      title={label}
-      onClick={(e) => {
-        e.preventDefault();
-        if (typeof window.setButtonURL === "function") {
-          window.setButtonURL();
-        }
-      }}
-    >
-      {!hideIcon ? (darkIcon ? CHAT_SVG_DARK : CHAT_SVG_WHITE) : null}
-      {label}
-    </a>
+    </>
   );
 }
 

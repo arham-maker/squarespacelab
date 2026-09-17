@@ -511,6 +511,11 @@ li.lp-chat-desktop-only {
 }
 
 @media (max-width: 991px) {
+  .lp-landing-root .btn-wrap a.lp-chat-desktop-only,
+  .lp-landing-root a.lp-chat-desktop-only {
+    display: none !important;
+  }
+
   .lp-landing-root .btn-wrap a.lp-chat-mobile-only,
   .lp-landing-root a.lp-chat-mobile-only {
     display: inline-flex !important;
