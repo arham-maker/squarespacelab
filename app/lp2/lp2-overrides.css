@@ -262,10 +262,8 @@ li.lp-chat-desktop-only {
 /* Intro section — classy modern treatment */
 .lp-landing-root .sec-intro.lp2w-intro {
   position: relative;
-  padding: clamp(4.5rem, 8vw, 7rem) 0;
-  background:
-    radial-gradient(ellipse 70% 60% at 90% 40%, rgba(247, 196, 58, 0.12), transparent 55%),
-    linear-gradient(180deg, #faf9f7 0%, #ffffff 55%, #ffffff 100%);
+  padding: clamp(3.5rem, 6vw, 5.5rem) 0;
+  background: linear-gradient(180deg, #faf9f7 0%, #ffffff 100%);
   overflow: hidden;
 }
 
@@ -288,7 +286,7 @@ li.lp-chat-desktop-only {
   padding: 0.35rem 0.85rem;
   border: 1px solid rgba(11, 11, 11, 0.12);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.82);
   color: #6b6b6b;
   font-size: 0.72rem;
   font-weight: 600;
@@ -376,43 +374,18 @@ li.lp-chat-desktop-only {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-}
-
-.lp-landing-root .lp2w-intro-visual__frame {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: min(100%, 460px);
-  aspect-ratio: 1;
-  padding: clamp(1.25rem, 3vw, 2.25rem);
-  border-radius: 28px;
-  background:
-    linear-gradient(145deg, #ffffff 0%, #f6f3ec 55%, #efe9dc 100%);
-  border: 1px solid rgba(11, 11, 11, 0.06);
-  box-shadow:
-    0 30px 60px rgba(17, 17, 17, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
-}
-
-.lp-landing-root .lp2w-intro-visual__frame::after {
-  content: "";
-  position: absolute;
-  inset: 14px;
-  border-radius: 22px;
-  border: 1px solid rgba(247, 196, 58, 0.28);
-  pointer-events: none;
-}
-
-.lp-landing-root .lp2w-hand-img {
-  display: block;
-  position: relative;
-  z-index: 1;
-  max-width: 88%;
   width: 100%;
+}
+
+.lp-landing-root .lp2w-cta-img {
+  display: block;
+  width: min(100%, 680px);
+  max-width: none;
   height: auto;
-  margin: 0 auto;
-  filter: contrast(1.02);
+  margin: 0;
+  border-radius: 24px;
+  object-fit: contain;
+  filter: drop-shadow(0 28px 48px rgba(17, 17, 17, 0.14));
 }
 
 @media (max-width: 991px) {
@@ -455,10 +428,11 @@ li.lp-chat-desktop-only {
 
   .lp-landing-root .lp2w-intro-visual {
     justify-content: center;
-    margin-top: 0.5rem;
+    margin-top: 0.25rem;
   }
 
-  .lp-landing-root .lp2w-intro-visual__frame {
+  .lp-landing-root .lp2w-cta-img {
+    width: min(100%, 520px);
     margin: 0 auto;
   }
 }
@@ -663,7 +637,7 @@ li.lp-chat-desktop-only {
   }
 }
 
-/* Keep CTA + Live Chat on one line; stop arrow / "Live Chat" wrapping */
+/* Keep paired CTAs on one line; stop arrow wrapping */
 .lp-landing-root .btn-wrap {
   display: flex;
   flex-wrap: wrap;
@@ -731,14 +705,96 @@ li.lp-chat-desktop-only {
   font-size: 18px;
 }
 
-.lp-landing-root .sec-2 .btn-wrap .theme-btn.bordered.text-white,
-.lp-landing-root .sec-2 .btn-wrap .theme-btn.bordered.text-white * {
+.lp-landing-root .sec-2 .btn-wrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.85rem;
+  margin: 1rem 0 0;
+}
+
+.lp-landing-root .sec-2 .btn-wrap .theme-btn,
+.lp-landing-root .sec-2 .btn-wrap a.theme-btn,
+.lp-landing-root .sec-2 .btn-wrap a.lp-chat-desktop-only,
+.lp-landing-root .sec-2 .btn-wrap a.lp-chat-mobile-only {
+  display: inline-flex !important;
+  flex: 0 0 auto;
+  width: auto !important;
+  max-width: none;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 32px !important;
+  border-radius: 50px !important;
+  background: #f7c43a !important;
+  border: 1px solid #f7c43a !important;
+  color: #000 !important;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  line-height: 1.2 !important;
+  white-space: nowrap;
+  box-shadow: 0 10px 24px rgba(247, 196, 58, 0.28);
+  transition: color 0.35s ease, background 0.35s ease, border-color 0.35s ease;
+}
+
+.lp-landing-root .sec-2 .btn-wrap .theme-btn *,
+.lp-landing-root .sec-2 .btn-wrap a.theme-btn *,
+.lp-landing-root .sec-2 .btn-wrap a.lp-chat-desktop-only *,
+.lp-landing-root .sec-2 .btn-wrap a.lp-chat-mobile-only * {
+  color: inherit !important;
+  fill: currentColor !important;
+  transition: color 0.35s ease, fill 0.35s ease;
+}
+
+.lp-landing-root .sec-2 .btn-wrap .theme-btn:hover,
+.lp-landing-root .sec-2 .btn-wrap a.theme-btn:hover,
+.lp-landing-root .sec-2 .btn-wrap a.lp-chat-desktop-only:hover,
+.lp-landing-root .sec-2 .btn-wrap a.lp-chat-mobile-only:hover,
+.lp-landing-root .sec-2 .btn-wrap .theme-btn:focus-visible,
+.lp-landing-root .sec-2 .btn-wrap a.theme-btn:focus-visible {
+  color: #fff !important;
+  background: #0b0b0b !important;
+  border-color: #f7c43a !important;
+}
+
+.lp-landing-root .sec-2 .btn-wrap .theme-btn:hover *,
+.lp-landing-root .sec-2 .btn-wrap a.theme-btn:hover *,
+.lp-landing-root .sec-2 .btn-wrap a.lp-chat-desktop-only:hover *,
+.lp-landing-root .sec-2 .btn-wrap a.lp-chat-mobile-only:hover *,
+.lp-landing-root .sec-2 .btn-wrap .theme-btn:hover i,
+.lp-landing-root .sec-2 .btn-wrap a.theme-btn:hover i,
+.lp-landing-root .sec-2 .btn-wrap a.lp-chat-desktop-only:hover i,
+.lp-landing-root .sec-2 .btn-wrap a.lp-chat-mobile-only:hover i {
   color: #fff !important;
   fill: #fff !important;
 }
 
-.lp-landing-root .sec-2 .btn-wrap .theme-btn.bordered.text-white svg path {
+/* Yellow CTA hover: white text + white arrow across landing CTAs */
+.lp-landing-root .btn-wrap .theme-btn:hover,
+.lp-landing-root .btn-wrap a.theme-btn:hover,
+.lp-landing-root .btn-wrap .theme-btn.btn:hover {
+  color: #fff !important;
+}
+
+.lp-landing-root .btn-wrap .theme-btn:hover i,
+.lp-landing-root .btn-wrap a.theme-btn:hover i,
+.lp-landing-root .btn-wrap .theme-btn:hover *,
+.lp-landing-root .btn-wrap a.theme-btn:hover * {
+  color: #fff !important;
   fill: #fff !important;
+}
+
+@media (max-width: 767px) {
+  .lp-landing-root .sec-2 .btn-wrap {
+    flex-direction: row !important;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
+
+  .lp-landing-root .sec-2 .btn-wrap a {
+    width: auto !important;
+  }
 }
 
 /* Desktop: never show Call Us (defense in depth; JS also swaps controls) */

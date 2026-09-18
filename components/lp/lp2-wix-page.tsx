@@ -195,7 +195,7 @@ function PackageCard({
               category={category}
               className="theme-btn w-100 text-center popdynamic"
             >
-              Let&apos;s Get Started
+              Get Started
             </LpPackageButton>
           </div>
         </div>
@@ -269,15 +269,18 @@ function LiveChatLink({
   darkIcon,
   label = "Chat Now",
   callLabel = "Call Us",
-  hideIcon = false,
+  hideIcon = true,
+  icon,
 }: {
   className: string;
   darkIcon?: boolean;
   label?: string;
   callLabel?: string;
   hideIcon?: boolean;
+  icon?: boolean;
 }) {
   const classes = className.trim();
+  const showArrow = icon ?? label === "Chat Now";
 
   return (
     <>
@@ -294,6 +297,7 @@ function LiveChatLink({
       >
         {!hideIcon ? (darkIcon ? CHAT_SVG_DARK : CHAT_SVG_WHITE) : null}
         {label}
+        {showArrow ? <i className="fas fa-arrow-right" /> : null}
       </a>
       <a
         href={SITE.phoneHref}
@@ -467,9 +471,9 @@ export function Lp2WixPage() {
                 </ul>
                 <div className="btn-wrap">
                   <LpCtaButton className="btn" icon>
-                    Let&apos;s Get Started
+                    Get Started
                   </LpCtaButton>
-                  <LiveChatLink className="theme-btn bordered text-white noborder" />
+                  <LiveChatLink className="theme-btn btn" />
                 </div>
                 <p className="banner-text text-white">
                   We&apos;re rated 4.6 out of{" "}
@@ -542,7 +546,7 @@ export function Lp2WixPage() {
         <div className="container">
           <div className="row align-items-center gy-5">
             <div
-              className="col-lg-6"
+              className="col-lg-5"
               data-aos="fade-right"
               data-aos-duration="1000"
             >
@@ -564,30 +568,25 @@ export function Lp2WixPage() {
                 </ul>
                 <div className="btn-wrap lp2w-intro-actions">
                   <LpCtaButton className="btn" icon>
-                    Let&apos;s Get Started
+                    Get Started
                   </LpCtaButton>
-                  <LiveChatLink
-                    className="theme-btn bordered noborder"
-                    darkIcon
-                  />
+                  <LiveChatLink className="theme-btn btn" />
                 </div>
               </div>
             </div>
             <div
-              className="col-lg-6"
+              className="col-lg-7"
               data-aos="fade-left"
               data-aos-duration="1000"
             >
               <div className="lp2w-intro-visual">
-                <div className="lp2w-intro-visual__frame">
-                  <img
-                    src={`${LP}/sec1-img_1x.webp`}
-                    alt="Squarespace design partnership"
-                    className="img-fluid lp2w-hand-img"
-                    width={376}
-                    height={378}
-                  />
-                </div>
+                <img
+                  src="/cta-image.webp"
+                  alt="Squarespace design partnership"
+                  className="img-fluid lp2w-cta-img"
+                  width={720}
+                  height={720}
+                />
               </div>
             </div>
           </div>
@@ -646,12 +645,9 @@ export function Lp2WixPage() {
             <div className="col-md-12">
               <div className="btn-wrap justify-content-center">
                 <LpCtaButton className="btn" icon>
-                  Let&apos;s Get Started
+                  Get Started
                 </LpCtaButton>
-                <LiveChatLink
-                  className="theme-btn bordered noborder"
-                  darkIcon
-                />
+                <LiveChatLink className="theme-btn btn" />
               </div>
               <div className="rated d-flex align-items-center justify-content-center">
                 <p>We&apos;re rated 4.6 out of 5</p>
@@ -682,9 +678,9 @@ export function Lp2WixPage() {
               </div>
               <div className="btn-wrap">
                 <LpCtaButton className="btn" icon>
-                  Let&apos;s Get Started
+                  Get Started
                 </LpCtaButton>
-                <LiveChatLink className="theme-btn bordered noborder text-white" />
+                <LiveChatLink className="theme-btn btn" />
               </div>
             </div>
             <div className="col-lg-6">
@@ -756,7 +752,7 @@ export function Lp2WixPage() {
           </div>
           <div className="btn-wrap justify-content-center mt-4">
             <LpCtaButton className="btn" icon>
-              Let&apos;s Get Started
+              Get Started
             </LpCtaButton>
           </div>
         </div>
@@ -864,9 +860,9 @@ export function Lp2WixPage() {
               </div>
               <div className="btn-wrap">
                 <LpCtaButton className="btn" icon>
-                  Hire Squarespace Website Designer
+                  Get Started
                 </LpCtaButton>
-                <LiveChatLink className="theme-btn bordered noborder text-white" />
+                <LiveChatLink className="theme-btn btn" />
               </div>
             </div>
             <div
@@ -913,12 +909,9 @@ export function Lp2WixPage() {
               ))}
               <div className="btn-wrap">
                 <LpCtaButton className="btn" icon>
-                  Schedule Your Free Consultation
+                  Get Started
                 </LpCtaButton>
-                <LiveChatLink
-                  className="theme-btn bordered noborder"
-                  darkIcon
-                />
+                <LiveChatLink className="theme-btn btn" />
               </div>
             </div>
             <div
@@ -978,9 +971,9 @@ export function Lp2WixPage() {
           </div>
           <div className="btn-wrap justify-content-center">
             <LpCtaButton className="btn" icon>
-              Schedule Your Free Consultation
+              Get Started
             </LpCtaButton>
-            <LiveChatLink className="theme-btn bordered noborder text-white" />
+            <LiveChatLink className="theme-btn btn" />
           </div>
         </div>
       </section>
@@ -1046,7 +1039,7 @@ export function Lp2WixPage() {
                 <LpCtaButton className="btn" icon>
                   Hire Squarespace Website Designer
                 </LpCtaButton>
-                <LiveChatLink className="theme-btn bordered noborder text-white" />
+                <LiveChatLink className="theme-btn btn" />
               </div>
               <div
                 className="rating"
@@ -1081,7 +1074,7 @@ export function Lp2WixPage() {
                 <LpCtaButton className="btn" icon>
                   Squarespace Designer Near Me
                 </LpCtaButton>
-                <LiveChatLink className="theme-btn bordered noborder text-white" />
+                <LiveChatLink className="theme-btn btn" />
               </div>
             </div>
           </div>
@@ -1146,9 +1139,9 @@ export function Lp2WixPage() {
           </div>
           <div className="btn-wrap justify-content-center">
             <LpCtaButton className="btn" icon>
-              Let&apos;s Get Started
+              Get Started
             </LpCtaButton>
-            <LiveChatLink className="theme-btn bordered noborder text-white" />
+            <LiveChatLink className="theme-btn btn" />
           </div>
         </div>
       </section>
