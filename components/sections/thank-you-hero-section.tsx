@@ -20,12 +20,19 @@ export function ThankYouHeroSection({
   const isLp2 = variant === "lp2";
 
   useLayoutEffect(() => {
+    // LP2 variant: keep content visible on first paint (no GSAP flash)
+    if (isLp2) return;
+
     registerGsapPlugins();
     const section = sectionRef.current;
     if (!section) return;
 
     const targets = section.querySelectorAll("[data-thank-you-hero-reveal]");
-    revealImmediate(targets, reducedMotion, { y: 48, duration: 1, stagger: 0.18 });
+    revealImmediate(targets, reducedMotion, {
+      y: 48,
+      duration: 1,
+      stagger: 0.18,
+    });
   }, [reducedMotion, isLp2]);
 
   return (

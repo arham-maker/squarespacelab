@@ -18,6 +18,8 @@ type SiteHeaderProps = {
   inBanner?: boolean;
   /** Hide Services / Portfolio / Pricing / Contact nav (keep phone + Get Started) */
   hideNav?: boolean;
+  /** Hide Get Started CTA (phone can remain) */
+  hideCta?: boolean;
   /** Override logo destination (default "/") */
   logoHref?: string;
   /** When set, Get Started navigates here instead of opening the lead form */
@@ -28,6 +30,7 @@ export function SiteHeader({
   fixedBelowMarquee = false,
   inBanner = false,
   hideNav = false,
+  hideCta = false,
   logoHref = "/",
   ctaHref,
 }: SiteHeaderProps) {
@@ -85,11 +88,13 @@ export function SiteHeader({
             <a href={SITE.phoneHref} className="nav-link">
               {SITE.phone}
             </a>
-            {ctaHref ? (
-              <CtaButton href={ctaHref}>Get Started</CtaButton>
-            ) : (
-              <CtaButton opensLeadForm>Get Started</CtaButton>
-            )}
+            {!hideCta ? (
+              ctaHref ? (
+                <CtaButton href={ctaHref}>Get Started</CtaButton>
+              ) : (
+                <CtaButton opensLeadForm>Get Started</CtaButton>
+              )
+            ) : null}
           </div>
 
           <div className="flex items-center gap-3 lg:hidden">
@@ -99,7 +104,7 @@ export function SiteHeader({
             >
               Call Us
             </a>
-            {ctaHref ? (
+            {!hideCta && ctaHref ? (
               <CtaButton
                 href={ctaHref}
                 className="btn btn-primary !px-3 !py-2 text-sm"
