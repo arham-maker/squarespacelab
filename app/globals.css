@@ -1566,7 +1566,6 @@ html.with-fancybox .mouse-cursor {
   .pricing-hero-block,
   .work-hero-block,
   .terms-hero-block,
-  .thank-you-hero-block,
   .digital-marketing-hero-block,
   .logo-design-hero-block,
   .web-design-hero-block,
@@ -1656,7 +1655,6 @@ html.with-fancybox .mouse-cursor {
     .pricing-hero-block,
     .work-hero-block,
     .terms-hero-block,
-    .thank-you-hero-block,
     .digital-marketing-hero-block,
     .logo-design-hero-block,
     .web-design-hero-block,
@@ -1676,7 +1674,6 @@ html.with-fancybox .mouse-cursor {
     .pricing-hero-block,
     .work-hero-block,
     .terms-hero-block,
-    .thank-you-hero-block,
     .digital-marketing-hero-block,
     .logo-design-hero-block,
     .web-design-hero-block,
@@ -6390,6 +6387,34 @@ html.with-fancybox .mouse-cursor {
     background-repeat: no-repeat;
   }
 
+  @media (min-width: 768px) {
+    .thank-you-hero-block {
+      min-height: clamp(24rem, 68vh, 75vh);
+    }
+  }
+
+  @media (min-width: 1025px) {
+    .thank-you-hero-block {
+      min-height: 75vh;
+      background-attachment: fixed;
+    }
+  }
+
+  /* LP2 thank-you variant: full-screen, no footer white gap */
+  .thank-you-page--lp2 {
+    background-color: var(--color-primary-light);
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  .thank-you-hero-block--lp2 {
+    flex: 1;
+    min-height: 100vh;
+    min-height: 100dvh;
+    height: 100vh;
+    height: 100dvh;
+  }
+
   .text-thank-you-hero-title {
     font-family: var(--font-inter), Inter, sans-serif;
     font-size: clamp(2.5rem, 10vw, 5.5rem);
@@ -6401,6 +6426,38 @@ html.with-fancybox .mouse-cursor {
 
   .text-thank-you-hero-accent {
     color: var(--color-dark-accent);
+  }
+
+  .text-thank-you-hero-subheading {
+    margin-top: clamp(1.25rem, 3vw, 2rem);
+    font-family: var(--font-inter), Inter, sans-serif;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: #222222;
+    text-align: center;
+  }
+
+  .text-thank-you-hero-desc {
+    margin-top: clamp(1rem, 2.5vw, 1.5rem);
+    max-width: 40rem;
+    margin-inline: auto;
+    font-family: var(--font-inter), Inter, sans-serif;
+    font-size: clamp(1rem, 2.2vw, 1.125rem);
+    font-weight: 400;
+    line-height: 1.65;
+    color: #222222;
+    text-align: center;
+  }
+
+  .text-thank-you-hero-desc p + p {
+    margin-top: 0.35rem;
+  }
+
+  .thank-you-return-home {
+    display: flex;
+    justify-content: center;
+    margin-top: clamp(1.5rem, 4vw, 2.5rem);
   }
 
   .thank-you-content-section {

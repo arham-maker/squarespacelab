@@ -14,6 +14,13 @@ export default function LpLayout({ children }: { children: React.ReactNode }) {
     <div>
       <link rel="stylesheet" href="/lp2/assets/css/layout.css" />
       <link rel="stylesheet" href="/lp2/assets/css/style.css" />
+      <Script
+        id="bing-uet-lp"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `(function(w,d,t,u,o){if(w.__sslBingUet)return;w.__sslBingUet=1;w[u]=w[u]||[],o.ts=(new Date).getTime();var n=d.createElement(t);n.src="https://bat.bing.net/bat.js?ti="+o.ti+("uetq"!=u?"&q="+u:""),n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&"loaded"!==s&&"complete"!==s||(o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad"),n.onload=n.onreadystatechange=null)};var i=d.getElementsByTagName(t)[0];i.parentNode.insertBefore(n,i)})(window,document,"script","uetq",{ti:"343273347",enableAutoSpaTracking:true});`,
+        }}
+      />
       {children}
       <LpLiveChatClicks />
       <Script src="/lp2/assets/js/jquery.js" strategy="afterInteractive" />

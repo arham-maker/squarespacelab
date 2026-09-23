@@ -16,11 +16,20 @@ type SiteHeaderProps = {
   fixedBelowMarquee?: boolean;
   /** Transparent header over a page banner (e.g. contact) */
   inBanner?: boolean;
+  /** Hide Services / Portfolio / Pricing / Contact nav (keep phone + Get Started) */
+  hideNav?: boolean;
+  /** Override logo destination (default "/") */
+  logoHref?: string;
+  /** When set, Get Started navigates here instead of opening the lead form */
+  ctaHref?: string;
 };
 
 export function SiteHeader({
   fixedBelowMarquee = false,
   inBanner = false,
+  hideNav = false,
+  logoHref = "/",
+  ctaHref,
 }: SiteHeaderProps) {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -45,35 +54,42 @@ export function SiteHeader({
     >
       <Container>
         <div className="flex h-14 items-center justify-between gap-4 sm:gap-6 lg:h-[72px]">
-          <SiteLogo />
+          <SiteLogo href={logoHref} />
 
-          <nav className="hidden items-center gap-8 lg:flex">
-            <ServicesDropdown />
+          {!hideNav ? (
+            <nav className="hidden items-center gap-8 lg:flex">
+              <ServicesDropdown />
 
-            {NAV_LINKS.map((link) => {
-              const isActive =
-                (link.href === "/contact" && pathname === "/contact") ||
-                (link.href === "/our-pricing" && pathname === "/our-pricing") ||
-                (link.href === "/our-work" && pathname === "/our-work");
+              {NAV_LINKS.map((link) => {
+                const isActive =
+                  (link.href === "/contact" && pathname === "/contact") ||
+                  (link.href === "/our-pricing" &&
+                    pathname === "/our-pricing") ||
+                  (link.href === "/our-work" && pathname === "/our-work");
 
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`nav-link ${isActive ? "nav-link--active" : ""}`}
-                  aria-current={isActive ? "page" : undefined}
-                >
-                  {link.label}
-                </Link>
-              );
-            })}
-          </nav>
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`nav-link ${isActive ? "nav-link--active" : ""}`}
+                    aria-current={isActive ? "page" : undefined}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
+            </nav>
+          ) : null}
 
           <div className="hidden items-center gap-8 lg:flex">
             <a href={SITE.phoneHref} className="nav-link">
               {SITE.phone}
             </a>
-            <CtaButton opensLeadForm>Get Started</CtaButton>
+            {ctaHref ? (
+              <CtaButton href={ctaHref}>Get Started</CtaButton>
+            ) : (
+              <CtaButton opensLeadForm>Get Started</CtaButton>
+            )}
           </div>
 
           <div className="flex items-center gap-3 lg:hidden">
@@ -83,15 +99,27 @@ export function SiteHeader({
             >
               Call Us
             </a>
-            <MobileMenuTrigger
-              isOpen={mobileOpen}
-              onClick={() => setMobileOpen((open) => !open)}
-            />
+            {ctaHref ? (
+              <CtaButton
+                href={ctaHref}
+                className="btn btn-primary !px-3 !py-2 text-sm"
+              >
+                Get Started
+              </CtaButton>
+            ) : null}
+            {!hideNav ? (
+              <MobileMenuTrigger
+                isOpen={mobileOpen}
+                onClick={() => setMobileOpen((open) => !open)}
+              />
+            ) : null}
           </div>
         </div>
       </Container>
 
-      <MobileMenu isOpen={mobileOpen} onClose={() => setMobileOpen(false)} />
+      {!hideNav ? (
+        <MobileMenu isOpen={mobileOpen} onClose={() => setMobileOpen(false)} />
+      ) : null}
     </header>
   );
 }

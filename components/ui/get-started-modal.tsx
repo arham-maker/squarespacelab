@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   useEffect,
   useId,
@@ -34,6 +34,7 @@ export function GetStartedModal({
   onClose,
 }: GetStartedModalProps) {
   const router = useRouter();
+  const pathname = usePathname();
   const reducedMotion = usePrefersReducedMotion();
   const titleId = useId();
   const overlayRef = useRef<HTMLDivElement>(null);
@@ -136,7 +137,11 @@ export function GetStartedModal({
       });
 
       onClose();
-      router.push(LEAD_FORM.thankYouPath);
+      router.push(
+        pathname === "/lp2" || pathname.startsWith("/lp2/")
+          ? `${LEAD_FORM.thankYouPath}?from=lp2`
+          : LEAD_FORM.thankYouPath
+      );
     } catch (error) {
       setSubmitError(
         error instanceof Error

@@ -103,7 +103,7 @@ $(document).ready(function () {
             dataType:    'json',
             success: function () {
                 $btn.html('<span class="lp-btn-spinner"></span> Redirecting...');
-                window.location.href = '/thankyou';
+                window.location.href = '/thankyou?from=lp2';
             },
             error: function (xhr) {
                 $btn.prop('disabled', false).html('Get Started <i class="fas fa-arrow-right"></i>');
