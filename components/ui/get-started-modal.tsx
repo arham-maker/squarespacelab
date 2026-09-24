@@ -137,11 +137,12 @@ export function GetStartedModal({
       });
 
       onClose();
-      router.push(
-        pathname === "/lp2" || pathname.startsWith("/lp2/")
-          ? "/thankyou-lp2"
-          : LEAD_FORM.thankYouPath
-      );
+      // Full navigation clears lingering LP2 stylesheets injected into <head>
+      if (pathname === "/lp2" || pathname.startsWith("/lp2/")) {
+        window.location.assign("/thankyou-lp2");
+        return;
+      }
+      router.push(LEAD_FORM.thankYouPath);
     } catch (error) {
       setSubmitError(
         error instanceof Error

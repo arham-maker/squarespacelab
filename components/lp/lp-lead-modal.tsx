@@ -135,7 +135,8 @@ export function LpLeadModal({
       });
 
       onClose();
-      router.push(formConfig.thankYouPath);
+      // Full navigation so LP2 CSS/JS does not leak onto the thank-you page
+      window.location.assign(formConfig.thankYouPath);
     } catch (error) {
       setSubmitError(
         error instanceof Error

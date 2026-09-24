@@ -198,6 +198,12 @@ export function Lp2ClientAssets() {
       window.clearTimeout(aosScrollTimer);
       window.clearTimeout(aosSafetyTimer);
       aosFallbackObserver?.disconnect();
+
+      // Soft-nav away from /lp2 leaves these in <head> and breaks other pages
+      // until a full refresh — remove them on unmount.
+      document
+        .querySelectorAll("link[data-lp2w], script[data-lp2w]")
+        .forEach((el) => el.remove());
     };
   }, []);
 

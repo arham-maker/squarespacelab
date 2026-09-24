@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { ThankYouContentSection } from "@/components/sections/thank-you-content-section";
@@ -9,7 +10,20 @@ type ThankYouPageProps = {
   fromLp2?: boolean;
 };
 
+function stripLingeringLp2Assets() {
+  document
+    .querySelectorAll(
+      'link[data-lp2w], script[data-lp2w], link[href*="/lp2w/assets/css/"], link[href*="unpkg.com/aos"]'
+    )
+    .forEach((el) => el.remove());
+}
+
 export function ThankYouPage({ fromLp2 = false }: ThankYouPageProps) {
+  useEffect(() => {
+    // Soft nav from /lp2 can leave injected LP2 CSS/JS in <head>
+    stripLingeringLp2Assets();
+  }, []);
+
   if (fromLp2) {
     return (
       <div className="thank-you-page thank-you-page--lp2 flex min-h-full flex-1 flex-col">
