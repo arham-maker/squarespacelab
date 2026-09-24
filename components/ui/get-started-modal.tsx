@@ -139,7 +139,7 @@ export function GetStartedModal({
       onClose();
       router.push(
         pathname === "/lp2" || pathname.startsWith("/lp2/")
-          ? `${LEAD_FORM.thankYouPath}?from=lp2`
+          ? "/thankyou-lp2"
           : LEAD_FORM.thankYouPath
       );
     } catch (error) {

@@ -10,6 +10,7 @@ export function ConditionalMarqueeTopbar() {
   if (
     pathname === "/contact" ||
     pathname === "/thankyou" ||
+    pathname === "/thankyou-lp2" ||
     pathname === "/our-pricing" ||
     pathname === "/our-work" ||
     pathname === "/terms-and-conditions" ||

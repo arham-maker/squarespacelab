@@ -14,5 +14,5 @@ export const AUTO_POPUP_FORM = {
   thankYouPath: LEAD_FORM.thankYouPath,
   delayMs: 30_000,
   sessionStorageKey: "squarespacelab-auto-popup-seen",
-  excludedPaths: ["/lp", "/thankyou"],
+  excludedPaths: ["/lp", "/thankyou", "/thankyou-lp2"],
 } as const;

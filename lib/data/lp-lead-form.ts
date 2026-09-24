@@ -12,5 +12,5 @@ export const LP_LEAD_FORM = {
     phone: { placeholder: "Phone Number*", name: "phone" },
   },
   submitLabel: "Get Started Now!",
-  thankYouPath: "/thankyou",
+  thankYouPath: "/thankyou-lp2",
 } as const;
