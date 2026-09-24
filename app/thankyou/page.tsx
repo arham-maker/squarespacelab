@@ -31,9 +31,11 @@ export default async function ThankYou({ searchParams }: ThankYouRouteProps) {
 
   return (
     <>
-      <Script id="bing-uet-signup" strategy="afterInteractive">
-        {`window.uetq = window.uetq || [];window.uetq.push('event', 'signup', {});`}
-      </Script>
+      <Script
+        id="bing-uet-signup"
+        src="/js/bing-uet-signup.js"
+        strategy="afterInteractive"
+      />
       <ThankYouPage />
     </>
   );
