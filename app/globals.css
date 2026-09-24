@@ -6460,6 +6460,45 @@ html.with-fancybox .mouse-cursor {
     margin-top: clamp(1.5rem, 4vw, 2.5rem);
   }
 
+  /* Isolate from LP2 .btn rules (black text on black bg) after client nav */
+  .thank-you-return-home .thank-you-cta-btn,
+  .thank-you-return-home a.thank-you-cta-btn {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.95rem 2rem !important;
+    border-radius: 999px !important;
+    border: 1px solid #f7c43a !important;
+    background: #f7c43a !important;
+    background-image: none !important;
+    color: #0b0b0b !important;
+    font-size: 1.05rem !important;
+    font-weight: 600 !important;
+    line-height: 1.2 !important;
+    text-decoration: none !important;
+    box-shadow: 0 12px 28px rgba(247, 196, 58, 0.28);
+    transition:
+      color 0.3s ease,
+      background-color 0.3s ease,
+      border-color 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  .thank-you-return-home .thank-you-cta-btn::before,
+  .thank-you-return-home .thank-you-cta-btn::after {
+    display: none !important;
+    content: none !important;
+  }
+
+  .thank-you-return-home .thank-you-cta-btn:hover,
+  .thank-you-return-home .thank-you-cta-btn:focus-visible {
+    background: #0b0b0b !important;
+    border-color: #f7c43a !important;
+    color: #ffffff !important;
+    transform: scale(1.03);
+  }
+
   .thank-you-content-section {
     padding: clamp(3.5rem, 10vh, 5rem) 0 clamp(4rem, 12vh, 8rem);
     background-color: #ffffff;

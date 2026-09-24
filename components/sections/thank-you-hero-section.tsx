@@ -71,7 +71,9 @@ export function ThankYouHeroSection({
                 ))}
               </div>
               <div data-thank-you-hero-reveal className="thank-you-return-home">
-                <CtaButton href="/lp2">Return to Home</CtaButton>
+                <CtaButton href="/lp2" className="btn thank-you-cta-btn">
+                  Get Started
+                </CtaButton>
               </div>
             </>
           ) : null}
