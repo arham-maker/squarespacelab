@@ -43,6 +43,11 @@ export default function RootLayout({
           src="/js/bing-uet.js"
           strategy="afterInteractive"
         />
+        <Script
+          id="microsoft-clarity"
+          src="/js/microsoft-clarity.js"
+          strategy="afterInteractive"
+        />
         <ConditionalMarqueeTopbar />
         <GsapProvider>
           <LeadFormProvider>
