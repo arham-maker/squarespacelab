@@ -75,7 +75,7 @@ export default function LandingPageTwo() {
                             Elevate Your Website on Squarespace
                         </span>
                         <h1 className="banner-heading text-white">
-                            Hire Squarespace Website Designer in the USA
+                            Build Your Dream Website with Squarespace starting at $199
                         </h1>
                         <p className="banner-text text-white">
                             Your website should feel like your brand, not a recycled template. Our Squarespace designers create custom websites that are easy to use, visually clear, and built around your business goals. Everything is designed with intention, from layout to content flow.

@@ -11,7 +11,7 @@ export const LP_LANDING_CONTACT = {
 
 export const LP_LANDING_HERO = {
   eyebrow: "Elevate Your Website on Squarespace",
-  title: "Hire Squarespace Website Designer in the USA",
+  title: "Build Your Dream Website with Squarespace starting at $199",
   lead: "Your website should feel like your brand, not a recycled template. Our Squarespace designers create custom websites that are easy to use, visually clear, and built around your business goals. Everything is designed with intention, from layout to content flow.",
 } as const;
 

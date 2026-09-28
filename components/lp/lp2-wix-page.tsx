@@ -28,6 +28,7 @@ import {
   LpCtaButton,
   LpPackageButton,
 } from "@/components/lp/lp-buttons";
+import { Lp2LeadStrip } from "@/components/lp/lp2-lead-strip";
 import { useLeadForm } from "@/components/providers/lead-form-provider";
 
 const WIX = "/lp2w/assets/images";
@@ -499,6 +500,8 @@ export function Lp2WixPage() {
           </div>
         </div>
       </div>
+
+      <Lp2LeadStrip />
 
       <div className="sec-1">
         <div className="container">
