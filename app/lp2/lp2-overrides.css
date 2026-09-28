@@ -880,26 +880,14 @@ li.lp-chat-desktop-only {
 }
 
 .lp-landing-root .lp2-lead-strip__title {
-  margin: 0 auto 0.9rem;
-  max-width: 100%;
-  font-size: clamp(0.95rem, 4.2vw, 2.75rem);
+  margin: 0 auto 1.35rem;
+  max-width: 45rem;
+  font-size: clamp(1.45rem, 3.2vw, 2.15rem);
   font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.025em;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
   color: #fff;
-  white-space: nowrap;
-}
-
-.lp-landing-root .lp2-lead-strip__title span {
-  color: #f7c43a;
-}
-
-.lp-landing-root .lp2-lead-strip__lead {
-  margin: 0 auto 1.65rem;
-  max-width: 36rem;
-  color: rgba(255, 255, 255, 0.88);
-  font-size: clamp(1rem, 1.5vw, 1.15rem);
-  line-height: 1.65;
+  white-space: normal;
 }
 
 .lp-landing-root .lp2-lead-strip__benefits {

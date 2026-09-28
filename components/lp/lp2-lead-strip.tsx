@@ -52,12 +52,10 @@ export function Lp2LeadStrip() {
         <div className="lp2-lead-strip__inner">
           <p className="lp2-lead-strip__eyebrow">Limited-time Squarespace offer</p>
           <h2 className="lp2-lead-strip__title">
-            Get A Professional Resume Starting From <span>$79</span>
+            Let our experts craft a tailored website
+            <br />
+            to help grow your online presence.
           </h2>
-          <p className="lp2-lead-strip__lead">
-            Let our experts craft a tailored website to help grow your online
-            presence.
-          </p>
 
           <ul className="lp2-lead-strip__benefits">
             {BENEFITS.map((item) => (
