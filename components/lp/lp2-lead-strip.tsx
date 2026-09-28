@@ -48,13 +48,24 @@ export function Lp2LeadStrip() {
 
   return (
     <section className="lp2-lead-strip" aria-label="Get started with Squarespace">
+      <div className="lp2-lead-strip__media" aria-hidden="true">
+        <img
+          src="/lp/assets/images/banner/banner-image.png"
+          alt=""
+          className="lp2-lead-strip__bg"
+        />
+        <div className="lp2-lead-strip__overlay" />
+      </div>
       <div className="container">
         <div className="lp2-lead-strip__inner">
           <p className="lp2-lead-strip__eyebrow">Limited-time Squarespace offer</p>
           <h2 className="lp2-lead-strip__title">
-            Build Your Dream Website Designed &amp; Built by Our Experts
-            <br />
-            Starting at just <span>$199</span>
+            <span className="lp2-lead-strip__title-line">
+              Build Your Dream Website Designed &amp; Built by Our Experts
+            </span>
+            <span className="lp2-lead-strip__title-line">
+              Starting at just <span>$199</span>
+            </span>
           </h2>
 
           <ul className="lp2-lead-strip__benefits">
