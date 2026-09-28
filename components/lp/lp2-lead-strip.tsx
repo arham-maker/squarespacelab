@@ -52,9 +52,9 @@ export function Lp2LeadStrip() {
         <div className="lp2-lead-strip__inner">
           <p className="lp2-lead-strip__eyebrow">Limited-time Squarespace offer</p>
           <h2 className="lp2-lead-strip__title">
-            Let our experts craft a tailored website
+            Build Your Dream Website Designed &amp; Built by Our Experts
             <br />
-            to help grow your online presence.
+            Starting at just <span>$199</span>
           </h2>
 
           <ul className="lp2-lead-strip__benefits">

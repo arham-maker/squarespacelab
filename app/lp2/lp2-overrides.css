@@ -1,4 +1,8 @@
 /* Chat on desktop / Call Us on mobile */
+.lp-landing-root .header-bar {
+  display: none !important;
+}
+
 .lp-chat-mobile-only {
   display: none !important;
 }
@@ -888,6 +892,10 @@ li.lp-chat-desktop-only {
   letter-spacing: -0.02em;
   color: #fff;
   white-space: normal;
+}
+
+.lp-landing-root .lp2-lead-strip__title span {
+  color: #f7c43a;
 }
 
 .lp-landing-root .lp2-lead-strip__benefits {
