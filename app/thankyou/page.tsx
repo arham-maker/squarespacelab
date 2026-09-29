@@ -36,6 +36,9 @@ export default async function ThankYou({ searchParams }: ThankYouRouteProps) {
         src="/js/bing-uet-signup.js"
         strategy="afterInteractive"
       />
+      <Script id="google-ads-signup-conversion" strategy="afterInteractive">
+        {`gtag('event', 'conversion', {'send_to': 'AW-18266585394/MwbgCMmq9IodELLyl4ZE'});`}
+      </Script>
       <ThankYouPage />
     </>
   );

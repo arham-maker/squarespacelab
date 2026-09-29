@@ -21,6 +21,9 @@ export default function ThankYouLp2() {
         src="/js/bing-uet-signup.js"
         strategy="afterInteractive"
       />
+      <Script id="google-ads-signup-conversion" strategy="afterInteractive">
+        {`gtag('event', 'conversion', {'send_to': 'AW-18266585394/MwbgCMmq9IodELLyl4ZE'});`}
+      </Script>
       <ThankYouPage fromLp2 />
     </>
   );
