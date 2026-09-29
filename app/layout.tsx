@@ -29,6 +29,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
+      <head>
+        {/* Google tag (gtag.js) — sitewide, once per page */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-18266585394"
+          strategy="afterInteractive"
+        />
+        <Script id="google-ads-gtag" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-18266585394');
+          `}
+        </Script>
+      </head>
       <body className="flex min-h-full flex-col font-sans">
         <Script id="ze-settings" strategy="beforeInteractive">
           {`window.zESettings={webWidget:{zIndex:999999,offset:{horizontal:"20px",vertical:"20px"}}};`}
